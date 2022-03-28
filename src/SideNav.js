@@ -6,7 +6,6 @@ return (
    <a href="#section">Services</a>
    <a href="#section">Clients</a>
    <a href="#section">Contact</a>
-   <div style={{ width: '25%', paddingTop: '20px' }}></div>
 </div>
  );
 };
