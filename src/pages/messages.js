@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 
-const About = () => {
+const Messages = () => {
         return (
             <div
                 style={{
@@ -17,4 +17,4 @@ const About = () => {
     }; 
 
 
-export default About;
+export default Messages;

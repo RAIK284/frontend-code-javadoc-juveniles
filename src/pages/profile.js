@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Contact() {
+function Profile() {
     return (
         <div
             style={{
@@ -15,4 +15,4 @@ function Contact() {
     );
 };
 
-export default Contact;
+export default Profile;
