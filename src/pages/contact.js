@@ -5,7 +5,7 @@ function Contact() {
         <div
             style={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'right',
                 alignItems: 'center',
                 height: '100vh'
             }}
