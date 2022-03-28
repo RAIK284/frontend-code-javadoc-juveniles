@@ -26,26 +26,29 @@ const Navbar = () => {
                     Home
                 </NavLink>
                 <NavLink 
-                  to="/about" 
+                  to="/messages" 
                   activeStyle={{ color: 'black' }}
                 >
-                    About
+                    Messages
                 </NavLink>
                 <NavLink 
-                  to="/contact" 
+                  to="/profile" 
                   activeStyle={{ color: 'black' }}
                 >
-                    Contact
+                    Profile
                 </NavLink>
                 <NavLink 
-                  to="/signin" 
+                  to="/leaderboard" 
                   activeStyle={{ color: 'black' }}
                 >
-                    Sign In
+                    Leaderboard
                 </NavLink>
-                <NavBtn>
-                    <NavBtnLink to="/sign-up">Sign Up</NavBtnLink>                
-                </NavBtn>
+                <NavLink 
+                  to="/shop" 
+                  activeStyle={{ color: 'black' }}
+                >
+                    Shop
+                </NavLink>
             </NavMenu> 
            </Nav> 
         </>
