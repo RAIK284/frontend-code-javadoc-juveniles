@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
     background: orangered;
-    height: 85px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: justified;
     padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
 `;
@@ -22,7 +22,7 @@ export const NavLogo = styled(Link)`
 export const NavLink = styled(Link)`
 color: #fff;
 display: flex;
-align-items: center;
+align-items: left;
 text-decoration: none;
 padding: 0 1rem;
 height: 100%;
@@ -49,7 +49,7 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
+  margin-right: 0px;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -59,7 +59,7 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 0px;
 
   @media screen and (max-width: 768px) {
     display: none;
