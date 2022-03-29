@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+export const HomeContents = styled.div`
+	position: relative;
+	margin: auto;
+  width: 60%;
+`;
 
 export const RootWrapperHome = styled.div`
 	display: flex;
@@ -9,6 +14,43 @@ export const RootWrapperHome = styled.div`
 	flex: none;
 	gap: 36px;
 	box-sizing: border-box;
+`;
+
+export const Background = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: none;
+	gap: 10px;
+	width: 1177px;
+	height: 1024px;
+	background-color: rgba(194, 229, 255, 1);
+	box-sizing: border-box;
+	padding: 90px 35px 24px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+`;
+
+export const WhiteBackground = styled.svg`
+	width: 1106px;
+	height: 910px;
+`;
+
+export const ContentBody = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: none;
+	gap: 36px;
+	width: 1034px;
+	height: 587px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 70px;
+	top: 114px;
 `;
 
 export const WelcomeText = styled.span`
@@ -51,6 +93,26 @@ export const TrophyBox = styled.div`
 	right: 0px;
 `;
 
+export const Messages = styled.div`
+	width: 1034px;
+	height: 116px;
+	position: relative;
+`;
+
+export const RecentMessages = styled.span`
+	color: rgba(85, 85, 85, 1);
+	text-overflow: ellipsis;
+	font-size: 24px;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+	text-align: left;
+	width: 193px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 28px;
+`;
+
 export const MessagesTable = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -59,7 +121,11 @@ export const MessagesTable = styled.div`
 	flex: none;
 	gap: 0;
 	width: 1034px;
+	height: 80px;
 	box-sizing: border-box;
+	position: absolute;
+	left: 0px;
+	top: 36px;
 `;
 
 export const TableHeader = styled.div`
@@ -95,7 +161,7 @@ export const SenderText = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 700;
 	text-align: left;
-	width: 58px;
+	width: 143px;
 	position: absolute;
 	left: 186px;
 	top: 11px;
@@ -109,7 +175,7 @@ export const TimeText = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 700;
 	text-align: left;
-	width: 120px;
+	width: 144px;
 	position: absolute;
 	left: 15px;
 	top: 11px;
@@ -143,7 +209,7 @@ export const SubjectText = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 700;
 	text-align: left;
-	width: 164px;
+	width: 136px;
 	position: absolute;
 	left: 356px;
 	top: 11px;
@@ -157,7 +223,7 @@ export const MessageText = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 700;
 	text-align: left;
-	width: 376px;
+	width: 348px;
 	position: absolute;
 	left: 519px;
 	top: 11px;
@@ -181,7 +247,7 @@ export const CoinsGainedText = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 700;
 	text-align: left;
-	width: 107px;
+	width: 128px;
 	position: absolute;
 	left: 894px;
 	top: 11px;
@@ -221,7 +287,7 @@ export const SenderText_0001 = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 400;
 	text-align: left;
-	width: 86px;
+	width: 143px;
 	position: absolute;
 	left: 186px;
 	top: 10px;
@@ -235,7 +301,7 @@ export const TimeText_0001 = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 400;
 	text-align: left;
-	width: 171px;
+	width: 144px;
 	position: absolute;
 	left: 16px;
 	top: 10px;
@@ -269,7 +335,7 @@ export const MessageText_0001 = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 400;
 	text-align: left;
-	width: 279px;
+	width: 351px;
 	position: absolute;
 	left: 519px;
 	top: 10px;
@@ -283,7 +349,7 @@ export const SubjectText_0001 = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 400;
 	text-align: left;
-	width: 86px;
+	width: 136px;
 	position: absolute;
 	left: 356px;
 	top: 10px;
@@ -301,11 +367,11 @@ export const CoinBox = styled.div`
 `;
 
 export const CoinAmount = styled.div`
-	width: 156px;
+	width: 128px;
 	height: 16px;
 	position: absolute;
-	left: 894px;
-	top: 10px;
+	left: 0px;
+	top: 0px;
 `;
 
 export const CoinIcon = styled.div`
@@ -342,10 +408,167 @@ export const CoinNumber = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 400;
 	text-align: left;
-	width: 24px;
+	width: 110px;
 	position: absolute;
-	left: 0px;
+	left: 912px;
 	top: 10px;
 	height: 16px;
 `;
+
+export const StatBar = styled.div`
+	width: 439px;
+	height: 36px;
+	position: absolute;
+	top: 39px;
+	left: 654px;
+`;
+
+export const ProfilePic = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: flex-start;
+	flex: none;
+	gap: 8px;
+	width: 195px;
+	height: 36px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+`;
+
+export const ProfileImage = styled.div`
+	width: 36px;
+	height: 36px;
+	position: relative;
+`;
+
+export const ProfileImage_0001 = styled.div`
+	width: 36px;
+	height: 36px;
+	overflow: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 18px;
+`;
+
+export const ProfileImage_0002 = styled.img`
+	width: 67px;
+	height: 118px;
+	object-fit: cover;
+	position: absolute;
+	left: -12px;
+	top: -2px;
+`;
+
+export const Username = styled.span`
+	color: rgba(85, 85, 85, 1);
+	text-overflow: ellipsis;
+	font-size: 28px;
+	font-family: Roboto, sans-serif;
+	font-weight: 500;
+	text-align: left;
+	width: 151px;
+`;
+
+export const Xp = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: flex-start;
+	flex: none;
+	gap: 8px;
+	width: 92px;
+	height: 36px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 225px;
+	top: 0px;
+`;
+
+export const XpImage = styled.div`
+	width: 36px;
+	height: 36px;
+	position: relative;
+`;
+
+export const XpImage_0001 = styled.div`
+	width: 36px;
+	height: 36px;
+	overflow: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 18px;
+`;
+
+export const XpBigImage = styled.img`
+	width: 48px;
+	height: 52px;
+	object-fit: cover;
+	position: absolute;
+	left: -6px;
+	top: -6px;
+`;
+
+export const _000 = styled.span`
+	color: rgba(85, 85, 85, 1);
+	text-overflow: ellipsis;
+	font-size: 28px;
+	font-family: Roboto, sans-serif;
+	font-weight: 500;
+	text-align: left;
+`;
+
+export const Coins = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: flex-start;
+	flex: none;
+	gap: 8px;
+	width: 92px;
+	height: 36px;
+	box-sizing: border-box;
+	position: absolute;
+	left: 347px;
+	top: 0px;
+`;
+
+export const CoinImage = styled.div`
+	width: 36px;
+	height: 36px;
+	position: relative;
+`;
+
+export const CoinImage_0001 = styled.div`
+	width: 36px;
+	height: 36px;
+	overflow: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 18px;
+`;
+
+export const CoinBgImage_0001 = styled.img`
+	width: 65px;
+	height: 65px;
+	object-fit: cover;
+	position: absolute;
+	left: -15px;
+	top: -15px;
+`;
+
+export const CoinAmount_0001 = styled.span`
+	color: rgba(85, 85, 85, 1);
+	text-overflow: ellipsis;
+	font-size: 28px;
+	font-family: Roboto, sans-serif;
+	font-weight: 500;
+	text-align: left;
+`;
+
 
