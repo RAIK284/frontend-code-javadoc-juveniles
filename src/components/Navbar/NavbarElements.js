@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
     background: orangered;
-    height: 100px;
+    height = 1024px;
+    width = 263px;
     display: flex;
     justify-content: space-between;
     align-items: justified;

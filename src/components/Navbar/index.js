@@ -14,38 +14,38 @@ const Navbar = () => {
         <>
            <Nav>
             <NavLogo to="/">
-                Logo
+                Uplft
             </NavLogo>
             <Bars />
 
             <NavMenu>
                 <NavLink 
                   to="/" 
-                  activeStyle={{ color:'black' }}
+                  activeStyle={{ color:'yellow' }}
                 >
                     Home
                 </NavLink>
                 <NavLink 
                   to="/messages" 
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'yellow' }}
                 >
                     Messages
                 </NavLink>
                 <NavLink 
                   to="/profile" 
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'yellow' }}
                 >
                     Profile
                 </NavLink>
                 <NavLink 
                   to="/leaderboard" 
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'yellow' }}
                 >
                     Leaderboard
                 </NavLink>
                 <NavLink 
                   to="/shop" 
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'yellow' }}
                 >
                     Shop
                 </NavLink>
