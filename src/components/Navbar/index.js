@@ -21,7 +21,7 @@ const Navbar = () => {
             <NavMenu>
                 <NavLink 
                   to="/" 
-                  activeStyle={{ color:'yellow' }}
+                  activeStyle={{ color: 'yellow' }}
                 >
                     Home
                 </NavLink>

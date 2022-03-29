@@ -6,7 +6,8 @@ SubjectBox_0001, MessageBox_0001, MessageText_0001, SubjectText_0001, CoinBox, C
 CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber } from './PageElements';
 
 const Home = () => {
-  return (    
+  return ( 
+    <>  
     <RootWrapperHome>
     <WelcomeText>
       Welcome back, @username!
@@ -71,6 +72,7 @@ const Home = () => {
       </MessageRow>
     </MessagesTable>
   </RootWrapperHome>
+  </>
   );
 };
 
