@@ -3,8 +3,10 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Reports from './pages/Reports';
-import Products from './pages/Products';
+import Messages from './pages/Messages';
+import Leaderboard from './pages/Leaderboard';
+import Shop from './pages/Shop';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -13,8 +15,10 @@ function App() {
     <Router>
        <Navbar />
        <Routes>
-         <Route path='/reports' element={< Reports />} />
-         <Route path='/products' element={< Products />} />
+         <Route path='/messages' element={< Messages />} />
+         <Route path='/leaderboard' element={< Leaderboard />} />
+         <Route path='/shop' element={< Shop />} />
+         <Route path='/profile' element={< Profile />} />
          <Route exact path='/' element={<Home />} />
        </Routes>
     </Router>

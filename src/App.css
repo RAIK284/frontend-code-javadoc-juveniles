@@ -8,8 +8,10 @@
 }
 
 .home,
-.reports,
-.products {
+.leaderboard,
+.messages,
+.shop, 
+.profile {
   display: flex;
   height: 90vh;
   align-items: center;
