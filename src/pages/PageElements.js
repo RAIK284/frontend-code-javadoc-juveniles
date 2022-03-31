@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 
 export const HomeContents = styled.div`
 	position: relative;
-	margin: auto;
-  width: 60%;
-`;
+    width: 100vw;
+	height: 1024px;
+    background: linear-gradient(-180deg, rgba(48, 87, 144, 1), rgba(47, 145, 174, 1));
+ `;
 
 export const RootWrapperHome = styled.div`
 	display: flex;
@@ -14,7 +15,7 @@ export const RootWrapperHome = styled.div`
 	flex: none;
 	gap: 36px;
 	box-sizing: border-box;
-`;
+    `;
 
 export const Background = styled.div`
 	display: flex;
