@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 
 export const HomeContents = styled.div`
 	position: relative;
-	margin: auto;
-  width: 60%;
-`;
+    left: 264px;
+    width: 100vw;
+	height: 1024px;
+    background-color: rgba(194, 229, 255, 1); `;
 
 export const RootWrapperHome = styled.div`
 	display: flex;
@@ -14,7 +15,7 @@ export const RootWrapperHome = styled.div`
 	flex: none;
 	gap: 36px;
 	box-sizing: border-box;
-`;
+    `;
 
 export const Background = styled.div`
 	display: flex;
@@ -23,7 +24,7 @@ export const Background = styled.div`
 	align-items: flex-start;
 	flex: none;
 	gap: 10px;
-	width: 1177px;
+	width: 1500px;
 	height: 1024px;
 	background-color: rgba(194, 229, 255, 1);
 	box-sizing: border-box;
@@ -34,7 +35,7 @@ export const Background = styled.div`
 `;
 
 export const WhiteBackground = styled.svg`
-	width: 1106px;
+	width: 1500px;
 	height: 910px;
 `;
 
