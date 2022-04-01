@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Leaderboard() {
-    return (
-        <div>
-            <h1>Sign In</h1>
-        </div>
-    )
+  return (
+    <div className='leaderboard'>
+        <h1>Leaderboard</h1>
+    </div>
+  );
 }
 
 export default Leaderboard;
