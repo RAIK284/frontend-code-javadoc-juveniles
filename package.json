@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "flow-babel-webpack-plugin": "^1.1.1",
     "gh-pages": "^3.2.3"
   }
 }
