@@ -18,7 +18,7 @@ function App() {
          <Route path='/messages' element={< Messages />} />
          <Route path='/leaderboard' element={< Leaderboard />} />
          <Route path='/shop' element={< Shop />} />
-         <Route path='/profile' element={< Profile />} />
+         <Route path='/profile' element={<Profile />} />
          <Route exact path='/' element={<Home />} />
        </Routes>
     </Router>

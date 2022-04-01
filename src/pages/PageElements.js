@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const HomeContents = styled.div`
 	position: relative;
-    left: 360px;
+    left: 264px;
     width: 100vw;
 	height: 1024px;
     background-color: rgba(194, 229, 255, 1); `;
