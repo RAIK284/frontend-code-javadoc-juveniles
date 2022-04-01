@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData.js'
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import "@fontsource/comfortaa";
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(true)
