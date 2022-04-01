@@ -17,7 +17,7 @@
   width: 264px;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   position: fixed;
   top: 0;
   left: -100%; 
@@ -33,7 +33,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px 64px 8px 16px;
+  padding: 8px 40px 8px 0px;
   list-style: none;
   height: 60px;
 }
@@ -64,7 +64,7 @@
   width: 100%;
   height: 120px;
   display: flex;
-  justify-content: start;
+  justify-content: left;
   align-items: center;
 }
 
