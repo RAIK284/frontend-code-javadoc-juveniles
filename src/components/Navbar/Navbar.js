@@ -3,7 +3,6 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { SidebarData } from '../SidebarData.js';
-
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import "@fontsource/comfortaa";
