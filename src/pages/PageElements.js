@@ -456,12 +456,12 @@ export const ProfileImage_0001 = styled.div`
 `;
 
 export const ProfileImage_0002 = styled.img`
-	width: 67px;
-	height: 118px;
-	object-fit: cover;
-	position: absolute;
-	left: -12px;
-	top: -2px;
+width: 47px;
+height: 52px;
+object-fit: cover;
+position: absolute;
+left: -6px;
+top: 0px;
 `;
 
 export const Username = styled.span`
@@ -555,12 +555,12 @@ export const CoinImage_0001 = styled.div`
 `;
 
 export const CoinBgImage_0001 = styled.img`
-	width: 65px;
-	height: 65px;
+width: 48px;
+	height: 52px;
 	object-fit: cover;
 	position: absolute;
-	left: -15px;
-	top: -15px;
+	left: -6px;
+	top: -6px;
 `;
 
 export const CoinAmount_0001 = styled.span`
