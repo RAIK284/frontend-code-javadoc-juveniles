@@ -114,7 +114,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
           <ProfilePic>
             <ProfileImage>
               <ProfileImage_0001>
-                <ProfileImage_0002 src="grida://assets-reservation/images/184:2263" alt="image of ProfileImage"/>
+                <ProfileImage_0002 src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg" alt="image of ProfileImage"/>
               </ProfileImage_0001>
             </ProfileImage>
           <Username>
@@ -124,7 +124,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
         <Xp>
             <XpImage>
               <XpImage_0001>
-                <XpBigImage src="grida://assets-reservation/images/184:2257" alt="image of XpBigImage"/>
+                <XpBigImage src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg" alt="image of XpBigImage"/>
               </XpImage_0001>
             </XpImage>
           <_000>
@@ -134,7 +134,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
         <Coins>
             <CoinImage>
               <CoinImage_0001>
-                <CoinBgImage_0001 src="grida://assets-reservation/images/184:2250" alt="image of CoinBgImage"/>
+                <CoinBgImage_0001 src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg" alt="image of CoinBgImage"/>
               </CoinImage_0001>
             </CoinImage>
           <CoinAmount_0001>
