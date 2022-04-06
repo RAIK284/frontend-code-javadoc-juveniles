@@ -10,14 +10,31 @@ import Profile from './pages/Profile.js';
 import SignUp from './pages/LoginPage/SignUp';
 import SignIn from './pages/LoginPage/SignIn'
 import PasswordReset from './pages/LoginPage/PasswordReset';
-import {UserContext} from './pages/LoginPage/UserProvider';
-import Application from './pages/LoginPage/Application';
+import firebase from "firebase/compat/app";
 
 
 function App() {
-  <UserContext>
-    <Application />
-  </UserContext>
+
+  var user = firebase.auth().currentUser;
+  return (
+    user ?
+      <Router>
+        <Navbar/>
+       <Routes>
+         <Route path='/messages' element={< Messages />} />
+         <Route path='/leaderboard' element={< Leaderboard />} />
+         <Route path='/shop' element={< Shop />} />
+         <Route path='/profile' element={< Profile />} />
+         <Route exact path='/' element={<Home />} />
+       </Routes>
+      </Router>
+      :
+      <Router>
+        <SignUp path="signup" />
+        <SignIn path="/" />
+        <PasswordReset path = "passwordReset" />
+      </Router>
+  );
 }
 
 export default App;
