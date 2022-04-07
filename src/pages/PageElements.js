@@ -585,6 +585,19 @@ export const CoinAmount_0001 = styled.span`
 `;
 
 
+//Shop
+export const GreyTrophyBox = styled.div`
+	padding: 15px 15px;	
+	height: 273px;
+	width: 232px;
+	left: 846px;
+	top: 178px;
+	right: 0px;
+	border-radius: 6px;
+	background: #EFEFEF
+`;
+
+
 export const LeaderboardHeader = styled.span`
 	color: rgb(64, 64, 64);
 	text-overflow: ellipsis;

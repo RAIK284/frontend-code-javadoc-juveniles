@@ -1,0 +1,101 @@
+/* Rectangle 1 */
+.bluebackground{
+    position:absolute;
+    width: 1000px;
+    height: 910px;
+    left: 0px;
+    top: 0px;
+    
+    background: rgba(194, 229, 255, 1);
+    border-radius: 0px;  
+}
+.whitebackground{
+position:absolute;
+width: 1106px;
+height: 800px;
+left: 40px;
+top: 90px;
+
+background: #FFFFFF;
+border-radius: 6px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 30px;
+    row-gap: 1em;
+  }
+.shopTitle{
+/* Shop */
+
+position: absolute;
+width: 733px;
+height: 42px;
+left: 334px;
+top: 114px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 42px;
+
+color: #404040;
+
+
+} */
+.trophyName{
+    position: absolute;
+    width: 199.68px;
+    height: 14.82px;
+
+    font-style:initial;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: left;
+    
+    color: #000000;   
+}
+.photoSize{
+        height: 175px;
+        width: 175px; 
+        position: relative;
+        padding-left: 10px;
+        padding-top: 10px;
+}
+/* Group 50 */
+.blueBuyButton{
+position:relative;
+width: 200px;
+height: 36px;
+padding-top: 5px;
+background: #2295FF;
+border: 2px solid rgba(34, 149, 255, 0.5);
+box-sizing: border-box;
+border-radius: 6px;
+}
+
+/* Buy 40 */
+.buybuttonwords{
+position: relative;
+width: 199.68px;
+height: 14.82px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+text-align: center;
+
+color: #FFFFFF;
+}
+.center {
+    position:relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
