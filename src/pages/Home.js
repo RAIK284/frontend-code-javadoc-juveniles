@@ -1,22 +1,24 @@
 import React from 'react';
-import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
+import { PageContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
     SenderBox, TimeBox, SenderText, TimeText, SubjectBox, MessageBox, SubjectText, MessageText,
     CoinsGainedBox, CoinsGainedText, MessageRow, SenderBox_0001, TimeBox_0001, SenderText_0001, TimeText_0001,
     SubjectBox_0001, MessageBox_0001, MessageText_0001, SubjectText_0001, CoinBox, CoinAmount,
     CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber, Background, WhiteBackground, ContentBody, Messages, RecentMessages,
     StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
     XpBigImage, _000, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001 } from './PageElements';
-   
+
+import "../App.css";
+
     const data = [
-      { name: "Hannah", age: 19, gender: "Female" },
-      { name: "Teju", age: 29, gender: "Female" },
-      { name: "Lizzy", age: 19, gender: "Female"},
+      { time: "02/12/2022 4:36pm", sender: "@charlidamelio", subject: "Hello", message: "You are so cool!", coins: 103 },
+      { time: "02/12/2022 5:36pm", sender: "@minecraft_luv", subject: "Yeah!", message: "cool beans", coins: 15 },
+      { time: "02/12/2022 6:36pm", sender: "@directioner4lyfe", subject: "Nice", message: "positive positive positive", coins: 40 },
     ]
  
     const Home = () => {
       return (
         <>  
-        <HomeContents>
+        <PageContents>
         <RootWrapperHome>
         <Background>
           <WhiteBackground xmlns="http://www.w3.org/2000/svg">
@@ -62,16 +64,20 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
               </TableHeader> */}
               <table>
                   <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
+                    <th>Time Received</th>
+                    <th>Sender</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Coins Gained</th>
                   </tr>
                   {data.map((val, key) => {
                     return (
                       <tr key={key}>
-                        <td>{val.name}</td>
-                        <td>{val.age}</td>
-                        <td>{val.gender}</td>
+                        <td>{val.time}</td>
+                        <td>{val.sender}</td>
+                        <td>{val.subject}</td>
+                        <td>{val.message}</td>
+                        <td>{val.coins}</td>
                       </tr>
                     )
                   })}
@@ -142,7 +148,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
             </CoinAmount_0001>
           </Coins>
         </StatBar>
-      </HomeContents>
+      </PageContents>
       </>
       );
     };
