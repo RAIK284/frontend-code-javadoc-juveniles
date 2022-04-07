@@ -6,7 +6,7 @@ import { PageContents, RootWrapperLeaderboard, WelcomeText, Trophies, YourTrophi
     SubjectBox_0001, MessageBox_0001, MessageText_0001, SubjectText_0001, CoinBox, CoinAmount,
     CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber, Background, WhiteBackground, ContentBody, Messages, RecentMessages,
     StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
-    XpBigImage, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, LeaderboardHeader, LeaderboardTabs, 
+    XpBigImage, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader, LeaderboardTabs, 
     CoinsEarnedTab, Underline, Underline_0001, AllTimeCoinsEarned, AllTimeXpUsed, XpUsedTab, _000 } from './PageElements';
 
 import "../App.css";
@@ -32,9 +32,9 @@ function Leaderboard() {
         </div>
       </div>
   <ContentBody>
-      <LeaderboardHeader>
+      <MainHeader>
         Leaderboard
-      </LeaderboardHeader>
+      </MainHeader>
       <LeaderboardTabs>
         <CoinsEarnedTab>
           <Underline/>
@@ -67,64 +67,6 @@ function Leaderboard() {
                       )
                     })}
               </table_leaderboard>  
-    {/* <Table>
-        <RecentMessages>
-          Recent Messages
-        </RecentMessages>
-      <MessagesTable>
-          <TableHeader>
-            <SenderBox/>
-          <TimeBox/>
-          <SenderText>
-              Sender
-            </SenderText>
-          <TimeText>
-              Time Received
-            </TimeText>
-          <SubjectBox/>
-          <MessageBox/>
-          <SubjectText>
-              Subject
-            </SubjectText>
-          <MessageText>
-              Message
-            </MessageText>
-          <CoinsGainedBox/>
-          <CoinsGainedText>
-              Coins Gained
-            </CoinsGainedText>
-          </TableHeader>
-        <MessageRow>
-            <SenderBox_0001/>
-          <TimeBox_0001/>
-          <SenderText_0001>
-              @kevinhart56
-            </SenderText_0001>
-          <TimeText_0001>
-              02/12/2022 4:36pm
-            </TimeText_0001>
-          <SubjectBox_0001/>
-          <MessageBox_0001/>
-          <MessageText_0001>
-              Have a great day man, you are the best! 😊 💯
-            </MessageText_0001>
-          <SubjectText_0001>
-              I love you bro!
-            </SubjectText_0001>
-          <CoinBox/>
-          <CoinAmount>
-              <CoinIcon>
-                <CoinIcon_0001>
-                  <CoinBgImage src="grida://assets-reservation/images/270:511" alt="image of CoinBgImage"/>
-                </CoinIcon_0001>
-              </CoinIcon>
-            <CoinNumber>
-                103
-              </CoinNumber>
-            </CoinAmount>
-          </MessageRow>
-        </MessagesTable>
-      </Table> */}
     </ContentBody>
   <StatBar>
       <ProfilePic>
