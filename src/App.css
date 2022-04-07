@@ -18,6 +18,7 @@ table {
   position: absolute;
   top: 36px;
 }
+
   
 th {
   text-align: left;
@@ -26,12 +27,6 @@ th {
   height: 44px;
   width: calc((1034px/5) + 1px);
   padding: 8px;
-
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #404040;
 }
   
 td {

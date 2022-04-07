@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const HomeContents = styled.div`
+export const PageContents = styled.div`
 	position: relative;
     left: 264px;
     width: 100vw;
@@ -16,6 +16,16 @@ export const RootWrapperHome = styled.div`
 	gap: 36px;
 	box-sizing: border-box;
     `;
+
+export const RootWrapperLeaderboard = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: none;
+	gap: 36px;
+	box-sizing: border-box;
+`;
 
 export const Background = styled.div`
 	display: flex;
@@ -555,7 +565,7 @@ export const CoinImage_0001 = styled.div`
 `;
 
 export const CoinBgImage_0001 = styled.img`
-width: 48px;
+	width: 48px;
 	height: 52px;
 	object-fit: cover;
 	position: absolute;
@@ -570,4 +580,82 @@ export const CoinAmount_0001 = styled.span`
 	font-family: Roboto, sans-serif;
 	font-weight: 500;
 	text-align: left;
+`;
+
+
+export const LeaderboardHeader = styled.span`
+	color: rgb(64, 64, 64);
+	text-overflow: ellipsis;
+	font-size: 36px;
+	font-family: Roboto, sans-serif;
+	font-weight: 500;
+	text-align: left;
+	width: 733px;
+`;
+
+export const LeaderboardTabs = styled.div`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: flex-start;
+	flex: none;
+	gap: 24px;
+	box-sizing: border-box;
+
+`;
+
+export const CoinsEarnedTab = styled.div`
+	width: 280px;
+	height: 29px;
+	position: relative;
+`;
+
+export const Underline = styled.div`
+	width: 280px;
+	height: 3px;
+	background-color: rgb(24, 120, 208);
+	position: absolute;
+	left: 0px;
+	top: 26px;
+`;
+
+export const AllTimeCoinsEarned = styled.span`
+	color: rgb(24, 120, 208);
+	text-overflow: ellipsis;
+	font-size: 18px;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+	text-align: left;
+	width: 226px;
+	position: absolute;
+	left: 8px;
+	top: 0px;
+`;
+
+export const XpUsedTab = styled.div`
+	width: 250px;
+	height: 29px;
+	position: relative;
+`;
+
+export const Underline_0001 = styled.svg`
+	position: absolute;
+	width: 214px;
+	height: 3px;
+	left: -0.43px;
+	top: 26px;
+	background: #808080;
+`;
+
+export const AllTimeXpUsed = styled.span`
+	color: rgb(128, 128, 128);
+	text-overflow: ellipsis;
+	font-size: 18px;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+	text-align: left;
+	width: 250px;
+	position: absolute;
+	left: 8px;
+	top: 0px;
 `;

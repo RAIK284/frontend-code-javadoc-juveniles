@@ -1,12 +1,14 @@
 import React from 'react';
-import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
+import { PageContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
     SenderBox, TimeBox, SenderText, TimeText, SubjectBox, MessageBox, SubjectText, MessageText,
     CoinsGainedBox, CoinsGainedText, MessageRow, SenderBox_0001, TimeBox_0001, SenderText_0001, TimeText_0001,
     SubjectBox_0001, MessageBox_0001, MessageText_0001, SubjectText_0001, CoinBox, CoinAmount,
     CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber, Background, WhiteBackground, ContentBody, Messages, RecentMessages,
     StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
     XpBigImage, _000, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001 } from './PageElements';
-   
+
+import "../App.css";
+
     const data = [
       { time: "02/12/2022 4:36pm", sender: "@charlidamelio", subject: "Hello", message: "You are so cool!", coins: 103 },
       { time: "02/12/2022 5:36pm", sender: "@minecraft_luv", subject: "Yeah!", message: "cool beans", coins: 15 },
@@ -16,7 +18,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
     const Home = () => {
       return (
         <>  
-        <HomeContents>
+        <PageContents>
         <RootWrapperHome>
         <Background>
           <WhiteBackground xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +148,7 @@ import { HomeContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
             </CoinAmount_0001>
           </Coins>
         </StatBar>
-      </HomeContents>
+      </PageContents>
       </>
       );
     };
