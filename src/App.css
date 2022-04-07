@@ -7,6 +7,36 @@
   font-family: 'Lato', sans-serif;
 }
 
+table {
+  display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: none;
+	gap: 0;
+	width: 1034px;
+  position: absolute;
+  top: 36px;
+}
+
+  
+th {
+  text-align: left;
+  background: #DBDBDB;
+  border: 1px solid #C4C4C4;
+  height: 44px;
+  width: calc((1034px/5) + 1px);
+  padding: 8px;
+}
+  
+td {
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  text-align: left;
+  width: calc((1034px/5) + 1px);
+  padding: 8px;
+}
+
 .home,
 .leaderboard,
 .messages,
