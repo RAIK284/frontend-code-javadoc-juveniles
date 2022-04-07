@@ -27,12 +27,10 @@ const data = [
 function Leaderboard() {
   return (
     <PageContents>
-    <RootWrapperLeaderboard>
-    <Background>
-      <WhiteBackground xmlns="http://www.w3.org/2000/svg">
-        <path fill="white" d="M 0 0 L 1101 0 L 1101 910 L 0 910 L 0 0 Z"/>
-      </WhiteBackground>
-    </Background>
+      <div className='bluebackground'>
+        <div className='whitebackground'>
+        </div>
+      </div>
   <ContentBody>
       <LeaderboardHeader>
         Leaderboard
@@ -160,7 +158,6 @@ function Leaderboard() {
         </CoinAmount_0001>
       </Coins>
     </StatBar>
-  </RootWrapperLeaderboard>	
   </PageContents>
   );
 }

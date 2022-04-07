@@ -6,7 +6,7 @@ import { PageContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, Tro
     CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber, Background, WhiteBackground, ContentBody, Messages, RecentMessages,
     StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
     XpBigImage, _000, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001 } from './PageElements';
-
+import "./AllPages.css";
 import "../App.css";
 
     const data = [
@@ -19,12 +19,10 @@ import "../App.css";
       return (
         <>  
         <PageContents>
-        <RootWrapperHome>
-        <Background>
-          <WhiteBackground xmlns="http://www.w3.org/2000/svg">
-            <path fill="rgba(255, 255, 255, 1)" d="M 0 0 L 1106 0 L 1106 910 L 0 910 L 0 0 Z"/>
-          </WhiteBackground>
-        </Background>
+        <div className='bluebackground'>
+          <div className='whitebackground'>
+          </div>
+          </div>
       <ContentBody>
           <WelcomeText>
             Welcome back, @username!
@@ -114,8 +112,7 @@ import "../App.css";
             {/* </MessagesTable> */}
           </Messages>
         </ContentBody>
-     
-      </RootWrapperHome>  
+       
       <StatBar>
           <ProfilePic>
             <ProfileImage>

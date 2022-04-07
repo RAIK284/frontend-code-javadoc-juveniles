@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
 export const PageContents = styled.div`
-	position: relative;
-    left: 264px;
-    width: 100vw;
+	left: 263px;	
+	position: relative; 
+    width: 100px;
 	height: 1024px;
     background-color: rgba(194, 229, 255, 1); `;
 
