@@ -106,7 +106,7 @@ export const TrophyBox = styled.div`
 	right: 0px;
 `;
 
-export const Messages = styled.div`
+export const MessagesTable = styled.div`
 	width: 1034px;
 	height: 116px;
 	position: relative;
