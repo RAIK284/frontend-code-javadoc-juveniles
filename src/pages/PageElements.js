@@ -45,8 +45,10 @@ export const Background = styled.div`
 `;
 
 export const WhiteBackground = styled.svg`
-	width: 1500px;
+	width: 1100px;
 	height: 910px;
+	border-radius: 14px;
+
 `;
 
 export const ContentBody = styled.div`
