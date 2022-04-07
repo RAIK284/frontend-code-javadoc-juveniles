@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Shop.css";
-import { HomeContents, RootWrapperHome, WelcomeText, Background, WhiteBackground, ContentBody,
+import "./AllPages.css";
+import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
   XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001 } from './PageElements';
 import duck from '../Trophies/Duck.png'
@@ -15,7 +16,7 @@ import sun from '../Trophies/sun.png'
 function Shop() {
   return (
     <>
-      <HomeContents>
+      <PageContents>
 
           <div className='bluebackground'>
             <div className='whitebackground'>
@@ -167,7 +168,7 @@ function Shop() {
             </CoinAmount_0001>
           </Coins>
         </StatBar>
-      </HomeContents>  
+      </PageContents>  
     </>
     
   );
