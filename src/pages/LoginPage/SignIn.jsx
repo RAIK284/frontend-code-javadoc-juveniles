@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase";
 import { auth } from "../../firebase";
+import "./SignIn.css";
+
 
 
 const SignIn = () => {
@@ -66,7 +68,7 @@ const SignIn = () => {
         </form>
         <p className="text-center my-3">
           Don't have an account?{" "}
-          <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+          <Link to="/signUp" className="text-blue-500 hover:text-blue-600">
             Sign up here
           </Link>{" "}
           <br />{" "}

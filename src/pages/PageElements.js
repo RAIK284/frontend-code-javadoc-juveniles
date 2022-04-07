@@ -571,3 +571,15 @@ export const CoinAmount_0001 = styled.span`
 	font-weight: 500;
 	text-align: left;
 `;
+
+//Shop
+export const GreyTrophyBox = styled.div`
+	padding: 15px 15px;	
+	height: 273px;
+	width: 232px;
+	left: 846px;
+	top: 178px;
+	right: 0px;
+	border-radius: 6px;
+	background: #EFEFEF
+`;

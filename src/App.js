@@ -17,7 +17,7 @@ function App() {
 
   var user = firebase.auth().currentUser;
   return (
-    user ?
+    // user ?
       <Router>
         <Navbar/>
        <Routes>
@@ -28,12 +28,12 @@ function App() {
          <Route exact path='/' element={<Home />} />
        </Routes>
       </Router>
-      :
-      <Router>
-        <SignUp path="signup" />
-        <SignIn path="/" />
-        <PasswordReset path = "passwordReset" />
-      </Router>
+      // :
+      // <Router>
+
+      //   <SignIn path="/" />
+
+      // </Router>
   );
 }
 
