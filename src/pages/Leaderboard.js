@@ -24,6 +24,7 @@ function Leaderboard() {
   useEffect(() => {
     async function fetchData() {
       let response = null;
+      console.log("heybi")
       if (isCoin) {
         response = await fetch(
           "https://us-central1-uplft-9ed97.cloudfunctions.net/app/getCoinLeaderboard"
@@ -37,7 +38,7 @@ function Leaderboard() {
       setData(json);
     }
     fetchData();
-  }, []);
+  }, [isCoin]);
 
   function generateTable() {
     return (
