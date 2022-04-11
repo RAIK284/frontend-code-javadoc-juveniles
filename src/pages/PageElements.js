@@ -623,6 +623,7 @@ export const CoinsEarnedTab = styled.div`
 	width: 280px;
 	height: 29px;
 	position: relative;
+	cursor: pointer;
 `;
 
 export const Underline = styled.div`
@@ -651,6 +652,7 @@ export const XpUsedTab = styled.div`
 	width: 250px;
 	height: 29px;
 	position: relative;
+	cursor: pointer;
 `;
 
 export const Underline_0001 = styled.svg`
