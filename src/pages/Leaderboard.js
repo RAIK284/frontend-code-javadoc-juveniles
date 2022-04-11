@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   PageContents,
   ContentBody,
-  LeaderboardHeader,
+  MainHeader,
   LeaderboardTabs,
   CoinsEarnedTab,
   Underline,
@@ -104,7 +104,7 @@ function Leaderboard() {
           <div className="whitebackground"></div>
         </div>
         <ContentBody>
-          <LeaderboardHeader>Leaderboard</LeaderboardHeader>
+          <MainHeader>Leaderboard</MainHeader>
           <LeaderboardTabs>
             {getCoinButton()}
 
