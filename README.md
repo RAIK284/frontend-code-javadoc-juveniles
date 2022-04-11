@@ -1,3 +1,9 @@
+# Important Update
+
+When running locally, in order to fetch from our api, you must have this chrome extension installed
+
+https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
