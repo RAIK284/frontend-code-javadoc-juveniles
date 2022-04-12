@@ -677,3 +677,16 @@ export const AllTimeXpUsed = styled.span`
 	top: 0px;
 `;
 
+export const ComposeMessageButton = styled.button`
+	color: white;
+	position: absolute;
+	width: 225px;
+	height: 36px;
+	left: 802px;
+	top: 72px;
+	background: #2295FF;
+	border: 2px solid rgba(34, 149, 255, 0.5);
+	box-sizing: border-box;
+	border-radius: 6px;
+`;
+

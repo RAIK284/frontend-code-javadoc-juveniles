@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, {useState} from 'react';
 
 
 import { PageContents, RootWrapperLeaderboard, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
@@ -8,8 +9,8 @@ import { PageContents, RootWrapperLeaderboard, WelcomeText, Trophies, YourTrophi
   CoinIcon, CoinIcon_0001, CoinBgImage, CoinNumber, Background, WhiteBackground, ContentBody, RecentMessages,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
   XpBigImage, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader, LeaderboardTabs, 
-  CoinsEarnedTab, Underline, Underline_0001, AllTimeCoinsEarned, AllTimeXpUsed, XpUsedTab, _000 } from './PageElements';
-
+  CoinsEarnedTab, Underline, Underline_0001, AllTimeCoinsEarned, AllTimeXpUsed, XpUsedTab, _000, ComposeMessageButton } from './PageElements';
+  import { Modal } from '../components/Modal';
 
 const data = [
   { time: "02/12/2022 4:36pm", sender: "@charlidamelio", subject: "Hello", message: "You are so cool!", coins: 103 },
@@ -30,6 +31,13 @@ const data = [
 ]
 
 function Messages() {
+
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   return (
     <PageContents>
       <div className='bluebackground'>
@@ -55,6 +63,10 @@ function Messages() {
             SENT MESSAGES
           </AllTimeXpUsed>
         </XpUsedTab>
+        <ComposeMessageButton onClick={openModal}>
+          Compose Message
+        </ComposeMessageButton>
+        <Modal showModal ={showModal} setShowModal={setShowModal} />
       </LeaderboardTabs>
       <allmessages_table>
                   <tr>
