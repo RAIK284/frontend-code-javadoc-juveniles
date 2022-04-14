@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
-
+import { TextField } from '@mui/material';
 
 const Background = styled.div`
     width: 100vw;
@@ -32,15 +32,34 @@ const ModalContent = styled.div`
     color: #555555;
 `;
 
+const Spacer = styled.span `
+    width: 50px;
+    height: 24px;
+    background: white;
+`
+
 const CloseModalButton = styled(MdClose)`
     cursor: pointer;
     position: absolute;
-    top: 150px;
-    right: calc(100vw / 2 - 300);
+    top: 155px;
+    right: calc(50vw - 330px);
     width: 32px;
     height: 32px;
     padding: 0;
 `;
+
+const SendMessageButton = styled.button`
+    color: white;
+    position: relative;
+    width: 225px;
+    height: 36px;
+    left: 200px;
+    background: #2295FF;
+    border: 2px solid rgba(34, 149, 255, 0.5);
+    box-sizing: border-box;
+    border-radius: 6px;
+`
+
 
 
 
@@ -54,6 +73,32 @@ export const Modal = ({ showModal, setShowModal }) => {
                 <CloseModalButton onClick ={() => setShowModal
                 (prev => !prev)} />
                     <h1>Compose Message</h1>
+                <Spacer />
+                <TextField 
+                id="username" 
+                variant="filled"
+                label="Recipient username"
+                />
+                <Spacer />
+                <TextField 
+                id="subject" 
+                variant="filled"
+                label="Subject"
+                />
+                <Spacer />
+                <TextField 
+                id="message" 
+                variant="filled"
+                label="Message"
+                multiline
+                rows={5}
+                
+                />
+                 <Spacer />
+                <p>put some text here blah blah blah</p>
+                <Spacer />
+                <SendMessageButton>Send Message
+                </SendMessageButton>
                 </ModalContent>
             </ModalWrapper>
         </Background>
