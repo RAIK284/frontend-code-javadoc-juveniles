@@ -36,7 +36,7 @@ const CloseModalButton = styled(MdClose)`
     cursor: pointer;
     position: absolute;
     top: 150px;
-    right: calc(100vw / 2 + 300);
+    right: calc(100vw / 2 - 300);
     width: 32px;
     height: 32px;
     padding: 0;
