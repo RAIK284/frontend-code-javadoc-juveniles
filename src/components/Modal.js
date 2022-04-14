@@ -26,16 +26,17 @@ const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    padding: 16px;
     line-height: 1.8;
-    color: #c4c4c4;
+    color: #555555;
 `;
 
 const CloseModalButton = styled(MdClose)`
     cursor: pointer;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 150px;
+    right: calc(100vw / 2 + 300);
     width: 32px;
     height: 32px;
     padding: 0;
@@ -52,7 +53,7 @@ export const Modal = ({ showModal, setShowModal }) => {
                 <ModalContent>
                 <CloseModalButton onClick ={() => setShowModal
                 (prev => !prev)} />
-                    <h1>test test test</h1>
+                    <h1>Compose Message</h1>
                 </ModalContent>
             </ModalWrapper>
         </Background>
