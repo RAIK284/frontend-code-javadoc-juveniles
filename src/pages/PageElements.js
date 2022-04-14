@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
 export const PageContents = styled.div`
-	left: 263px;	
-	position: relative; 
-    width: 100px;
+	position: relative;
+    left: 264px;
+    width: 100vw;
 	height: 1024px;
     background-color: rgba(194, 229, 255, 1); `;
 
@@ -598,7 +598,7 @@ export const GreyTrophyBox = styled.div`
 `;
 
 
-export const LeaderboardHeader = styled.span`
+export const MainHeader = styled.span`
 	color: rgb(64, 64, 64);
 	text-overflow: ellipsis;
 	font-size: 36px;
@@ -676,3 +676,17 @@ export const AllTimeXpUsed = styled.span`
 	left: 8px;
 	top: 0px;
 `;
+
+export const ComposeMessageButton = styled.button`
+	color: white;
+	position: absolute;
+	width: 225px;
+	height: 36px;
+	left: 802px;
+	top: 72px;
+	background: #2295FF;
+	border: 2px solid rgba(34, 149, 255, 0.5);
+	box-sizing: border-box;
+	border-radius: 6px;
+`;
+

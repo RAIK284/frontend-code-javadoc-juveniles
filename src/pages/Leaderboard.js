@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   PageContents,
   ContentBody,
-  LeaderboardHeader,
+  MainHeader,
   LeaderboardTabs,
   CoinsEarnedTab,
   Underline,
@@ -18,6 +18,7 @@ import fetch from "node-fetch";
 import "../App.css";
 
 function Leaderboard() {
+
   const [data, setData] = useState(null);
   const [isCoin, setIsCoin] = useState(true);
 
@@ -85,6 +86,7 @@ function Leaderboard() {
           <Underline_0001 />
           <AllTimeXpUsed>ALL-TIME XP USED</AllTimeXpUsed>
         </XpUsedTab>
+
       );
     }
     return (
@@ -102,7 +104,7 @@ function Leaderboard() {
           <div className="whitebackground"></div>
         </div>
         <ContentBody>
-          <LeaderboardHeader>Leaderboard</LeaderboardHeader>
+          <MainHeader>Leaderboard</MainHeader>
           <LeaderboardTabs>
             {getCoinButton()}
 
