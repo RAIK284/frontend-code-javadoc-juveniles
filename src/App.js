@@ -1,4 +1,4 @@
-import React, {useContext}  from 'react';
+import React, {useEffect, useState}  from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,13 +11,21 @@ import SignUp from './pages/LoginPage/SignUp';
 import SignIn from './pages/LoginPage/SignIn'
 import PasswordReset from './pages/LoginPage/PasswordReset';
 import firebase from "firebase/compat/app";
+import {auth} from './firebase';
 
 
 function App() {
 
-  var user = firebase.auth().currentUser;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      setUser(user);
+    });
+  }, []);
+
   return (
-    // user ?
+     user ?
       <Router>
         <Navbar/>
        <Routes>
@@ -28,12 +36,14 @@ function App() {
          <Route exact path='/' element={<Home />} />
        </Routes>
       </Router>
-      // :
-      // <Router>
-
-      //   <SignIn path="/" />
-
-      // </Router>
+      :
+      <Router>
+        <Routes>
+          <Route path='/signup' element={< SignUp />} />
+          <Route path='/' element={< SignIn />} />
+          <Route path='/passwordreset' element={< PasswordReset />} />
+        </Routes>
+      </Router>
   );
 }
 
