@@ -10,7 +10,7 @@ import { PageContents, RootWrapperLeaderboard, WelcomeText, Trophies, YourTrophi
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001,
   XpBigImage, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader, LeaderboardTabs, 
   CoinsEarnedTab, Underline, Underline_0001, AllTimeCoinsEarned, AllTimeXpUsed, XpUsedTab, _000, ComposeMessageButton } from './PageElements';
-  import { Modal } from '../components/Modal';
+  import { Modal, ProfileModal } from '../components/Modal';
 
 const data = [
   { time: "02/12/2022 4:36pm", sender: "@charlidamelio", subject: "Hello", message: "You are so cool!", coins: 103 },
@@ -66,7 +66,11 @@ function Messages() {
         <ComposeMessageButton onClick={openModal}>
           Compose Message
         </ComposeMessageButton>
-        <Modal showModal ={showModal} setShowModal={setShowModal} />
+        
+        {/* <Modal showModal ={showModal} setShowModal={setShowModal} /> */}
+
+        <ProfileModal showModal = {showModal} setShowModal={setShowModal} />
+
       </LeaderboardTabs>
       <allmessages_table>
                   <tr>
