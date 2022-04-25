@@ -5,14 +5,14 @@ import { auth, signInWithGoogle, generateUserDocument } from "../../firebase";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, {displayName});
+      generateUserDocument(user, {username});
     }
     catch(error){
       setError('Error Signing up with email and password');
@@ -20,7 +20,7 @@ const SignUp = () => {
       
     setEmail("");
     setPassword("");
-    setDisplayName("");
+    setUsername("");
   };
 
   const onChangeHandler = event => {
@@ -30,8 +30,8 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "displayName") {
-      setDisplayName(value);
+    } else if (name === "username") {
+      setUsername(value);
     }
   };
 
@@ -45,16 +45,16 @@ const SignUp = () => {
           </div>
         )}
         <form className="">
-          <label htmlFor="displayName" className="block">
+          <label htmlFor="username" className="block">
             Username:
           </label>
           <input
             type="text"
             className="my-1 p-1 w-full "
-            name="displayName"
-            value={displayName}
+            name="username"
+            value={username}
             placeholder="username"
-            id="displayName"
+            id="username"
             onChange={event => onChangeHandler(event)}
           />
           <label htmlFor="userEmail" className="block">
