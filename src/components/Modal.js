@@ -95,9 +95,10 @@ export const Modal = ({ showModal, setShowModal }) => {
                 
                 />
                  <Spacer />
-                <p>put some text here blah blah blah</p>
+                <p>Remember, emojis cost XP and can be used to sent coins to other users.
+Type or click on the emojis to add them to your message.</p>
                 <Spacer />
-                <SendMessageButton>Send Message
+                <SendMessageButton onClick={() => setShowModal(prev=>!prev)} >Send Message
                 </SendMessageButton>
                 </ModalContent>
             </ModalWrapper>
