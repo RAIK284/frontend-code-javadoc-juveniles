@@ -30,6 +30,7 @@ const ModalContent = styled.div`
     justify-content: center;
     align-items: left;
     padding-left: 24px;
+    padding-right: 24px;
     padding-bottom: 24px;
     line-height: 1.8;
     color: #555555;

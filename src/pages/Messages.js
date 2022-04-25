@@ -67,9 +67,7 @@ function Messages() {
           Compose Message
         </ComposeMessageButton>
         
-        {/* <Modal showModal ={showModal} setShowModal={setShowModal} /> */}
-
-        <ProfileModal showModal = {showModal} setShowModal={setShowModal} />
+        <Modal showModal ={showModal} setShowModal={setShowModal} />
 
       </LeaderboardTabs>
       <allmessages_table>
