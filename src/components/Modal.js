@@ -19,7 +19,7 @@ const ModalWrapper = styled.div`
     position: relative;
     top: 120px;
     width: 678px;
-    height: 661px;
+    height: 560px;
     background: white;
     border-radius: 6px;
 `;
@@ -110,11 +110,11 @@ export const Modal = ({ showModal, setShowModal }) => {
                 label="Recipient username"
                 />
                 <Spacer />
-                <TextField 
-                id="subject" 
-                variant="filled"
-                label="Subject"
-                />
+              
+                <p>Remember, emojis cost XP and can be used to sent coins to other users.
+Type any of the below emojis into your message to send coins to other users!</p>
+                <Spacer />
+                <p>😊: 3 XP 🎁: 5 XP 😎: 10 XP 🍪: 20 XP 💯: 100 XP</p>
                 <Spacer />
                 <TextField 
                 id="message" 
@@ -125,9 +125,6 @@ export const Modal = ({ showModal, setShowModal }) => {
                 
                 />
                  <Spacer />
-                <p>Remember, emojis cost XP and can be used to sent coins to other users.
-Type or click on the emojis to add them to your message.</p>
-                <Spacer />
                 <SendMessageButton onClick={() => setShowModal(prev=>!prev)} >Send Message
                 </SendMessageButton>
                 </ModalContent>
