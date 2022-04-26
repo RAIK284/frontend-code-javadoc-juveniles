@@ -18,30 +18,36 @@ import fetch from "node-fetch";
 import "../App.css";
 
 function Leaderboard() {
-
-  const [data, setData] = useState(null);
+  const [coinData, setCoinData] = useState(null);
+  const [xpData, setXpData] = useState(null);
   const [isCoin, setIsCoin] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       let response = null;
-      console.log("heybi")
-      if (isCoin) {
+      if (!coinData) {
+        console.log("Fetching Coin Leaderboard...")
         response = await fetch(
           "https://us-central1-uplft-9ed97.cloudfunctions.net/app/getCoinLeaderboard"
         );
-      } else {
+        console.log(response)
+        const json = await response.json();
+        setCoinData(json);
+      } 
+      if (!xpData) {
+        console.log("Fetching Xp Leaderboard...")
         response = await fetch(
           "https://us-central1-uplft-9ed97.cloudfunctions.net/app/getXpLeaderboard"
         );
+        const json = await response.json();
+        setXpData(json);
       }
-      const json = await response.json();
-      setData(json);
     }
     fetchData();
   }, [isCoin]);
 
   function generateTable() {
+    let data = isCoin ? coinData : xpData;
     return (
       <tbody>
         <tr>
@@ -86,7 +92,6 @@ function Leaderboard() {
           <Underline_0001 />
           <AllTimeXpUsed>ALL-TIME XP USED</AllTimeXpUsed>
         </XpUsedTab>
-
       );
     }
     return (
@@ -97,7 +102,7 @@ function Leaderboard() {
     );
   }
 
-  if (data) {
+  if (coinData && xpData) {
     return (
       <PageContents>
         <div className="bluebackground">
@@ -107,10 +112,7 @@ function Leaderboard() {
           <MainHeader>Leaderboard</MainHeader>
           <LeaderboardTabs>
             {getCoinButton()}
-
-            <XpUsedTab onClick={() => setIsCoin(false)}>
-              {getXpButton()}
-            </XpUsedTab>
+            {getXpButton()}
           </LeaderboardTabs>
           <table_leaderboard>{generateTable()}</table_leaderboard>
         </ContentBody>
