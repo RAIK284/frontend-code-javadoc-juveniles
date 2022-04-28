@@ -1,5 +1,8 @@
 
 import React, {useState} from 'react';
+import { UserContext } from '../components/UserProvider';
+import { useUserState } from './Home';
+import { useBetween } from 'use-between';
 
 
 import { PageContents, RootWrapperLeaderboard, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
@@ -33,6 +36,9 @@ const data = [
 function Messages() {
 
   const [showModal, setShowModal] = useState(false)
+
+  const useSharedUserState = useBetween(useUserState);
+  const { username, xp, coins } = useSharedUserState;
 
   const openModal = () => {
     setShowModal(prev => !prev)
@@ -99,7 +105,7 @@ function Messages() {
           </ProfileImage_0001>
         </ProfileImage>
       <Username>
-          @username
+          @{username}
         </Username>
       </ProfilePic>
     <Xp>
@@ -109,7 +115,7 @@ function Messages() {
           </XpImage_0001>
         </XpImage>
       <_000>
-          000
+          {xp}
         </_000>
       </Xp>
     <Coins>
@@ -119,7 +125,7 @@ function Messages() {
           </CoinImage_0001>
         </CoinImage>
       <CoinAmount_0001>
-          000
+          {coins}
         </CoinAmount_0001>
       </Coins>
     </StatBar>

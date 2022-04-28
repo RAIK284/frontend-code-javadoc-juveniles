@@ -5,7 +5,13 @@ import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
   XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader } from './PageElements';
 import watermelon from '../Trophies/watermelon.png'
+import { useUserState } from './Home';
+import { useBetween } from 'use-between';
   function Profile() {
+
+  const useSharedUserState = useBetween(useUserState);
+  const { username, xp, coins } = useSharedUserState;
+
   return (
     <>
       <PageContents>
@@ -17,7 +23,7 @@ import watermelon from '../Trophies/watermelon.png'
                   Profile
                 </div>
                 <div class="userNameText">
-                  @username
+                  @{username}
                 </div>
                 <img className="photoSize" src={watermelon}/>
                 <div className='space'/>
@@ -74,7 +80,7 @@ import watermelon from '../Trophies/watermelon.png'
               </ProfileImage_0001>
             </ProfileImage>
           <Username>
-              @username
+              @{username}
             </Username>
           </ProfilePic>
         <Xp>
@@ -84,7 +90,7 @@ import watermelon from '../Trophies/watermelon.png'
               </XpImage_0001>
             </XpImage>
           <_000>
-              000
+              {xp}
             </_000>
           </Xp>
         <Coins>
@@ -94,7 +100,7 @@ import watermelon from '../Trophies/watermelon.png'
               </CoinImage_0001>
             </CoinImage>
           <CoinAmount_0001>
-              000
+              {coins}
             </CoinAmount_0001>
           </Coins>
         </StatBar>

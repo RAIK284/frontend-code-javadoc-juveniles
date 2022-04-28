@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from 'react';
+import React, {useEffect, useState, createContext}  from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -12,20 +12,30 @@ import SignIn from './pages/LoginPage/SignIn'
 import PasswordReset from './pages/LoginPage/PasswordReset';
 import firebase from "firebase/compat/app";
 import {auth} from './firebase';
-
+import fetch from "node-fetch";
+import UserProvider from './components/UserProvider';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, [])
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      setUser(user);
-    });
-  }, []);
+      setUser(user)
+    }
+    )
+  }, [])
 
   return (
-     user ?
+    <>
+    {loading === false ? (
+      user ?
       <Router>
         <Navbar/>
        <Routes>
@@ -44,6 +54,9 @@ function App() {
           <Route path='/passwordreset' element={< PasswordReset />} />
         </Routes>
       </Router>
+    ) : <div>Loading...</div>
+    }
+    </>
   );
 }
 

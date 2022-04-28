@@ -12,8 +12,14 @@ import book from '../Trophies/book.png'
 import paint from '../Trophies/paint.png'
 import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
+import { useUserState } from './Home';
+import { useBetween } from 'use-between';
 
 function Shop() {
+
+  const useSharedUserState = useBetween(useUserState);
+  const { username, xp, coins } = useSharedUserState;
+
   return (
     <>
       <PageContents>
@@ -144,7 +150,7 @@ function Shop() {
               </ProfileImage_0001>
             </ProfileImage>
           <Username>
-              @username
+              @{username}
             </Username>
           </ProfilePic>
         <Xp>
@@ -154,7 +160,7 @@ function Shop() {
               </XpImage_0001>
             </XpImage>
           <_000>
-              000
+              {xp}
             </_000>
           </Xp>
         <Coins>
@@ -164,7 +170,7 @@ function Shop() {
               </CoinImage_0001>
             </CoinImage>
           <CoinAmount_0001>
-              000
+              {coins}
             </CoinAmount_0001>
           </Coins>
         </StatBar>
