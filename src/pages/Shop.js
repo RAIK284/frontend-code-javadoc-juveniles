@@ -14,6 +14,13 @@ import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
 
 function Shop() {
+
+  function buyTrophy(trophy) {
+    var x = document.getElementById(trophy);
+    x.style.display = "none";
+  }
+  //id = "basketball" onclick = {buyTrophy("basketball")}
+
   return (
     <>
       <PageContents>
@@ -33,11 +40,9 @@ function Shop() {
               </div>
               <img className="photoSize" src={basketball}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <button class="blueBuyButton" id = "basketball" onClick={() => buyTrophy("basketball")}>
                     30 coins
-                  </div>
-                </div>
+                </button>
               </div>
             </GreyTrophyBox>
             <GreyTrophyBox>
