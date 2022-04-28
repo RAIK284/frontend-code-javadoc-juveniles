@@ -209,15 +209,10 @@ export const ProfileModal = ({ showModal, setShowModal }) => {
                         (prev => !prev)} />
                             <h1>Log In Bonus</h1>
                         <Spacer />
-                        
                         <p>Thanks for logging in. You earned 50 XP!</p>
-    
                         <Spacer />
-
                         <PhotoSize />
-
                         <Spacer />
-
                         <p>Don't forget to use your XP to send positive messages to friends. The world could use some positivity right now!</p>
                         </ModalContent>
                     </LogInWrapper>

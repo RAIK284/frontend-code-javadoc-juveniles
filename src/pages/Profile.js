@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
-  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader } from './PageElements';
+  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, ProfileSettingButton, 
+ComposeMessageButton } from './PageElements';
 import watermelon from '../Trophies/watermelon.png'
+import { Modal, ProfileModal, LogInModal } from '../components/Modal';
+
+
   function Profile() {
+
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => {
+      setShowModal(prev => !prev)
+    }
   return (
     <>
       <PageContents>
+
           <div className='bluebackground'>
             <div className='whitebackground'>
               <div className='wrapperProfile'>
@@ -21,21 +32,20 @@ import watermelon from '../Trophies/watermelon.png'
                 </div>
                 <img className="photoSize" src={watermelon}/>
                 <div className='space'/>
-                <button className="profileSettingButton" >
-                  <div className="profileText">
-                    Profile Settings
-                  </div>
-                </button>
+                <ProfileSettingButton onClick={openModal}>
+                   Profile Settings
+                 </ProfileSettingButton>
+
                 <div className='space'/>
                 <button className="logoutButton" >
                   <div className="logoutText">
                     Log Out
                   </div>
                 </button>
+
               <>
               </>
               </div>
-
               <div class="splitRight">
                 <div class="wrapperRight">
                   <div class="userNameText">
@@ -57,7 +67,8 @@ import watermelon from '../Trophies/watermelon.png'
                         <th>All-Time Messages Sent</th>                        
                       </tr>
                     </table>
-                  
+                    <ProfileModal showModal ={showModal} setShowModal={setShowModal} />
+
                   </div>
                   </div>
                   </div>
@@ -98,6 +109,7 @@ import watermelon from '../Trophies/watermelon.png'
             </CoinAmount_0001>
           </Coins>
         </StatBar>
+
       </PageContents>  
     </>
   );
