@@ -3,7 +3,7 @@ import "./Shop.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
-  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001 } from './PageElements';
+  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader } from './PageElements';
 import duck from '../Trophies/Duck.png'
 import basketball from '../Trophies/Basketball.png'
 import waterbottle from '../Trophies/waterbottle.png'
@@ -23,9 +23,9 @@ function Shop() {
             </div>
           </div>
           <ContentBody>
-            <WelcomeText>
+            <MainHeader>
               Shop
-            </WelcomeText>
+            </MainHeader>
             <div class="wrapper">
             <GreyTrophyBox>
               <div class="trophyName">
