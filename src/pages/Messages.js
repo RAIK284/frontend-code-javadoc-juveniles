@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import {
   PageContents,
@@ -41,6 +41,8 @@ function Messages() {
   const [sentMessages, setSentMessages] = useState(null);
   const [receivedMessages, setReceivedMessages] = useState(null);
   const [isReceived, setIsReceived] = useState(true);
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -54,6 +56,7 @@ function Messages() {
             username
         );
         const json = await response.json();
+        console.log(json)
         setReceivedMessages(json);
       }
       if (!sentMessages) {
@@ -67,10 +70,7 @@ function Messages() {
       }
     }
     fetchData();
-  }, [isReceived, setShowModal]);
-
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins } = useSharedUserState;
+  }, [isReceived, sentMessages]);
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -121,10 +121,11 @@ function Messages() {
           <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
         </tr>
         {data.slice(0, 10).map((val, key) => {
+          const date = new Date(val.timeSent._seconds * 1000)
           return (
             <tr key={key}>
-              <td>time</td>
-              <td>{isReceived ? val.sender : val.recipient}</td>
+              <td>{date.toLocaleDateString("en-US") + " at " + date.toLocaleTimeString("en-US")}</td>
+              <td>@{isReceived ? val.sender : val.recipient}</td>
               <td>{val.messageBody}</td>
               <td>{val.numberOfCoins}</td>
             </tr>
@@ -148,7 +149,7 @@ function Messages() {
             <ComposeMessageButton onClick={openModal}>
               Compose Message
             </ComposeMessageButton>
-            <Modal showModal={showModal} setShowModal={setShowModal} />
+            <Modal showModal={showModal} setShowModal={setShowModal} setReceivedMessages={setReceivedMessages} setSentMessages={setSentMessages} />
           </LeaderboardTabs>
           {generateTable()}
         </ContentBody>

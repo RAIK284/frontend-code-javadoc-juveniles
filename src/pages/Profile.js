@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -9,11 +9,13 @@ import { useUserState } from './Home';
 import { useBetween } from 'use-between';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { TableBody, TableHead } from '@mui/material';
+import { UserContext } from '../components/UserProvider';
 
   function Profile() {
 
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins } = useSharedUserState;
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins, userData } = userInfo;
   const navigate = useNavigate();
 
   return (
@@ -63,17 +65,19 @@ import { useNavigate } from 'react-router-dom';
                   <div class="userNameText">
                     Your Stats
                     <table>
-                      <tr>
-                        <th>All-Time XP Used</th>
-                        <th>All-Time Coins Sent</th>
-                        
-                      </tr>
-                      <tr>
-                        <th>All-Time Coins Received</th>
-                        <th>All-Time Messages Sent</th>                        
-                      </tr>
+                        <TableHead>
+                          <tr>
+                            <td>All-Time XP Used</td>
+                            <td>All-Time Coins Received</td>
+                          </tr>
+                        </TableHead>
+                        <TableBody>
+                          <tr>
+                            <td>{userData.xpUsed}</td>
+                            <td>{userData.totalCoins}</td>
+                          </tr>
+                        </TableBody>  
                     </table>
-                  
                   </div>
                   </div>
                   </div>

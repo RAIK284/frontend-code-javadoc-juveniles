@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
-import { useUserState } from "../pages/Home.js";
-import { useBetween } from "use-between";
+import { UserContext } from "./UserProvider";
+
 import {
   TextField,
   Checkbox,
@@ -103,15 +103,17 @@ const ProfileWrapper = styled.div`
 
 const tokens = [["💯", 100], ["🍪", 20]];
 
-export const Modal = ({ showModal, setShowModal }) => {
+// TODO: add tokens, get correct number of coins and xp, edit both users coins and xp if message send, order by timeSent in back end probably
+
+export const Modal = ({ showModal, setShowModal, setSentMessages, setReceivedMessages }) => {
   const [successfulSend ,setSuccessfulSend] = useState(true);
   const [successfulRecipient ,setSuccessfulRecipient] = useState(true);
   const [helperText, setHelperText] = useState("XP Used: 0");
   const [helperRecipientText, setHelperRecipientText] = useState("");
   const [message, setMessage] = useState("");
   const [recipient, setRecipient] = useState("");
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins } = useSharedUserState;
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   function parseMessageForEmojis(message) {
     let xpInMessage = 0;
@@ -142,9 +144,15 @@ export const Modal = ({ showModal, setShowModal }) => {
 
     if(response.status == 200){
         setShowModal((prev) => !prev)
+        setSentMessages(null)
+        setReceivedMessages(null)
     }else if (response.status == 404){
         setHelperRecipientText("Invalid User")
         setSuccessfulRecipient(false)
+    }
+    else {
+        setHelperText("Unknown Error, please try again")
+        setSuccessfulSend(false)
     }
     return 1;
   }
@@ -169,7 +177,7 @@ export const Modal = ({ showModal, setShowModal }) => {
     } else {
       return (
         <SendMessageButton
-          style={{ backgroundColor: "#555555" }}
+          style={{ backgroundColor: "#555555", border: "2px solid rgba(200, 200, 200, 0.5)" }}
         >
           Send Message
         </SendMessageButton>
