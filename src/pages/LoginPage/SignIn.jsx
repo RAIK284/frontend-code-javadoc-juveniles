@@ -42,7 +42,7 @@ const SignIn = () => {
         {error !== null && <div className = "error">{error}</div>}
         <form className="">
           <label htmlFor="userEmail" className="email">
-          <TextField fullWidth id="userEmail" label="Email or username" variant="filled" 
+          <TextField fullWidth id="userEmail" label="Email" variant="filled" 
           className="my-1"
           onChange = {event => onChangeHandler(event)}/>
           </label>
