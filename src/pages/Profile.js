@@ -7,10 +7,14 @@ import { PageContents, WelcomeText, ContentBody,
 import watermelon from '../Trophies/watermelon.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+
   function Profile() {
 
   const useSharedUserState = useBetween(useUserState);
   const { username, xp, coins } = useSharedUserState;
+  const navigate = useNavigate();
 
   return (
     <>
@@ -33,7 +37,13 @@ import { useBetween } from 'use-between';
                   </div>
                 </button>
                 <div className='space'/>
-                <button className="logoutButton" >
+                <button 
+                  className="logoutButton"
+                  onClick={() => {
+                    auth.signOut();
+                    navigate("/");
+                  }}
+                >
                   <div className="logoutText">
                     Log Out
                   </div>
