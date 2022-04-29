@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { PageContents, RootWrapperHome, WelcomeText, Trophies, YourTrophies, TrophyBox, MessagesTable, TableHeader,
     SenderBox, TimeBox, SenderText, TimeText, SubjectBox, MessageBox, SubjectText, MessageText,
     CoinsGainedBox, CoinsGainedText, MessageRow, SenderBox_0001, TimeBox_0001, SenderText_0001, TimeText_0001,
@@ -12,6 +12,7 @@ import { auth } from '../firebase';
 import fetch from "node-fetch";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useBetween } from 'use-between';
+import { UserContext } from '../components/UserProvider';
 
 
     const data = [
@@ -31,25 +32,8 @@ import { useBetween } from 'use-between';
     }
  
     const Home = () => {
-      const useSharedUserState = useBetween(useUserState);
-      const { user, setUser, userData, setUserData, username, setUsername, xp, setXp, coins, setCoins } = useSharedUserState;
-
-      useEffect(() => {
-        async function fetchData() {
-          let response = null;
-          console.log("user", user)
-          if (user) {
-            response = await fetch(`https://us-central1-uplft-9ed97.cloudfunctions.net/app/getUserById/${user.uid}`)
-            const json =  await response.json();
-            setUserData(json);
-            setUsername(json.username);
-            setXp(json.currentXp);
-            setCoins(json.currentCoins);
-            console.log("user data: ", json);
-          }
-        }
-        fetchData();
-      }, [user]);
+      const userInfo = useContext(UserContext);
+      const { username, xp, coins } = userInfo;
 
       return (
         <>  

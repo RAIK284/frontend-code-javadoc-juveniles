@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { UserContext } from '../components/UserProvider';
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
@@ -37,8 +37,8 @@ function Messages() {
 
   const [showModal, setShowModal] = useState(false)
 
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins } = useSharedUserState;
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   const openModal = () => {
     setShowModal(prev => !prev)
