@@ -14,6 +14,7 @@ import {
   XpUsedTab,
   _000,
 } from "./PageElements";
+import { CircularProgress } from "@mui/material";
 import { Modal } from "../components/Modal";
 
 const username = "maxrad02";
@@ -131,6 +132,26 @@ function Messages() {
             <Modal showModal={showModal} setShowModal={setShowModal} />
           </LeaderboardTabs>
           <table_leaderboard>{generateTable()}</table_leaderboard>
+        </ContentBody>
+      </PageContents>
+    );
+  } else {
+    return (
+      <PageContents>
+        <div className="bluebackground">
+          <div className="whitebackground"></div>
+        </div>
+        <ContentBody>
+          <MainHeader>Messages</MainHeader>
+          <LeaderboardTabs>
+            {getReceivedButton()}
+            {getSentButton()}
+            <ComposeMessageButton onClick={openModal}>
+              Compose Message
+            </ComposeMessageButton>
+            <Modal showModal={showModal} setShowModal={setShowModal} />
+          </LeaderboardTabs>
+          <CircularProgress />
         </ContentBody>
       </PageContents>
     );

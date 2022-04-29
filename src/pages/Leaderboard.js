@@ -12,6 +12,7 @@ import {
   AllTimeXpUsed,
   XpUsedTab,
 } from "./PageElements";
+import { CircularProgress } from "@mui/material";
 
 import fetch from "node-fetch";
 
@@ -115,6 +116,22 @@ function Leaderboard() {
             {getXpButton()}
           </LeaderboardTabs>
           <table_leaderboard>{generateTable()}</table_leaderboard>
+        </ContentBody>
+      </PageContents>
+    );
+  } else {
+    return (
+      <PageContents>
+        <div className="bluebackground">
+          <div className="whitebackground"></div>
+        </div>
+        <ContentBody>
+          <MainHeader>Leaderboard</MainHeader>
+          <LeaderboardTabs>
+            {getCoinButton()}
+            {getXpButton()}
+          </LeaderboardTabs>
+          <CircularProgress />
         </ContentBody>
       </PageContents>
     );
