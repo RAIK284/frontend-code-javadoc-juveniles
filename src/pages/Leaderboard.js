@@ -115,7 +115,7 @@ function Leaderboard() {
             {getCoinButton()}
             {getXpButton()}
           </LeaderboardTabs>
-          <table_leaderboard>{generateTable()}</table_leaderboard>
+          {generateTable()}
         </ContentBody>
       </PageContents>
     );
