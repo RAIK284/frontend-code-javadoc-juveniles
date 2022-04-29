@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase";
 import { auth } from "../../firebase";
 import "./SignIn.css";
+import { TextField } from '@mui/material';
+
 
 
 
@@ -15,8 +17,8 @@ const SignIn = () => {
     const signInWithEmailAndPasswordHandler = (event,email, password) => {
         event.preventDefault();
         auth.signInWithEmailAndPassword(email, password).catch(error => {
-        setError("Error signing in with password and email!");
-          console.error("Error signing in with password and email", error);
+        setError("Incorrect username or password");
+          console.error("Incorrect username or password", error);
         });
       };
       
@@ -34,45 +36,37 @@ const SignIn = () => {
 
   return (
     <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Uplft</h1>
-       <div className="border border-white mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-        {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
+      <div className="smallback">
+      <h1 className="text-3xl">Uplft</h1>
+      <h2 className="spread">Spread positivity from anywhere.</h2>
+       <div className="box">
+        {error !== null && <div className = "error">{error}</div>}
         <form className="">
-          <label htmlFor="userEmail" className="block">
-            Email:
+          <label htmlFor="userEmail" className="email">
+          <TextField fullWidth id="userEmail" label="Email or username" variant="filled" 
+          className="my-1"
+          onChange = {(event) => onChangeHandler(event)}/>
           </label>
-          <input
-            type="email"
-            className="my-1 p-1 w-full"
-            name="userEmail"
-            value = {email}
-            placeholder="test@gmail.com"
-            id="userEmail"
-            onChange = {(event) => onChangeHandler(event)}
-          />
-          <label htmlFor="userPassword" className="block">
-            Password:
+          <label htmlFor="userPassword" className="password">
+          <TextField fullWidth id="userPassword" label="Password" variant="filled" 
+          className="mt-1"
+          onChange = {(event) => onChangeHandler(event)}/>
           </label>
-          <input
-            type="password"
-            className="mt-1 mb-3 p-1 w-full"
-            name="userPassword"
-            value = {password}
-            placeholder="password"
-            id="userPassword"
-            onChange = {(event) => onChangeHandler(event)}
-          />
-          <button className="w-full py-2 text-black bg-blue-500 hover:bg-blue-700" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            Sign in
+          <hr className="line1"></hr>
+          <p className="ortag">OR</p>
+          <hr className="line2"></hr>
+          <button className="login" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+            Log In
           </button>
         </form>
-        <p className="text-center my-3">
-          Don't have an account?{" "}
+        <p className="account">
+          Don't have an account? &nbsp;
           <Link to="/signUp" className="text-blue-500 hover:text-blue-600">
-            Sign up here
+           Sign up.
           </Link>{" "}
           <br />{" "}
         </p>
+        </div>
         </div>
     </div>
   );
