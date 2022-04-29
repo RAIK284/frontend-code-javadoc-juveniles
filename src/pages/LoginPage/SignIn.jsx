@@ -5,17 +5,15 @@ import { auth } from "../../firebase";
 import "./SignIn.css";
 import { TextField } from '@mui/material';
 
-
-
-
 const SignIn = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const signInWithEmailAndPasswordHandler = (event,email, password) => {
+    const signInWithEmailAndPasswordHandler = (event, email, password) => {
         event.preventDefault();
+        console.log(email, password);
         auth.signInWithEmailAndPassword(email, password).catch(error => {
         setError("Incorrect username or password");
           console.error("Incorrect username or password", error);
@@ -23,7 +21,8 @@ const SignIn = () => {
       };
       
       const onChangeHandler = (event) => {
-          const {name, value} = event.currentTarget;
+          const name = event.currentTarget.id;
+          const value = event.currentTarget.value;
         
           if(name === 'userEmail') {
               setEmail(value);
@@ -45,12 +44,13 @@ const SignIn = () => {
           <label htmlFor="userEmail" className="email">
           <TextField fullWidth id="userEmail" label="Email or username" variant="filled" 
           className="my-1"
-          onChange = {(event) => onChangeHandler(event)}/>
+          onChange = {event => onChangeHandler(event)}/>
           </label>
           <label htmlFor="userPassword" className="password">
           <TextField fullWidth id="userPassword" label="Password" variant="filled" 
           className="mt-1"
-          onChange = {(event) => onChangeHandler(event)}/>
+          onChange = {(event) => onChangeHandler(event)}
+          type = "password"/>
           </label>
           <hr className="line1"></hr>
           <p className="ortag">OR</p>

@@ -24,7 +24,8 @@ const SignUp = () => {
   };
 
   const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
+    const name = event.currentTarget.id;
+    const value = event.currentTarget.value;
 
     if (name === "userEmail") {
       setEmail(value);
