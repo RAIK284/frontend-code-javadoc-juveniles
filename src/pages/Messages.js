@@ -53,7 +53,6 @@ function Messages() {
           "https://us-central1-uplft-9ed97.cloudfunctions.net/app/getReceivedMessagesFromUser/" +
             username
         );
-        console.log(response);
         const json = await response.json();
         setReceivedMessages(json);
       }
@@ -68,7 +67,7 @@ function Messages() {
       }
     }
     fetchData();
-  }, [isReceived]);
+  }, [isReceived, setShowModal]);
 
   const useSharedUserState = useBetween(useUserState);
   const { username, xp, coins } = useSharedUserState;
@@ -113,7 +112,6 @@ function Messages() {
 
   function generateTable() {
     let data = isReceived ? receivedMessages.data : sentMessages.data;
-    console.log(data);
     return (
       <tbody>
         <tr>

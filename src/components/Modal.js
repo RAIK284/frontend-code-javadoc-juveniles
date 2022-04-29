@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
+import { useUserState } from "../pages/Home.js";
+import { useBetween } from "use-between";
 import {
   TextField,
   Checkbox,
@@ -99,28 +101,65 @@ const ProfileWrapper = styled.div`
   border-radius: 6px;
 `;
 
-const tokens = [("100", 100), ("cookie", 20)];
+const tokens = [["💯", 100], ["🍪", 20]];
 
 export const Modal = ({ showModal, setShowModal }) => {
-  const successfulSend = useState(false)
+  const [successfulSend ,setSuccessfulSend] = useState(true);
+  const [successfulRecipient ,setSuccessfulRecipient] = useState(true);
+  const [helperText, setHelperText] = useState("XP Used: 0");
+  const [helperRecipientText, setHelperRecipientText] = useState("");
+  const [message, setMessage] = useState("");
+  const [recipient, setRecipient] = useState("");
+  const useSharedUserState = useBetween(useUserState);
+  const { username, xp, coins } = useSharedUserState;
 
   function parseMessageForEmojis(message) {
-    const xp = 0;
-
+    let xpInMessage = 0;
+    console.log(message)
     tokens.forEach((element) => {
+      console.log(element)
       if (message.includes(element[0])) {
-        xp += element[1];
+        xpInMessage += element[1] * (message.split(element[0]).length - 1)
       }
     });
-
-    return xp;
+    console.log(xpInMessage)
+    return xpInMessage;
   }
 
-  function handleSubmit() {
-      return (1)
+  async function handleSubmit() {
+    setHelperRecipientText("")
+    setSuccessfulRecipient(true)
+    console.log("Attempting to Send Message Received Messages...");
+    const body = {messageBody: message, recipientName: recipient, sender: username, numberOfCoins: 5}
+    const response = await fetch(
+      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/addMessage", {
+        method: 'post',
+        body: JSON.stringify(body),
+        headers: {'Content-Type': 'application/json'}
+      });
+    const json = await response.json();
+    console.log(json);
+
+    if(response.status == 200){
+        setShowModal((prev) => !prev)
+    }else if (response.status == 404){
+        setHelperRecipientText("Invalid User")
+        setSuccessfulRecipient(false)
+    }
+    return 1;
   }
 
   function loadButton() {
+    let xpInMessage = parseMessageForEmojis(message)
+    if(xp - xpInMessage < 0){
+        if (successfulSend){setSuccessfulSend(false)}
+        const text = "You do not have enough XP!";
+        if (helperText != text) {setHelperText(text)}
+    } else {
+        if (!successfulSend){setSuccessfulSend(true)}
+        const text = "XP Used: " + xpInMessage;
+        if (helperText != text) {setHelperText(text)}
+    }
     if (successfulSend) {
       return (
         <SendMessageButton onClick={handleSubmit}>
@@ -129,15 +168,22 @@ export const Modal = ({ showModal, setShowModal }) => {
       );
     } else {
       return (
-        <div>
-          <SendMessageButton style={{backgroundColor: "#555555"}} onClick={handleSubmit}>
-            Send Message
-          </SendMessageButton>
-          <p>There Are Errors!</p>
-        </div>
+        <SendMessageButton
+          style={{ backgroundColor: "#555555" }}
+        >
+          Send Message
+        </SendMessageButton>
       );
     }
   }
+
+  function handleMessageChange(event){
+      setMessage(event.target.value)
+  }
+
+  function handleRecipientChange(event){
+    setRecipient(event.target.value)
+}
 
   return (
     <>
@@ -152,6 +198,10 @@ export const Modal = ({ showModal, setShowModal }) => {
                 id="username"
                 variant="filled"
                 label="Recipient username"
+                value={recipient}
+                onChange={handleRecipientChange}
+                helperText={helperRecipientText}
+                error={!successfulRecipient}
               />
               <Spacer />
 
@@ -169,8 +219,11 @@ export const Modal = ({ showModal, setShowModal }) => {
                 label="Message"
                 multiline
                 rows={5}
+                value={message}
+                onChange={handleMessageChange}
+                helperText={helperText}
+                error={!successfulSend}
               />
-              <Spacer />
               {loadButton()}
             </ModalContent>
           </ModalWrapper>
