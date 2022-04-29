@@ -33,7 +33,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <UserProvider>
     {loading === false ? (
       user ?
       <Router>
@@ -56,7 +56,7 @@ function App() {
       </Router>
     ) : <div>Loading...</div>
     }
-    </>
+    </UserProvider>
   );
 }
 

@@ -1,4 +1,3 @@
-/*
 import react, { Component, createContext, useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import { auth } from "../firebase";
@@ -7,15 +6,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export const UserContext = createContext();
 
-const username = "";
-const xp = 0;
-const coins = 0;
-
 const UserProvider = ({ children }) => {
   const user = useAuthState(auth)[0];
   const [username, setUsername] = useState(null);
   const [xp, setXp] = useState(null);
   const [coins, setCoins] = useState(null);
+  const [userData, setUserData] = useState(null);
 
 
   useEffect(() => {
@@ -25,6 +21,7 @@ const UserProvider = ({ children }) => {
       if (user) {
         response = await fetch(`https://us-central1-uplft-9ed97.cloudfunctions.net/app/getUserById/${user.uid}`)
         const json =  await response.json();
+        setUserData(json);
         setUsername(json.username);
         setXp(json.currentXp);
         setCoins(json.currentCoins);
@@ -32,14 +29,13 @@ const UserProvider = ({ children }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, username, xp, coins }}>
+    <UserContext.Provider value={{ user, username, xp, coins, userData }}>
       {children}
     </UserContext.Provider>
   );
 };
 
 export default UserProvider;
-*/

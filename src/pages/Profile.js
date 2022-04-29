@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -10,11 +10,12 @@ import { useBetween } from 'use-between';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { TableBody, TableHead } from '@mui/material';
+import { UserContext } from '../components/UserProvider';
 
   function Profile() {
 
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins, userData } = useSharedUserState;
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins, userData } = userInfo;
   const navigate = useNavigate();
 
   return (

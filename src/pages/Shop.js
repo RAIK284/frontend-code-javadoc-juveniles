@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Shop.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -14,11 +14,12 @@ import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
+import { UserContext } from '../components/UserProvider';
 
 function Shop() {
 
-  const useSharedUserState = useBetween(useUserState);
-  const { username, xp, coins } = useSharedUserState;
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   return (
     <>
