@@ -16,10 +16,13 @@ import sun from '../Trophies/sun.png'
 function Shop() {
 
   function buyTrophy(trophy) {
+    // Check if user has enough coins to buy button
+    // If so, run below lines
     var x = document.getElementById(trophy);
     x.style.display = "none";
+    // Also change amount of coins user has (decrease by 30)
+    // Also add trophy to user's trophies
   }
-  //id = "basketball" onclick = {buyTrophy("basketball")}
 
   return (
     <>
@@ -40,9 +43,16 @@ function Shop() {
               </div>
               <img className="photoSize" src={basketball}/>
               <div class="center">
-                <button class="blueBuyButton" id = "basketball" onClick={() => buyTrophy("basketball")}>
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "basketball" onClick={() => buyTrophy("basketball")}>
+                <div class="buybuttonwords">
                     30 coins
-                </button>
+                  </div>
+                </div>
               </div>
             </GreyTrophyBox>
             <GreyTrophyBox>
@@ -51,8 +61,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={duck}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "duck" onClick={() => buyTrophy("duck")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
