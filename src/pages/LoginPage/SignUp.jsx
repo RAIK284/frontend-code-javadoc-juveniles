@@ -14,7 +14,7 @@ const SignUp = () => {
     event.preventDefault();
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { displayName });
+      generateUserDocument(user, { username });
     }
     catch (error) {
       setError('Error signing up with email and password');
@@ -63,6 +63,7 @@ const SignUp = () => {
             <label htmlFor="userPassword" className="uppassword">
               <TextField fullWidth id="userPassword" label="Password" variant="filled"
                 className="mt-1"
+                type="password"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <button

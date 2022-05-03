@@ -47,6 +47,7 @@ const SignIn = () => {
             <label htmlFor="userPassword" className="password">
               <TextField fullWidth id="userPassword" label="Password" variant="filled"
                 className="mt-1"
+                type="password"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <hr className="line1"></hr>
