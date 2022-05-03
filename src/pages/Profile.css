@@ -1,0 +1,145 @@
+/* Split the screen in half */
+.splitLeft {
+    height: 100%;
+    width: 30%;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    left: 0;
+  }
+  .splitRight {
+    height: 910px;
+    width: 70%;
+    position:absolute;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    right: 0;
+  }  
+  .profileImage{
+    height: 300px;
+    width: 300px; 
+    position: relative;
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: 50%;  
+  }
+  .userNameText{
+    position: relative;
+    width: 133x;
+    height: 33px;
+
+    font-style:initial;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 21px;
+    text-align: left;
+    
+    color: #000000;   
+  }
+  .wrapperProfile{
+    display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: none;
+	gap: 36px;
+	width: 1034px;
+	height: 587px;
+	box-sizing: border-box;
+	position: absolute;
+  padding-left: 50px;
+  padding-top: 50px;
+  }
+  .mainTitle{
+    color: rgb(64, 64, 64);
+    text-overflow: ellipsis;
+    font-size: 36px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    text-align: left;
+    width: 733px;
+  }
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  /* Style the image inside the centered container, if needed */
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+.profileSettingButton{
+  position:relative;
+  width: 200px;
+  height: 36px;
+  padding-top: 5px;
+  background:white;
+  border: 2px solid #2F5890;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding-bottom: 10px;
+  }
+.space{
+  width: 199.68px;
+  height: 14.82px;
+}
+.profileText{
+  position: relative;
+width: 199.68px;
+height: 14.82px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+text-align: center;
+padding-bottom: 10px;
+color:  #2F5890;
+}
+.logoutButton{
+  position:relative;
+  width: 200px;
+  height: 36px;
+  padding-top: 5px;
+  background:white;
+  border: 2px solid #B71C1C;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding-bottom: 10px;
+  }
+  .logoutText{
+    position: relative;
+  width: 199.68px;
+  height: 14.82px;
+  
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  padding-bottom: 10px;
+  color:  #B71C1C;
+  }
+  .shopBox{
+    position: relative;
+    width: 655px;
+    height: 336px;
+    background-color: #EFEFEF;
+    
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .wrapperRight{
+    padding-top:90px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+  }

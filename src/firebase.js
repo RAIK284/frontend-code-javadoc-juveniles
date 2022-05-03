@@ -30,12 +30,21 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { email, displayName, photoURL } = user;
+    const { email, username, photoURL } = user;
     try {
       await userRef.set({
-        displayName,
-        email,
-        photoURL,
+        username: username,
+        email: email,
+        avatar: photoURL,
+        id: user.uid,
+        currentCoins: 0,
+        totalCoins: 0,
+        currentXp: 0,
+        xpUsed: 0,
+        lastSignedIn: new Date(),
+        pointsPublic: true,
+        purchasePublic: true,
+        trophies: [],
         ...additionalData
       });
     } catch (error) {

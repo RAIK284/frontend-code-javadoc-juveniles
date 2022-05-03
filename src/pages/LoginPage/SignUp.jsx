@@ -7,7 +7,7 @@ import { TextField } from '@mui/material';
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
@@ -22,18 +22,19 @@ const SignUp = () => {
 
     setEmail("");
     setPassword("");
-    setDisplayName("");
+    setUsername("");
   };
 
   const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
+    const name = event.currentTarget.id;
+    const value = event.currentTarget.value;
 
     if (name === "userEmail") {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "displayName") {
-      setDisplayName(value);
+    } else if (name === "username") {
+      setUsername(value);
     }
   };
 

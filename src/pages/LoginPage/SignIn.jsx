@@ -5,9 +5,6 @@ import { auth } from "../../firebase";
 import "./SignIn.css";
 import { TextField } from '@mui/material';
 
-
-
-
 const SignIn = () => {
 
   const [email, setEmail] = useState('');
@@ -33,10 +30,10 @@ const SignIn = () => {
     }
   };
 
-
   return (
     <div className="mt-8">
       <div className="smallback">
+
         <h1 className="text-3xl">Uplft</h1>
         <h2 className="spread">Spread positivity from anywhere.</h2>
         <div className="box">
@@ -66,6 +63,8 @@ const SignIn = () => {
             </Link>{" "}
             <br />{" "}
           </p>
+
+        </div>
         </div>
       </div>
     </div>
