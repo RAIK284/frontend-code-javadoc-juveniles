@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
+import graphic from './LoginXP.png'
 import { TextField, Checkbox, Switch, FormGroup, FormControlLabel } from '@mui/material';
 
 const Background = styled.div`
@@ -92,6 +93,24 @@ const ProfileWrapper = styled.div`
     border-radius: 6px;
 `;
 
+// Log in modal
+const LogInWrapper = styled.div`
+    position: relative;
+    top: 120px;
+    width: 678px;
+    height: 485px;
+    background: white;
+    border-radius: 6px;
+`;
+
+const PhotoSize = styled.div`
+    background-image: url(${graphic});
+    left: 100px;
+    position: relative;
+    height: 220px;
+    width: 450px;
+`;
+
 
 export const Modal = ({ showModal, setShowModal }) => {
    return (
@@ -172,5 +191,35 @@ export const ProfileModal = ({ showModal, setShowModal }) => {
         </>
        )
     };
+
+    export const LogInModal = ({ showModal, setShowModal }) => {
+        const [checked, setChecked] = React.useState();
+        const handleChange = event => {
+          setChecked(event.target.checked);
+        };
+    
+        return (
+            <>
+            {showModal ? (
+
+                <Background>
+                    <LogInWrapper showModal = {showModal}>
+                        <ModalContent>
+                        <CloseModalButton onClick ={() => setShowModal
+                        (prev => !prev)} />
+                            <h1>Log In Bonus</h1>
+                        <Spacer />
+                        <p>Thanks for logging in. You earned 50 XP!</p>
+                        <Spacer />
+                        <PhotoSize />
+                        <Spacer />
+                        <p>Don't forget to use your XP to send positive messages to friends. The world could use some positivity right now!</p>
+                        </ModalContent>
+                    </LogInWrapper>
+                </Background>
+            ) : null}
+            </>
+           )
+        };
 
      
