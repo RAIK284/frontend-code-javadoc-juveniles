@@ -21,6 +21,16 @@ function Shop() {
   const userInfo = useContext(UserContext);
   const { username, xp, coins } = userInfo;
 
+
+  function buyTrophy(trophy) {
+    // Check if user has enough coins to buy button
+    // If so, run below lines
+    var x = document.getElementById(trophy);
+    x.style.display = "none";
+    // Also change amount of coins user has (decrease by 30)
+    // Also add trophy to user's trophies
+  }
+
   return (
     <>
       <PageContents>
