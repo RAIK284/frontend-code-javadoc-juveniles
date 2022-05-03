@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -6,16 +6,19 @@ import { PageContents, WelcomeText, ContentBody,
   XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, ProfileSettingButton, 
 ComposeMessageButton } from './PageElements';
 import watermelon from '../Trophies/watermelon.png'
-import { Modal, ProfileModal, LogInModal } from '../components/Modal';
-
+import { useUserState } from './Home';
+import { useBetween } from 'use-between';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { TableBody, TableHead } from '@mui/material';
+import { UserContext } from '../components/UserProvider';
 
   function Profile() {
 
-    const [showModal, setShowModal] = useState(false)
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins, userData } = userInfo;
+  const navigate = useNavigate();
 
-    const openModal = () => {
-      setShowModal(prev => !prev)
-    }
   return (
     <>
       <PageContents>
@@ -28,7 +31,7 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
                   Profile
                 </div>
                 <div class="userNameText">
-                  @username
+                  @{username}
                 </div>
                 <img className="photoSize" src={watermelon}/>
                 <div className='space'/>
@@ -37,7 +40,13 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
                  </ProfileSettingButton>
 
                 <div className='space'/>
-                <button className="logoutButton" >
+                <button 
+                  className="logoutButton"
+                  onClick={() => {
+                    auth.signOut();
+                    navigate("/");
+                  }}
+                >
                   <div className="logoutText">
                     Log Out
                   </div>
@@ -57,18 +66,19 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
                   <div class="userNameText">
                     Your Stats
                     <table>
-                      <tr>
-                        <th>All-Time XP Used</th>
-                        <th>All-Time Coins Sent</th>
-                        
-                      </tr>
-                      <tr>
-                        <th>All-Time Coins Received</th>
-                        <th>All-Time Messages Sent</th>                        
-                      </tr>
+                        <TableHead>
+                          <tr>
+                            <td>All-Time XP Used</td>
+                            <td>All-Time Coins Received</td>
+                          </tr>
+                        </TableHead>
+                        <TableBody>
+                          <tr>
+                            <td>{userData.xpUsed}</td>
+                            <td>{userData.totalCoins}</td>
+                          </tr>
+                        </TableBody>  
                     </table>
-                    <ProfileModal showModal ={showModal} setShowModal={setShowModal} />
-
                   </div>
                   </div>
                   </div>
@@ -85,7 +95,7 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
               </ProfileImage_0001>
             </ProfileImage>
           <Username>
-              @username
+              @{username}
             </Username>
           </ProfilePic>
         <Xp>
@@ -95,7 +105,7 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
               </XpImage_0001>
             </XpImage>
           <_000>
-              000
+              {xp}
             </_000>
           </Xp>
         <Coins>
@@ -105,7 +115,7 @@ import { Modal, ProfileModal, LogInModal } from '../components/Modal';
               </CoinImage_0001>
             </CoinImage>
           <CoinAmount_0001>
-              000
+              {coins}
             </CoinAmount_0001>
           </Coins>
         </StatBar>

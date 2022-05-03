@@ -21,13 +21,15 @@
     top: calc(397px/2 - 54.5px);
 }
 
-.email {
+
+.emailup {
     position: absolute;
     width: 400px;
     height: 68px;
     left: calc(50% - 325px/2 - 1px);
-    top: calc(50% - 500px/2 - 54.5px);
+    top: calc(50% - 600px/2 - 54.5px);
 }
+
 
 .password {
     position: absolute;
@@ -66,11 +68,11 @@
 
 }
 
-.box {
+.boxup {
 
     position: absolute;
     width: 468px;
-    height: 397px;
+    height: 500px;
     left: calc(50% - 468px/2);
     top: calc(50% - 397px/2 - 54.5px);
 
@@ -91,28 +93,21 @@
     top: calc(450px/2 - 54.5px);
 }
 
-.account {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-
+.upaccount {
     position: absolute;
     width: 354px;
     height: 21px;
-    left: 57px;
-    top: 352px;
+    left: 85px;
+    top: 440px;
+    padding: 15px 32px;
 }
 
-
-.login {
-
+.signUp {
     position: absolute;
     width: 400px;
     height: 51px;
     left: 38px;
-    top: 220px;
+    top: 390px;
     background: #2295FF;
     border-radius: 6px;
     color: white;
@@ -121,16 +116,30 @@
     display: inline-block;
     font-size: 16px;
     padding: 15px 32px;
-
 }
 
-.error {
-
+.name {
     position: absolute;
-    width: 202px;
+    width: 400px;
+    height: 68px;
+    left: calc(50% - 325px/2 - 1px);
+    top: calc(50% - 500px/2 - 35.5px);
+}
+
+.uppassword {
+    position: absolute;
+    width: 400px;
+    height: 68px;
+    left: calc(50% - 390px/2 - 1px);
+    top: calc(50% - 125px/2 - 10.5px);
+}
+
+.signuperror {
+    position: absolute;
+    width: 300px;
     height: 16px;
-    left: 35px;
-    top: 170px;
+    left: 16px;
+    top: 360px;
 
     font-style: normal;
     font-weight: 400;
@@ -141,37 +150,21 @@
     color: #B71C1C;
 }
 
-.ortag {
+.requirements {
 
     position: absolute;
-    left: 49%;
-    top: 77%;
-    bottom: 20.65%;
-    font-size: 15 px;
-    color: lightgray;
+    width: 466px;
+    height: 21px;
+    left: 42px;
+    top: 257px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21px;
 
 
-}
 
-.line1 {
-
-    width: 30%;
-
-    position: absolute;
-    left: 9%;
-    right: 22.44%;
-    top: 79%;
-    color: lightgray;
-
-
-}
-
-.line2 {
-    width: 30%;
-    position: absolute;
-    left: 64%;
-    right: 22.44%;
-    top: 79%;
-    color: lightgray;
+    color: #555555;
 
 }

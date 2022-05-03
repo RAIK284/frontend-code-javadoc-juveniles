@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Shop.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -12,17 +12,14 @@ import book from '../Trophies/book.png'
 import paint from '../Trophies/paint.png'
 import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
+import { useUserState } from './Home';
+import { useBetween } from 'use-between';
+import { UserContext } from '../components/UserProvider';
 
 function Shop() {
 
-  function buyTrophy(trophy) {
-    // Check if user has enough coins to buy button
-    // If so, run below lines
-    var x = document.getElementById(trophy);
-    x.style.display = "none";
-    // Also change amount of coins user has (decrease by 30)
-    // Also add trophy to user's trophies
-  }
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   return (
     <>
@@ -194,7 +191,7 @@ function Shop() {
               </ProfileImage_0001>
             </ProfileImage>
           <Username>
-              @username
+              @{username}
             </Username>
           </ProfilePic>
         <Xp>
@@ -204,7 +201,7 @@ function Shop() {
               </XpImage_0001>
             </XpImage>
           <_000>
-              000
+              {xp}
             </_000>
           </Xp>
         <Coins>
@@ -214,7 +211,7 @@ function Shop() {
               </CoinImage_0001>
             </CoinImage>
           <CoinAmount_0001>
-              000
+              {coins}
             </CoinAmount_0001>
           </Coins>
         </StatBar>
