@@ -40,8 +40,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={basketball}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "basketball" onClick={() => buyTrophy("basketball")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -53,8 +58,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={duck}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "duck" onClick={() => buyTrophy("duck")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -66,8 +76,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={waterbottle}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "waterbottle" onClick={() => buyTrophy("waterbottle")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -79,8 +94,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={watermelon}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "watermelon" onClick={() => buyTrophy("watermelon")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -92,8 +112,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={book}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "book" onClick={() => buyTrophy("book")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -105,8 +130,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={paint}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "paint" onClick={() => buyTrophy("paint")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -118,8 +148,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={golfing}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "golfingary" onClick={() => buyTrophy("golfingary")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
@@ -131,8 +166,13 @@ function Shop() {
               </div>
               <img className="photoSize" src={sun}/>
               <div class="center">
-                <div class="blueBuyButton">
-                  <div class="buybuttonwords">
+                <div class="ownedButton">
+                <div class="ownbuttonwords">
+                    Owned
+                  </div>
+                </div>
+                <div class="blueBuyButton" id = "sun" onClick={() => buyTrophy("sun")}>
+                <div class="buybuttonwords">
                     30 coins
                   </div>
                 </div>
