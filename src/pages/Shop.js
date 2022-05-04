@@ -81,8 +81,8 @@ function Shop() {
       );
     } else {
       return (
-        <div class="ownedButton">
-          <div class="ownbuttonwords">{cost} coins</div>
+        <div className="ownedButton">
+          <div className="ownbuttonwords">{cost} coins</div>
         </div>
       );
     }
