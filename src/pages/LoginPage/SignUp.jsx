@@ -35,7 +35,6 @@ const SignUp = () => {
       setPassword(value);
     } else if (name === "userName") {
       setUsername(value);
-      console.log(username);
     }
   };
 
