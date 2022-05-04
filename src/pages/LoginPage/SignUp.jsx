@@ -10,7 +10,7 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (event, email, password, username) => {
     event.preventDefault();
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
@@ -33,8 +33,9 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "username") {
+    } else if (name === "userName") {
       setUsername(value);
+      console.log(username);
     }
   };
 
@@ -69,7 +70,7 @@ const SignUp = () => {
             <button
               className="signUp"
               onClick={event => {
-                createUserWithEmailAndPasswordHandler(event, email, password);
+                createUserWithEmailAndPasswordHandler(event, email, password, username);
               }}
             >
               Sign up
