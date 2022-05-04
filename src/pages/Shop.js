@@ -30,6 +30,7 @@ import {
   CircularProgress,
   getFormControlLabelUtilityClasses,
 } from "@mui/material";
+import { ShopItemModal } from "../components/Modal";
 
 function Shop() {
   const userInfo = useContext(UserContext);
@@ -54,8 +55,24 @@ function Shop() {
   }, []);
 
   async function buyTrophy(cost, name) {
+    if (coins < cost) {
+      alert("You don't have enough coins!");
+      return;
+    }
     // call buy trophy endpoint
-
+    const trophyBody = {
+      name: name,
+    }
+    const trophyResponse = await fetch(
+      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/buyTrophy/" + username,
+      {
+        method: "POST",
+        body: JSON.stringify(trophyBody),
+        headers: { "Content-Type": "application/json"},
+      }
+    );
+    const json = await trophyResponse.json();
+    console.log(json);
     // subtract coins from user
     const body = {
       currentCoins: coins - cost,
@@ -63,7 +80,7 @@ function Shop() {
     const response = await fetch(
       `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${user.uid}`,
       {
-        method: "post",
+        method: "POST",
         body: JSON.stringify(body),
         headers: { "Content-Type": "application/json" },
       }
@@ -126,6 +143,7 @@ function Shop() {
           <MainHeader>Shop</MainHeader>
           {trophyData ? displayTrophies() : loading()}
         </ContentBody>
+        <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={"Basketball"} />
 
         <StatBar>
           <ProfilePic>
