@@ -17,6 +17,10 @@ table {
 	width: 1034px;
   position: absolute;
   top: 36px;
+  overflow-y: scroll;
+}
+tbody{
+  overflow-y: scroll;
 }
 
 /* allmessages_table {

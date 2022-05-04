@@ -391,3 +391,12 @@ export const ComposeMessageButton = styled.button`
 	cursor: pointer;
 `;
 
+export const MessagesTable = styled.table`
+	position: relative;
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+	overflow-y: scroll;
+	height: 100%;
+	border-collapse: collapse;
+`

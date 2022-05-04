@@ -20,7 +20,6 @@ const Background = styled.div`
   top: 0px;
   display: flex;
   justify-content: center;
-  // align-items: center;
 `;
 
 const ModalWrapper = styled.div`
@@ -101,83 +100,141 @@ const ProfileWrapper = styled.div`
   border-radius: 6px;
 `;
 
-const tokens = [["💯", 100], ["🍪", 20]];
+const tokens = [
+  ["💯", 100],
+  ["🍪", 20],
+  ["😊", 3],
+  ["🎁", 5],
+  ["😎", 10],
+];
 
-// TODO: add tokens, get correct number of coins and xp, edit both users coins and xp if message send, order by timeSent in back end probably
-
-export const Modal = ({ showModal, setShowModal, setSentMessages, setReceivedMessages }) => {
-  const [successfulSend ,setSuccessfulSend] = useState(true);
-  const [successfulRecipient ,setSuccessfulRecipient] = useState(true);
+export const Modal = ({
+  showModal,
+  setShowModal,
+  setSentMessages,
+  setReceivedMessages,
+}) => {
+  const [successfulSend, setSuccessfulSend] = useState(true);
+  const [successfulRecipient, setSuccessfulRecipient] = useState(true);
   const [helperText, setHelperText] = useState("XP Used: 0");
   const [helperRecipientText, setHelperRecipientText] = useState("");
   const [message, setMessage] = useState("");
   const [recipient, setRecipient] = useState("");
   const userInfo = useContext(UserContext);
-  const { username, xp, coins } = userInfo;
+  const { username, xp, coins, user, userData } = userInfo;
 
   function parseMessageForEmojis(message) {
     let xpInMessage = 0;
-    console.log(message)
+    console.log(message);
     tokens.forEach((element) => {
-      console.log(element)
+      console.log(element);
       if (message.includes(element[0])) {
-        xpInMessage += element[1] * (message.split(element[0]).length - 1)
+        xpInMessage += element[1] * (message.split(element[0]).length - 1);
       }
     });
-    console.log(xpInMessage)
+    console.log(xpInMessage);
     return xpInMessage;
   }
 
-  async function handleSubmit() {
-    setHelperRecipientText("")
-    setSuccessfulRecipient(true)
+  async function handleSubmit(xpInMessage) {
+    console.log(user);
+    setHelperRecipientText("");
+    setSuccessfulRecipient(true);
     console.log("Attempting to Send Message Received Messages...");
-    const body = {messageBody: message, recipientName: recipient, sender: username, numberOfCoins: 5}
+    const body = {
+      messageBody: message,
+      recipientName: recipient,
+      sender: username,
+      numberOfCoins: xpInMessage,
+    };
     const response = await fetch(
-      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/addMessage", {
-        method: 'post',
+      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/addMessage",
+      {
+        method: "post",
         body: JSON.stringify(body),
-        headers: {'Content-Type': 'application/json'}
-      });
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const json = await response.json();
     console.log(json);
 
-    if(response.status == 200){
-        setShowModal((prev) => !prev)
-        setSentMessages(null)
-        setReceivedMessages(null)
-    }else if (response.status == 404){
-        setHelperRecipientText("Invalid User")
-        setSuccessfulRecipient(false)
-    }
-    else {
-        setHelperText("Unknown Error, please try again")
-        setSuccessfulSend(false)
+    if (response.status == 200) {
+      if (xpInMessage != 0) {
+        const senderBody = {
+          currentXp: xp - xpInMessage,
+          xpUsed: userData.xpUsed + xpInMessage,
+        };
+        console.log(user)
+        await fetch(
+          `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${user.uid}`,
+          {
+            method: "post",
+            body: JSON.stringify(senderBody),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const recipientDataResponse = await fetch(
+          `https://us-central1-uplft-9ed97.cloudfunctions.net/app/getUserByUsername/${recipient}`
+        );
+        const recipientData = await recipientDataResponse.json();
+        const recipientBody = {
+          currentCoins: recipientData.coins + xpInMessage,
+          totalCoins: recipientData.totalCoins + xpInMessage,
+        };
+        await fetch(
+          `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${recipientData.id}`,
+          {
+            method: "post",
+            body: JSON.stringify(recipientBody),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      setShowModal((prev) => !prev);
+      setSentMessages(null);
+      setReceivedMessages(null);
+    } else if (response.status == 404) {
+      setHelperRecipientText("Invalid User");
+      setSuccessfulRecipient(false);
+    } else {
+      setHelperText("Unknown Error, please try again");
+      setSuccessfulSend(false);
     }
     return 1;
   }
 
   function loadButton() {
-    let xpInMessage = parseMessageForEmojis(message)
-    if(xp - xpInMessage < 0){
-        if (successfulSend){setSuccessfulSend(false)}
-        const text = "You do not have enough XP!";
-        if (helperText != text) {setHelperText(text)}
+    let xpInMessage = parseMessageForEmojis(message);
+    if (xp - xpInMessage < 0) {
+      if (successfulSend) {
+        setSuccessfulSend(false);
+      }
+      const text = "You do not have enough XP!";
+      if (helperText != text) {
+        setHelperText(text);
+      }
     } else {
-        if (!successfulSend){setSuccessfulSend(true)}
-        const text = "XP Used: " + xpInMessage;
-        if (helperText != text) {setHelperText(text)}
+      if (!successfulSend) {
+        setSuccessfulSend(true);
+      }
+      const text = "XP Used: " + xpInMessage;
+      if (helperText != text) {
+        setHelperText(text);
+      }
     }
     if (successfulSend) {
       return (
-        <SendMessageButton onClick={handleSubmit}>
+        <SendMessageButton onClick={() => handleSubmit(xpInMessage)}>
           Send Message
         </SendMessageButton>
       );
     } else {
       return (
         <SendMessageButton
-          style={{ backgroundColor: "#555555", border: "2px solid rgba(200, 200, 200, 0.5)" }}
+          style={{
+            backgroundColor: "#555555",
+            border: "2px solid rgba(200, 200, 200, 0.5)",
+          }}
         >
           Send Message
         </SendMessageButton>
@@ -185,13 +242,13 @@ export const Modal = ({ showModal, setShowModal, setSentMessages, setReceivedMes
     }
   }
 
-  function handleMessageChange(event){
-      setMessage(event.target.value)
+  function handleMessageChange(event) {
+    setMessage(event.target.value);
   }
 
-  function handleRecipientChange(event){
-    setRecipient(event.target.value)
-}
+  function handleRecipientChange(event) {
+    setRecipient(event.target.value);
+  }
 
   return (
     <>
@@ -216,7 +273,7 @@ export const Modal = ({ showModal, setShowModal, setSentMessages, setReceivedMes
               <p>
                 Remember, emojis cost XP and can be used to sent coins to other
                 users. Type any of the below emojis into your message to send
-                coins to other users!
+                coins to other users! Copy the emojis from below!
               </p>
               <Spacer />
               <p>😊: 3 XP 🎁: 5 XP 😎: 10 XP 🍪: 20 XP 💯: 100 XP</p>

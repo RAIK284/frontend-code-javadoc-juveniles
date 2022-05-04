@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import {
   PageContents,
@@ -11,8 +11,25 @@ import {
   AllTimeCoinsEarned,
   AllTimeXpUsed,
   XpUsedTab,
+  _000,
+  StatBar,
+  ProfilePic,
+  ProfileImage,
+  ProfileImage_0001,
+  ProfileImage_0002,
+  Username,
+  Xp,
+  XpImage,
+  XpImage_0001,
+  XpBigImage,
+  Coins,
+  CoinImage,
+  CoinImage_0001,
+  CoinBgImage_0001,
+  CoinAmount_0001,
 } from "./PageElements";
 import { CircularProgress } from "@mui/material";
+import { UserContext } from "../components/UserProvider";
 
 import fetch from "node-fetch";
 
@@ -22,6 +39,8 @@ function Leaderboard() {
   const [coinData, setCoinData] = useState(null);
   const [xpData, setXpData] = useState(null);
   const [isCoin, setIsCoin] = useState(true);
+  const userInfo = useContext(UserContext);
+  const { username, xp, coins } = userInfo;
 
   useEffect(() => {
     async function fetchData() {
@@ -117,6 +136,41 @@ function Leaderboard() {
           </LeaderboardTabs>
           {generateTable()}
         </ContentBody>
+        <StatBar>
+          <ProfilePic>
+            <ProfileImage>
+              <ProfileImage_0001>
+                <ProfileImage_0002
+                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  alt="image of ProfileImage"
+                />
+              </ProfileImage_0001>
+            </ProfileImage>
+            <Username>@{username}</Username>
+          </ProfilePic>
+          <Xp>
+            <XpImage>
+              <XpImage_0001>
+                <XpBigImage
+                  src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
+                  alt="image of XpBigImage"
+                />
+              </XpImage_0001>
+            </XpImage>
+            <_000>{xp}</_000>
+          </Xp>
+          <Coins>
+            <CoinImage>
+              <CoinImage_0001>
+                <CoinBgImage_0001
+                  src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
+                  alt="image of CoinBgImage"
+                />
+              </CoinImage_0001>
+            </CoinImage>
+            <CoinAmount_0001>{coins}</CoinAmount_0001>
+          </Coins>
+        </StatBar>
       </PageContents>
     );
   } else {

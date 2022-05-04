@@ -13,7 +13,7 @@ import {
   ComposeMessageButton,
   XpUsedTab,
   _000,
-    StatBar,
+  StatBar,
   ProfilePic,
   ProfileImage,
   ProfileImage_0001,
@@ -28,6 +28,7 @@ import {
   CoinImage_0001,
   CoinBgImage_0001,
   CoinAmount_0001,
+  MessagesTable,
 } from "./PageElements";
 import { CircularProgress } from "@mui/material";
 import { Modal } from "../components/Modal";
@@ -56,7 +57,7 @@ function Messages() {
             username
         );
         const json = await response.json();
-        console.log(json)
+        console.log(json);
         setReceivedMessages(json);
       }
       if (!sentMessages) {
@@ -113,25 +114,29 @@ function Messages() {
   function generateTable() {
     let data = isReceived ? receivedMessages.data : sentMessages.data;
     return (
-      <tbody>
-        <tr>
-          <th>Time Received</th>
-          <th>{isReceived ? "Sender" : "Recipient"}</th>
-          <th>Message</th>
-          <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
-        </tr>
-        {data.slice(0, 10).map((val, key) => {
-          const date = new Date(val.timeSent._seconds * 1000)
-          return (
-            <tr key={key}>
-              <td>{date.toLocaleDateString("en-US") + " at " + date.toLocaleTimeString("en-US")}</td>
-              <td>@{isReceived ? val.sender : val.recipient}</td>
-              <td>{val.messageBody}</td>
-              <td>{val.numberOfCoins}</td>
-            </tr>
-          );
-        })}
-      </tbody>
+        <tbody>
+          <tr>
+            <th>Time Received</th>
+            <th>{isReceived ? "Sender" : "Recipient"}</th>
+            <th>Message</th>
+            <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
+          </tr>
+          {data.slice(0, 50).map((val, key) => {
+            const date = new Date(val.timeSent._seconds * 1000);
+            return (
+              <tr key={key}>
+                <td>
+                  {date.toLocaleDateString("en-US") +
+                    " at " +
+                    date.toLocaleTimeString("en-US")}
+                </td>
+                <td>@{isReceived ? val.sender : val.recipient}</td>
+                <td>{val.messageBody}</td>
+                <td>{val.numberOfCoins}</td>
+              </tr>
+            );
+          })}
+        </tbody>
     );
   }
 
@@ -149,7 +154,12 @@ function Messages() {
             <ComposeMessageButton onClick={openModal}>
               Compose Message
             </ComposeMessageButton>
-            <Modal showModal={showModal} setShowModal={setShowModal} setReceivedMessages={setReceivedMessages} setSentMessages={setSentMessages} />
+            <Modal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              setReceivedMessages={setReceivedMessages}
+              setSentMessages={setSentMessages}
+            />
           </LeaderboardTabs>
           {generateTable()}
         </ContentBody>
