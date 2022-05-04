@@ -3,7 +3,8 @@ import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
-  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, MainHeader } from './PageElements';
+  XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, ProfileSettingButton, 
+ComposeMessageButton } from './PageElements';
 import watermelon from '../Trophies/watermelon.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
@@ -18,9 +19,14 @@ import { UserContext } from '../components/UserProvider';
   const { username, xp, coins, userData } = userInfo;
   const navigate = useNavigate();
 
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   return (
     <>
       <PageContents>
+
           <div className='bluebackground'>
             <div className='whitebackground'>
               <div className='wrapperProfile'>
@@ -33,11 +39,10 @@ import { UserContext } from '../components/UserProvider';
                 </div>
                 <img className="photoSize" src={watermelon}/>
                 <div className='space'/>
-                <button className="profileSettingButton" >
-                  <div className="profileText">
-                    Profile Settings
-                  </div>
-                </button>
+                <ProfileSettingButton onClick={openModal}>
+                   Profile Settings
+                 </ProfileSettingButton>
+
                 <div className='space'/>
                 <button 
                   className="logoutButton"
@@ -50,10 +55,10 @@ import { UserContext } from '../components/UserProvider';
                     Log Out
                   </div>
                 </button>
+
               <>
               </>
               </div>
-
               <div class="splitRight">
                 <div class="wrapperRight">
                   <div class="userNameText">
@@ -118,6 +123,7 @@ import { UserContext } from '../components/UserProvider';
             </CoinAmount_0001>
           </Coins>
         </StatBar>
+
       </PageContents>  
     </>
   );

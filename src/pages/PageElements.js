@@ -400,3 +400,15 @@ export const MessagesTable = styled.table`
 	height: 100%;
 	border-collapse: collapse;
 `
+export const ProfileSettingButton = styled.button`
+	position:relative;
+	width: 200px;
+	height: 36px;
+	padding-top: 5px;
+	background:white;
+	border: 2px solid #2F5890;
+	box-sizing: border-box;
+	border-radius: 6px;
+	padding-bottom: 10px;
+`;
+
