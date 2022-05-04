@@ -5,7 +5,7 @@ import { PageContents, WelcomeText, ContentBody,
   StatBar, ProfilePic, ProfileImage, ProfileImage_0001, ProfileImage_0002, Username, Xp, XpImage, XpImage_0001, 
   XpBigImage, _000, GreyTrophyBox, Coins, CoinImage, CoinImage_0001, CoinBgImage_0001, CoinAmount_0001, ProfileSettingButton, 
 ComposeMessageButton } from './PageElements';
-import watermelon from '../Trophies/watermelon.png'
+import watermelon from '../Trophies/Watermelon.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
 import { auth } from '../firebase';
