@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import "./Profile.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -12,12 +12,15 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { TableBody, TableHead } from '@mui/material';
 import { UserContext } from '../components/UserProvider';
+import { ProfileModal } from '../components/Modal';
 
   function Profile() {
 
   const userInfo = useContext(UserContext);
   const { username, xp, coins, userData } = userInfo;
   const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false)
 
   const openModal = () => {
     setShowModal(prev => !prev)
@@ -42,7 +45,6 @@ import { UserContext } from '../components/UserProvider';
                 <ProfileSettingButton onClick={openModal}>
                    Profile Settings
                  </ProfileSettingButton>
-
                 <div className='space'/>
                 <button 
                   className="logoutButton"
@@ -55,7 +57,6 @@ import { UserContext } from '../components/UserProvider';
                     Log Out
                   </div>
                 </button>
-
               <>
               </>
               </div>
@@ -83,6 +84,7 @@ import { UserContext } from '../components/UserProvider';
                           </tr>
                         </TableBody>  
                     </table>
+                    <ProfileModal showModal ={showModal} setShowModal={setShowModal} />
                   </div>
                   </div>
                   </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import "./Shop.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -12,14 +12,32 @@ import book from '../Trophies/book.png'
 import paint from '../Trophies/paint.png'
 import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
+import award from '../Trophies/toptrophy.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
 import { UserContext } from '../components/UserProvider';
+import { ShopItemModal } from '../components/Modal';
+
 
 function Shop() {
 
   const userInfo = useContext(UserContext);
   const { username, xp, coins } = userInfo;
+
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
+  function buyTrophy(trophy) {
+    // Check if user has enough coins to buy button
+    // If so, run below lines
+    var x = document.getElementById(trophy);
+    x.style.display = "none";
+    // Also change amount of coins user has (decrease by 30)
+    // Also add trophy to user's trophies
+  }
 
   return (
     <>
@@ -39,6 +57,9 @@ function Shop() {
                 Basketball
               </div>
               <img className="photoSize" src={basketball}/>
+              <div className="topRight">
+                <img className="bestItem" src={award} onClick={openModal}/>
+              </div>
               <div class="center">
                 <div class="ownedButton">
                 <div class="ownbuttonwords">
@@ -178,6 +199,8 @@ function Shop() {
                 </div>
               </div>
             </GreyTrophyBox>
+            <ShopItemModal showModal ={showModal} setShowModal={setShowModal} />
+
             </div>
           </ContentBody>
 

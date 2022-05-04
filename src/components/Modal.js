@@ -11,6 +11,7 @@ import {
   FormGroup,
   FormControlLabel,
 } from "@mui/material";
+import basketball from "../Trophies/Basketball.png";
 
 const Background = styled.div`
   width: 100vw;
@@ -104,6 +105,12 @@ const PhotoSize = styled.div`
   width: 450px;
 `;
 
+const SwitchWrapper = styled.div `
+    displau: flex;
+    align-items: center;
+    width: 650px;
+`
+
 const ProfileWrapper = styled.div`
   position: relative;
   top: 120px;
@@ -111,6 +118,23 @@ const ProfileWrapper = styled.div`
   height: 261px;
   background: white;
   border-radius: 6px;
+`;
+const TrophyPhoto = styled.div`
+  background-image: url(${basketball});
+  left: 100px;
+  position: relative;
+  height: 220px;
+  width: 450px;
+`;
+
+// Shop item modal
+
+const BasketballImage = styled.div`
+  background-image: url(${basketball});
+  left: 160px;
+  position: relative;
+  height: 280px;
+  width: 280px;
 `;
 
 const tokens = [
@@ -382,6 +406,33 @@ export const LogInModal = ({ showModal, setShowModal }) => {
                 Don't forget to use your XP to send positive messages to
                 friends. The world could use some positivity right now!
               </p>
+            </ModalContent>
+          </LogInWrapper>
+        </Background>
+      ) : null}
+    </>
+  );
+};
+
+export const ShopItemModal = ({ showModal, setShowModal }) => {
+  const [checked, setChecked] = React.useState();
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
+  return (
+    <>
+      {showModal ? (
+        <Background>
+          <LogInWrapper showModal={showModal}>
+            <ModalContent>
+              <CloseModalButton onClick={() => setShowModal((prev) => !prev)} />
+              <h1>Popular Item</h1>
+              <Spacer />
+              <p>The Basketball is Uplft's most popular shop item!</p>
+              <Spacer />
+              <BasketballImage />
+              <Spacer />
             </ModalContent>
           </LogInWrapper>
         </Background>
