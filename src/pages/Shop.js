@@ -12,6 +12,7 @@ import book from '../Trophies/book.png'
 import paint from '../Trophies/paint.png'
 import golfing from '../Trophies/golfing.png'
 import sun from '../Trophies/sun.png'
+import award from '../Trophies/toptrophy.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
 import { UserContext } from '../components/UserProvider';
@@ -49,6 +50,9 @@ function Shop() {
                 Basketball
               </div>
               <img className="photoSize" src={basketball}/>
+              <div className="topRight">
+                <img className="bestItem" src={award}/>
+              </div>
               <div class="center">
                 <div class="ownedButton">
                 <div class="ownbuttonwords">
