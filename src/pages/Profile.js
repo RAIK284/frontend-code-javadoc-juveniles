@@ -19,6 +19,10 @@ import { UserContext } from '../components/UserProvider';
   const { username, xp, coins, userData } = userInfo;
   const navigate = useNavigate();
 
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   return (
     <>
       <PageContents>
