@@ -121,6 +121,16 @@ const TrophyPhoto = styled.div`
     width: 450px;
 `;
 
+// Shop item modal
+
+const BasketballImage = styled.div`
+    background-image: url(${basketball});
+    left: 160px;
+    position: relative;
+    height: 280px;
+    width: 280px;
+`;
+
 
 export const Modal = ({ showModal, setShowModal }) => {
    return (
@@ -251,7 +261,7 @@ export const ProfileModal = ({ showModal, setShowModal }) => {
                             <Spacer />
                             <p>The Basketball is Uplft's most popular shop item!</p>
                             <Spacer />
-                            <PhotoSize />
+                            <BasketballImage />
                             <Spacer />
                             </ModalContent>
                         </LogInWrapper>

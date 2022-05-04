@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import "./Shop.css";
 import "./AllPages.css";
 import { PageContents, WelcomeText, ContentBody,
@@ -16,12 +16,19 @@ import award from '../Trophies/toptrophy.png'
 import { useUserState } from './Home';
 import { useBetween } from 'use-between';
 import { UserContext } from '../components/UserProvider';
+import { ShopItemModal } from '../components/Modal';
+
 
 function Shop() {
 
   const userInfo = useContext(UserContext);
   const { username, xp, coins } = userInfo;
 
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
 
   function buyTrophy(trophy) {
     // Check if user has enough coins to buy button
@@ -51,7 +58,7 @@ function Shop() {
               </div>
               <img className="photoSize" src={basketball}/>
               <div className="topRight">
-                <img className="bestItem" src={award}/>
+                <img className="bestItem" src={award} onClick={openModal}/>
               </div>
               <div class="center">
                 <div class="ownedButton">
@@ -192,6 +199,8 @@ function Shop() {
                 </div>
               </div>
             </GreyTrophyBox>
+            <ShopItemModal showModal ={showModal} setShowModal={setShowModal} />
+
             </div>
           </ContentBody>
 
