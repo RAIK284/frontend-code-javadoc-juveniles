@@ -336,11 +336,30 @@ export const Modal = ({
   );
 };
 
-export const ProfileModal = ({ showModal, setShowModal }) => {
-  const [checked, setChecked] = React.useState();
+export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => {
+  const [checked, setChecked] = React.useState(pointsPublic);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
+
+  const handleSubmit = async () => {
+    const body = {
+      pointsPublic: checked,
+    };
+    const response = await fetch(
+      `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${uid}`,
+      {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    const json = await response.json();
+    console.log(JSON.stringify(body));
+    console.log("checked: " + checked);
+    setShowModal((prev) => !prev);
+  }
+
 
   return (
     <>
@@ -371,7 +390,7 @@ export const ProfileModal = ({ showModal, setShowModal }) => {
               <Spacer />
 
               <ApplySettingsButton
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={() => handleSubmit()}
               >
                 Apply Settings
               </ApplySettingsButton>

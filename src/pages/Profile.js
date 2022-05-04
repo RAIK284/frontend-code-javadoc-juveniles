@@ -84,7 +84,7 @@ import { ProfileModal } from '../components/Modal';
                           </tr>
                         </TableBody>  
                     </table>
-                    <ProfileModal showModal ={showModal} setShowModal={setShowModal} />
+                    <ProfileModal showModal ={showModal} setShowModal={setShowModal} pointsPublic={userData.pointsPublic} uid={userData.id} />
                   </div>
                   </div>
                   </div>
