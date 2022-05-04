@@ -178,7 +178,7 @@ export const Modal = ({
         );
         const recipientData = await recipientDataResponse.json();
         const recipientBody = {
-          currentCoins: recipientData.coins + xpInMessage,
+          currentCoins: recipientData.currentCoins + xpInMessage,
           totalCoins: recipientData.totalCoins + xpInMessage,
         };
         await fetch(
@@ -189,6 +189,7 @@ export const Modal = ({
             headers: { "Content-Type": "application/json" },
           }
         );
+        window.location.reload(false);
       }
       setShowModal((prev) => !prev);
       setSentMessages(null);
