@@ -10,11 +10,11 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (event, email, password, username) => {
     event.preventDefault();
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { displayName });
+      generateUserDocument(user, { username });
     }
     catch (error) {
       setError('Error signing up with email and password');
@@ -33,7 +33,7 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "username") {
+    } else if (name === "userName") {
       setUsername(value);
     }
   };
@@ -63,12 +63,13 @@ const SignUp = () => {
             <label htmlFor="userPassword" className="uppassword">
               <TextField fullWidth id="userPassword" label="Password" variant="filled"
                 className="mt-1"
+                type="password"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <button
               className="signUp"
               onClick={event => {
-                createUserWithEmailAndPasswordHandler(event, email, password);
+                createUserWithEmailAndPasswordHandler(event, email, password, username);
               }}
             >
               Sign up

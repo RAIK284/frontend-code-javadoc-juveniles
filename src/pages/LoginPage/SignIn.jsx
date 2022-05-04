@@ -20,7 +20,8 @@ const SignIn = () => {
   };
 
   const onChangeHandler = (event) => {
-    const { name, value } = event.currentTarget;
+    const name = event.currentTarget.id;
+    const value = event.currentTarget.value;
 
     if (name === 'userEmail') {
       setEmail(value);
@@ -40,13 +41,14 @@ const SignIn = () => {
           {error !== null && <div className="error">{error}</div>}
           <form className="">
             <label htmlFor="userEmail" className="email">
-              <TextField fullWidth id="userEmail" label="Email or username" variant="filled"
+              <TextField fullWidth id="userEmail" label="Email" variant="filled"
                 className="my-1"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <label htmlFor="userPassword" className="password">
               <TextField fullWidth id="userPassword" label="Password" variant="filled"
                 className="mt-1"
+                type="password"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <hr className="line1"></hr>
