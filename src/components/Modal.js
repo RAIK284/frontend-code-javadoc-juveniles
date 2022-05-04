@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
 import graphic from './LoginXP.png'
 import { TextField, Checkbox, Switch, FormGroup, FormControlLabel } from '@mui/material';
+import basketball from '../Trophies/Basketball.png'
+
 
 const Background = styled.div`
     width: 100vw;
@@ -109,6 +111,24 @@ const PhotoSize = styled.div`
     position: relative;
     height: 220px;
     width: 450px;
+`;
+
+const TrophyPhoto = styled.div`
+    background-image: url(${basketball});
+    left: 100px;
+    position: relative;
+    height: 220px;
+    width: 450px;
+`;
+
+// Shop item modal
+
+const BasketballImage = styled.div`
+    background-image: url(${basketball});
+    left: 160px;
+    position: relative;
+    height: 280px;
+    width: 280px;
 `;
 
 
@@ -221,5 +241,34 @@ export const ProfileModal = ({ showModal, setShowModal }) => {
             </>
            )
         };
+
+        export const ShopItemModal = ({ showModal, setShowModal }) => {
+            const [checked, setChecked] = React.useState();
+            const handleChange = event => {
+              setChecked(event.target.checked);
+            };
+        
+            return (
+                <>
+                {showModal ? (
+    
+                    <Background>
+                        <LogInWrapper showModal = {showModal}>
+                            <ModalContent>
+                            <CloseModalButton onClick ={() => setShowModal
+                            (prev => !prev)} />
+                                <h1>Popular Item</h1>
+                            <Spacer />
+                            <p>The Basketball is Uplft's most popular shop item!</p>
+                            <Spacer />
+                            <BasketballImage />
+                            <Spacer />
+                            </ModalContent>
+                        </LogInWrapper>
+                    </Background>
+                ) : null}
+                </>
+               )
+            };
 
      

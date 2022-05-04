@@ -106,3 +106,19 @@ color: #FFFFFF;
     text-align: center;
     font-size: 18px;
   }
+
+.bestItem {
+  height: 55px;
+  width: 42px;
+  position: relative;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.topRight {
+  position: absolute;
+  left: 17%;
+  top: 12.5%;
+  bottom: 76.59%;
+  text-align: right;
+}
