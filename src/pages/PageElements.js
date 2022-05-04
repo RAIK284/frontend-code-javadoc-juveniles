@@ -388,6 +388,7 @@ export const ComposeMessageButton = styled.button`
 	border: 2px solid rgba(34, 149, 255, 0.5);
 	box-sizing: border-box;
 	border-radius: 6px;
+	cursor: pointer;
 `;
 
 export const ProfileSettingButton = styled.button`
