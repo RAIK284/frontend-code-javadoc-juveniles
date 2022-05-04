@@ -133,6 +133,7 @@ const BasketballImage = styled.div`
   background-image: url(${basketball});
   left: 160px;
   position: relative;
+  top: -120px;
   height: 280px;
   width: 280px;
 `;
@@ -414,11 +415,17 @@ export const LogInModal = ({ showModal, setShowModal }) => {
   );
 };
 
-export const ShopItemModal = ({ showModal, setShowModal }) => {
-  const [checked, setChecked] = React.useState();
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
+  const [recentPurchasers, setRecentPurchasers] = React.useState(["loading"]);
+  
+  React.useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`https://us-central1-uplft-9ed97.cloudfunctions.net/app/getRecentPurchasers/${trophyName}`);
+      const data = await response.json();
+      setRecentPurchasers(data);
+    }
+    fetchData();
+    }, []);
 
   return (
     <>
@@ -429,10 +436,16 @@ export const ShopItemModal = ({ showModal, setShowModal }) => {
               <CloseModalButton onClick={() => setShowModal((prev) => !prev)} />
               <h1>Popular Item</h1>
               <Spacer />
-              <p>The Basketball is Uplft's most popular shop item!</p>
-              <Spacer />
+              <p>The {trophyName} is Uplft's most popular shop item!</p>
+              <p>
+                <br />
+                <strong>Recent Purchasers:</strong>
+                <br />
+                {recentPurchasers.map((person) => (
+                  <p>{person}</p>
+                ))}
+              </p>
               <BasketballImage />
-              <Spacer />
             </ModalContent>
           </LogInWrapper>
         </Background>
