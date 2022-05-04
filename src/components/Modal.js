@@ -130,7 +130,8 @@ const TrophyPhoto = styled.div`
 // Shop item modal
 
 const BasketballImage = styled.div`
-  background-image: url(${basketball});
+  background-image: url(../Trophies/Basketball.png);
+  background-repeat: no-repeat;
   left: 160px;
   position: relative;
   top: -120px;
