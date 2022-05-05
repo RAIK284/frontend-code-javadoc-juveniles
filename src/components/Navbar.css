@@ -14,7 +14,7 @@
 
 .nav-menu {
     background: linear-gradient(-180deg, rgba(48, 87, 144, 1), rgba(47, 145, 174, 1));
-    width: 264px;
+    width: 30vw;
     height: 100vh;
     display: flex;
     justify-content: center;
