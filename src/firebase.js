@@ -35,7 +35,7 @@ export const generateUserDocument = async (user, additionalData) => {
       await userRef.set({
         username: username,
         email: email,
-        avatar: photoURL,
+        avatar: "Watermelon",
         id: user.uid,
         currentCoins: 0,
         totalCoins: 0,

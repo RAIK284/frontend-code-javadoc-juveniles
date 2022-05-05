@@ -107,7 +107,7 @@ const Home = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [userInfo]);
 
   function generateTable() {
     let data = receivedMessages.data;
@@ -179,7 +179,7 @@ const Home = () => {
               {generateTrophies()}
             </TrophyBox>
           </Trophies>
-          <Messages>{receivedMessages ? generateTable() : loading()}</Messages>
+          <Messages>{(receivedMessages && receivedMessages.data) ? generateTable() : loading()}</Messages>
         </ContentBody>
 
         <StatBar>
@@ -187,7 +187,7 @@ const Home = () => {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src={userData.avatar ? "/Trophies/" + userData.avatar + ".png" : ""}
+                  src={userData ? "/Trophies/" + userData.avatar + ".png" : ""}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>
