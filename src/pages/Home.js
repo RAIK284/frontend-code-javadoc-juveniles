@@ -142,6 +142,29 @@ const Home = () => {
     return <CircularProgress />;
   }
 
+  function generateTrophies(){
+    if (userData){
+      return (
+        <div className="wrapper">
+        {userData.trophies.map((val, key) => {
+          return (
+            <GreyTrophyBox>
+              <div className="trophyName">{val}</div>
+              <img
+                className="photoSize"
+                src={`/Trophies/${val}.png`}
+              />
+            </GreyTrophyBox>
+          );
+        })}
+      </div>
+      )
+    } else {
+      return (loading())
+    }
+
+  }
+
   return (
     <>
       <PageContents>
@@ -153,19 +176,7 @@ const Home = () => {
           <Trophies>
             <YourTrophies>Your Trophies</YourTrophies>
             <TrophyBox>
-              <div className="wrapper">
-                {userData.trophies.map((val, key) => {
-                  return (
-                    <GreyTrophyBox>
-                      <div className="trophyName">{val}</div>
-                      <img
-                        className="photoSize"
-                        src={`/Trophies/${val}.png`}
-                      />
-                    </GreyTrophyBox>
-                  );
-                })}
-              </div>
+              {generateTrophies()}
             </TrophyBox>
           </Trophies>
           <Messages>{receivedMessages ? generateTable() : loading()}</Messages>
@@ -176,7 +187,7 @@ const Home = () => {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  src={userData.avatar ? "/Trophies/" + userData.avatar + ".png" : ""}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>

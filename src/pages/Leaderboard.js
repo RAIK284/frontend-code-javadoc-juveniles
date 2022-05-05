@@ -40,7 +40,7 @@ function Leaderboard() {
   const [xpData, setXpData] = useState(null);
   const [isCoin, setIsCoin] = useState(true);
   const userInfo = useContext(UserContext);
-  const { username, xp, coins } = userInfo;
+  const { username, xp, coins, userData } = userInfo;
 
   useEffect(() => {
     async function fetchData() {
@@ -141,7 +141,7 @@ function Leaderboard() {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  src={"/Trophies/" + userData.avatar + ".png"}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>

@@ -10,6 +10,10 @@ import {
   Switch,
   FormGroup,
   FormControlLabel,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
 } from "@mui/material";
 import basketball from "../Trophies/Basketball.png";
 
@@ -105,17 +109,17 @@ const PhotoSize = styled.div`
   width: 450px;
 `;
 
-const SwitchWrapper = styled.div `
-    displau: flex;
-    align-items: center;
-    width: 650px;
-`
+const SwitchWrapper = styled.div`
+  displau: flex;
+  align-items: center;
+  width: 650px;
+`;
 
 const ProfileWrapper = styled.div`
   position: relative;
   top: 120px;
   width: 678px;
-  height: 261px;
+  height: 310px;
   background: white;
   border-radius: 6px;
 `;
@@ -339,15 +343,30 @@ export const Modal = ({
   );
 };
 
-export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => {
+export const ProfileModal = ({
+  showModal,
+  setShowModal,
+  pointsPublic,
+  uid,
+}) => {
+  const userInfo = useContext(UserContext);
+  const { userData } = userInfo;
+
   const [checked, setChecked] = React.useState(pointsPublic);
+  const [avatarSet, setAvatarSet] = React.useState(userData.avatar);
+
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+
+  const handleAvatarChange = (event) => {
+    setAvatarSet(event.target.value);
   };
 
   const handleSubmit = async () => {
     const body = {
       pointsPublic: checked,
+      avatar: avatarSet,
     };
     const response = await fetch(
       `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${uid}`,
@@ -361,8 +380,12 @@ export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => 
     console.log(JSON.stringify(body));
     console.log("checked: " + checked);
     setShowModal((prev) => !prev);
-  }
+    window.location.reload(false);
+  };
 
+  function onlyUniqueItems(value, index, self) {
+    return self.indexOf(value) === index;
+  }
 
   return (
     <>
@@ -389,12 +412,29 @@ export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => 
                   labelPlacement="start"
                 />
               </SwitchWrapper>
+              <SwitchWrapper>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120, left: "8px" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Change Avatar
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={avatarSet}
+                    onChange={handleAvatarChange}
+                    label="Age"
+                  >
+                    <MenuItem value="Watermelon">Watermelon</MenuItem>
+                    {userData.trophies.filter(onlyUniqueItems).map((val, key) => {
+                      return <MenuItem value={val}>{val}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </SwitchWrapper>
 
               <Spacer />
 
-              <ApplySettingsButton
-                onClick={() => handleSubmit()}
-              >
+              <ApplySettingsButton onClick={() => handleSubmit()}>
                 Apply Settings
               </ApplySettingsButton>
             </ModalContent>
@@ -438,15 +478,17 @@ export const LogInModal = ({ showModal, setShowModal }) => {
 
 export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
   const [recentPurchasers, setRecentPurchasers] = React.useState(["loading"]);
-  
+
   React.useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`https://us-central1-uplft-9ed97.cloudfunctions.net/app/getRecentPurchasers/${trophyName}`);
+      const response = await fetch(
+        `https://us-central1-uplft-9ed97.cloudfunctions.net/app/getRecentPurchasers/${trophyName}`
+      );
       const data = await response.json();
       setRecentPurchasers(data);
     }
     fetchData();
-    }, []);
+  }, []);
 
   return (
     <>

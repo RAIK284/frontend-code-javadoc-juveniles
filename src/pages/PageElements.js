@@ -169,10 +169,12 @@ export const ProfileImage_0001 = styled.div`
 export const ProfileImage_0002 = styled.img`
 	width: 47px;
 	height: 52px;
-	object-fit: cover;
+	object-fit: scale-down;
+	max-width: 100%;
+	max_height: 100%;
 	position: absolute;
-	left: -6px;
-	top: 0px;
+	left: 0px;
+	top: -10px;
 `;
 
 export const Username = styled.span`

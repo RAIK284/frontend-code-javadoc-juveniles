@@ -54,7 +54,7 @@ function Profile() {
               <div class="splitLeft">
                 <div class="mainTitle">Profile</div>
                 <div class="userNameText">@{username}</div>
-                <img className="photoSize" src={watermelon} />
+                <img className="photoSize" src={userData.avatar ? "/Trophies/" + userData.avatar + ".png" : ""} />
                 <div className="space" />
                 <ProfileSettingButton onClick={openModal}>
                   Profile Settings
@@ -124,7 +124,7 @@ function Profile() {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  src={"/Trophies/" + userData.avatar + ".png"}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>

@@ -3,7 +3,6 @@ import "./Shop.css";
 import "./AllPages.css";
 import {
   PageContents,
-  WelcomeText,
   ContentBody,
   StatBar,
   ProfilePic,
@@ -34,7 +33,7 @@ import { ShopItemModal } from "../components/Modal";
 
 function Shop() {
   const userInfo = useContext(UserContext);
-  const { username, xp, coins, user } = userInfo;
+  const { username, xp, coins, user, userData } = userInfo;
   const [trophyData, setTrophyData] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -150,7 +149,7 @@ function Shop() {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  src={"/Trophies/" + userData.avatar + ".png"}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>
