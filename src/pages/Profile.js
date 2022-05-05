@@ -109,6 +109,7 @@ function Profile() {
                     <ProfileModal
                       showModal={showModal}
                       setShowModal={setShowModal}
+                      pointsPublic={userData.pointsPublic}
                     />
                   </div>
                 </div>
