@@ -110,6 +110,7 @@ function Profile() {
                       showModal={showModal}
                       setShowModal={setShowModal}
                       pointsPublic={userData.pointsPublic}
+                      uid={userData.id}
                     />
                   </div>
                 </div>
