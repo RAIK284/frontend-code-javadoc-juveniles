@@ -274,6 +274,7 @@ export const Modal = ({
           style={{
             backgroundColor: "#555555",
             border: "2px solid rgba(200, 200, 200, 0.5)",
+            cursor: "default",
           }}
         >
           Send Message
