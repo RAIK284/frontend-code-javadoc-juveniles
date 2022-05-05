@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const PageContents = styled.div`
 	position: relative;
     left: 264px;
-    width: 70vw;
+    width: 100vw;
 	height: 1024px;
     background-color: rgba(194, 229, 255, 1); `;
 
