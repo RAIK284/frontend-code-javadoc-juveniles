@@ -39,7 +39,7 @@ export const generateUserDocument = async (user, additionalData) => {
         id: user.uid,
         currentCoins: 0,
         totalCoins: 0,
-        currentXp: 0,
+        currentXp: 100,
         xpUsed: 0,
         lastSignedIn: new Date(),
         pointsPublic: true,
