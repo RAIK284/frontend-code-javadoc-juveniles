@@ -28,7 +28,7 @@ but created this do to the wrapper used on the shop */
 /*Used the same font but different size and height for the name of the trophy. 
 This is used in the grid pattern to display the name in the top left corner*/
  .trophyName {
-  position: absolute;
+  position: relative;
   width: 199.68px;
   height: 14.82px;
 
