@@ -23,7 +23,6 @@ import {
   CoinAmount_0001,
   MainHeader,
 } from "./PageElements";
-import award from "../Trophies/Toptrophy.png";
 import { UserContext } from "../components/UserProvider";
 import {
   CircularProgress,
@@ -123,7 +122,7 @@ function Shop() {
           );
         })}
         <div className="topRight">
-          <img className="bestItem" src={award} onClick={openModal} />
+          <img className="bestItem" src={"/Trophies/Toptrophy.png"} onClick={openModal} />
         </div>
       </div>
     );
@@ -143,7 +142,7 @@ function Shop() {
           <MainHeader>Shop</MainHeader>
           {trophyData ? displayTrophies() : loading()}
         </ContentBody>
-        <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={"Basketball"} />
+        <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={trophyData ? trophyData[0].name: ""} />
         <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
       </PageContents>
     </>

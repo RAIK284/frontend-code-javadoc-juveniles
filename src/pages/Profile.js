@@ -22,7 +22,6 @@ import {
   CoinAmount_0001,
   ProfileSettingButton,
 } from "./PageElements";
-import watermelon from "../Trophies/Watermelon.png";
 import { useUserState } from "./Home";
 import { useBetween } from "use-between";
 import { auth } from "../firebase";

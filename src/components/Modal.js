@@ -15,7 +15,6 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import basketball from "../Trophies/Basketball.png";
 
 const Background = styled.div`
   width: 100vw;
@@ -123,18 +122,8 @@ const ProfileWrapper = styled.div`
   background: white;
   border-radius: 6px;
 `;
-const TrophyPhoto = styled.div`
-  background-image: url(${basketball});
-  left: 100px;
-  position: relative;
-  height: 220px;
-  width: 450px;
-`;
-
-// Shop item modal
 
 const BasketballImage = styled.div`
-  background-image: url(../Trophies/Basketball.png);
   background-repeat: no-repeat;
   left: 160px;
   position: relative;
@@ -488,7 +477,7 @@ export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
       setRecentPurchasers(data);
     }
     fetchData();
-  }, []);
+  }, [showModal]);
 
   return (
     <>
@@ -508,7 +497,7 @@ export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
                   <p>{person}</p>
                 ))}
               </p>
-              <BasketballImage />
+              <BasketballImage style={{backgroundImage: "url(/Trophies/" + trophyName + ".png)" }} />
             </ModalContent>
           </LogInWrapper>
         </Background>
