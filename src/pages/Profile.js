@@ -75,7 +75,7 @@ function Profile() {
                 <div class="wrapperRight">
                   <div class="userNameText">Your Trophies</div>
                   <div className="shopBox">
-                    <div className="wrapper">
+                    <div className="trophyWrapper">
                       {userData.trophies.map((val, key) => {
                         return (
                           <GreyTrophyBox>

@@ -65,6 +65,7 @@ import fetch from "node-fetch";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useBetween } from "use-between";
 import { UserContext } from "../components/UserProvider";
+import "./Home.css";
 
 export const useUserState = () => {
   const [user, setUser] = useState(useAuthState(auth)[0]);
@@ -145,7 +146,7 @@ const Home = () => {
   function generateTrophies(){
     if (userData){
       return (
-        <div className="wrapper">
+        <div className="homeWrapper">
         {userData.trophies.map((val, key) => {
           return (
             <GreyTrophyBox>
