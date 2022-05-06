@@ -98,12 +98,13 @@ export const YourTrophies = styled.span`
 
 export const TrophyBox = styled.div`
 	height: 331px;
-	background-color: rgba(244, 244, 244, 1);
+	background-color: #EFEFEF;
 	border-radius: 6px;
 	position: absolute;
 	left: 0px;
 	top: 35px;
 	right: 0px;
+	overflow-y: scoll;
 `;
 
 export const Messages = styled.div`
@@ -168,10 +169,12 @@ export const ProfileImage_0001 = styled.div`
 export const ProfileImage_0002 = styled.img`
 	width: 47px;
 	height: 52px;
-	object-fit: cover;
+	object-fit: scale-down;
+	max-width: 100%;
+	max_height: 100%;
 	position: absolute;
-	left: -6px;
-	top: 0px;
+	left: 0px;
+	top: -10px;
 `;
 
 export const Username = styled.span`

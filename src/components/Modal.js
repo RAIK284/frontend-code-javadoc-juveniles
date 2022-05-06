@@ -10,6 +10,10 @@ import {
   Switch,
   FormGroup,
   FormControlLabel,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
 } from "@mui/material";
 import basketball from "../Trophies/Basketball.png";
 
@@ -105,17 +109,17 @@ const PhotoSize = styled.div`
   width: 450px;
 `;
 
-const SwitchWrapper = styled.div `
-    displau: flex;
-    align-items: center;
-    width: 650px;
-`
+const SwitchWrapper = styled.div`
+  displau: flex;
+  align-items: center;
+  width: 650px;
+`;
 
 const ProfileWrapper = styled.div`
   position: relative;
   top: 120px;
   width: 678px;
-  height: 261px;
+  height: 310px;
   background: white;
   border-radius: 6px;
 `;
@@ -130,9 +134,11 @@ const TrophyPhoto = styled.div`
 // Shop item modal
 
 const BasketballImage = styled.div`
-  background-image: url(${basketball});
+  background-image: url(../Trophies/Basketball.png);
+  background-repeat: no-repeat;
   left: 160px;
   position: relative;
+  top: -120px;
   height: 280px;
   width: 280px;
 `;
@@ -272,6 +278,7 @@ export const Modal = ({
           style={{
             backgroundColor: "#555555",
             border: "2px solid rgba(200, 200, 200, 0.5)",
+            cursor: "default",
           }}
         >
           Send Message
@@ -336,15 +343,30 @@ export const Modal = ({
   );
 };
 
-export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => {
+export const ProfileModal = ({
+  showModal,
+  setShowModal,
+  pointsPublic,
+  uid,
+}) => {
+  const userInfo = useContext(UserContext);
+  const { userData } = userInfo;
+
   const [checked, setChecked] = React.useState(pointsPublic);
+  const [avatarSet, setAvatarSet] = React.useState(userData.avatar);
+
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+
+  const handleAvatarChange = (event) => {
+    setAvatarSet(event.target.value);
   };
 
   const handleSubmit = async () => {
     const body = {
       pointsPublic: checked,
+      avatar: avatarSet,
     };
     const response = await fetch(
       `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${uid}`,
@@ -358,8 +380,12 @@ export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => 
     console.log(JSON.stringify(body));
     console.log("checked: " + checked);
     setShowModal((prev) => !prev);
-  }
+    window.location.reload(false);
+  };
 
+  function onlyUniqueItems(value, index, self) {
+    return self.indexOf(value) === index;
+  }
 
   return (
     <>
@@ -386,12 +412,29 @@ export const ProfileModal = ({ showModal, setShowModal, pointsPublic, uid }) => 
                   labelPlacement="start"
                 />
               </SwitchWrapper>
+              <SwitchWrapper>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120, left: "8px" }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Change Avatar
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={avatarSet}
+                    onChange={handleAvatarChange}
+                    label="Age"
+                  >
+                    <MenuItem value="Watermelon">Watermelon</MenuItem>
+                    {userData.trophies.filter(onlyUniqueItems).map((val, key) => {
+                      return <MenuItem value={val}>{val}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </SwitchWrapper>
 
               <Spacer />
 
-              <ApplySettingsButton
-                onClick={() => handleSubmit()}
-              >
+              <ApplySettingsButton onClick={() => handleSubmit()}>
                 Apply Settings
               </ApplySettingsButton>
             </ModalContent>
@@ -433,11 +476,19 @@ export const LogInModal = ({ showModal, setShowModal }) => {
   );
 };
 
-export const ShopItemModal = ({ showModal, setShowModal }) => {
-  const [checked, setChecked] = React.useState();
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
+  const [recentPurchasers, setRecentPurchasers] = React.useState(["loading"]);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://us-central1-uplft-9ed97.cloudfunctions.net/app/getRecentPurchasers/${trophyName}`
+      );
+      const data = await response.json();
+      setRecentPurchasers(data);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -448,10 +499,16 @@ export const ShopItemModal = ({ showModal, setShowModal }) => {
               <CloseModalButton onClick={() => setShowModal((prev) => !prev)} />
               <h1>Popular Item</h1>
               <Spacer />
-              <p>The Basketball is Uplft's most popular shop item!</p>
-              <Spacer />
+              <p>The {trophyName} is Uplft's most popular shop item!</p>
+              <p>
+                <br />
+                <strong>Recent Purchasers:</strong>
+                <br />
+                {recentPurchasers.map((person) => (
+                  <p>{person}</p>
+                ))}
+              </p>
               <BasketballImage />
-              <Spacer />
             </ModalContent>
           </LogInWrapper>
         </Background>

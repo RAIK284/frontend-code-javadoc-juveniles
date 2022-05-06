@@ -38,6 +38,7 @@ import {
   ContentBody,
   Messages,
   RecentMessages,
+  GreyTrophyBox,
   StatBar,
   ProfilePic,
   ProfileImage,
@@ -58,6 +59,7 @@ import {
 import { CircularProgress } from "@mui/material";
 import "./AllPages.css";
 import "../App.css";
+import "./Shop.css";
 import { auth } from "../firebase";
 import fetch from "node-fetch";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -87,7 +89,7 @@ export const useUserState = () => {
 
 const Home = () => {
   const userInfo = useContext(UserContext);
-  const { username, xp, coins } = userInfo;
+  const { username, xp, coins, userData } = userInfo;
   const [receivedMessages, setReceivedMessages] = useState(null);
 
   useEffect(() => {
@@ -105,7 +107,7 @@ const Home = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [userInfo]);
 
   function generateTable() {
     let data = receivedMessages.data;
@@ -136,8 +138,31 @@ const Home = () => {
     );
   }
 
-  function loading(){
-    return (<CircularProgress />)
+  function loading() {
+    return <CircularProgress />;
+  }
+
+  function generateTrophies(){
+    if (userData){
+      return (
+        <div className="wrapper">
+        {userData.trophies.map((val, key) => {
+          return (
+            <GreyTrophyBox>
+              <div className="trophyName">{val}</div>
+              <img
+                className="photoSize"
+                src={`/Trophies/${val}.png`}
+              />
+            </GreyTrophyBox>
+          );
+        })}
+      </div>
+      )
+    } else {
+      return (loading())
+    }
+
   }
 
   return (
@@ -150,9 +175,11 @@ const Home = () => {
           <WelcomeText>Welcome back, @{username}!</WelcomeText>
           <Trophies>
             <YourTrophies>Your Trophies</YourTrophies>
-            <TrophyBox />
+            <TrophyBox>
+              {generateTrophies()}
+            </TrophyBox>
           </Trophies>
-          <Messages>{receivedMessages ? generateTable() : loading()}</Messages>
+          <Messages>{(receivedMessages && receivedMessages.data) ? generateTable() : loading()}</Messages>
         </ContentBody>
 
         <StatBar>
@@ -160,7 +187,7 @@ const Home = () => {
             <ProfileImage>
               <ProfileImage_0001>
                 <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
+                  src={userData ? "/Trophies/" + userData.avatar + ".png" : ""}
                   alt="image of ProfileImage"
                 />
               </ProfileImage_0001>

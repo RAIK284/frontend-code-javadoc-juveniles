@@ -43,7 +43,7 @@ function Messages() {
   const [receivedMessages, setReceivedMessages] = useState(null);
   const [isReceived, setIsReceived] = useState(true);
   const userInfo = useContext(UserContext);
-  const { username, xp, coins } = userInfo;
+  const { username, xp, coins, userData } = userInfo;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -114,148 +114,95 @@ function Messages() {
   function generateTable() {
     let data = isReceived ? receivedMessages.data : sentMessages.data;
     return (
-        <tbody>
-          <tr>
-            <th>Time Received</th>
-            <th>{isReceived ? "Sender" : "Recipient"}</th>
-            <th>Message</th>
-            <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
-          </tr>
-          {data.slice(0, 50).map((val, key) => {
-            const date = new Date(val.timeSent._seconds * 1000);
-            return (
-              <tr key={key}>
-                <td>
-                  {date.toLocaleDateString("en-US") +
-                    " at " +
-                    date.toLocaleTimeString("en-US")}
-                </td>
-                <td>@{isReceived ? val.sender : val.recipient}</td>
-                <td>{val.messageBody}</td>
-                <td>{val.numberOfCoins}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+      <tbody>
+        <tr>
+          <th>Time Received</th>
+          <th>{isReceived ? "Sender" : "Recipient"}</th>
+          <th>Message</th>
+          <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
+        </tr>
+        {data.slice(0, 50).map((val, key) => {
+          const date = new Date(val.timeSent._seconds * 1000);
+          return (
+            <tr key={key}>
+              <td>
+                {date.toLocaleDateString("en-US") +
+                  " at " +
+                  date.toLocaleTimeString("en-US")}
+              </td>
+              <td>@{isReceived ? val.sender : val.recipient}</td>
+              <td>{val.messageBody}</td>
+              <td>{val.numberOfCoins}</td>
+            </tr>
+          );
+        })}
+      </tbody>
     );
   }
 
-  if (sentMessages && receivedMessages) {
-    return (
-      <PageContents>
-        <div className="bluebackground">
-          <div className="whitebackground"></div>
-        </div>
-        <ContentBody>
-          <MainHeader>Messages</MainHeader>
-          <LeaderboardTabs>
-            {getReceivedButton()}
-            {getSentButton()}
-            <ComposeMessageButton onClick={openModal}>
-              Compose Message
-            </ComposeMessageButton>
-            <Modal
-              showModal={showModal}
-              setShowModal={setShowModal}
-              setReceivedMessages={setReceivedMessages}
-              setSentMessages={setSentMessages}
-            />
-          </LeaderboardTabs>
-          {generateTable()}
-        </ContentBody>
-        <StatBar>
-          <ProfilePic>
-            <ProfileImage>
-              <ProfileImage_0001>
-                <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
-                  alt="image of ProfileImage"
-                />
-              </ProfileImage_0001>
-            </ProfileImage>
-            <Username>@{username}</Username>
-          </ProfilePic>
-          <Xp>
-            <XpImage>
-              <XpImage_0001>
-                <XpBigImage
-                  src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
-                  alt="image of XpBigImage"
-                />
-              </XpImage_0001>
-            </XpImage>
-            <_000>{xp}</_000>
-          </Xp>
-          <Coins>
-            <CoinImage>
-              <CoinImage_0001>
-                <CoinBgImage_0001
-                  src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
-                  alt="image of CoinBgImage"
-                />
-              </CoinImage_0001>
-            </CoinImage>
-            <CoinAmount_0001>{coins}</CoinAmount_0001>
-          </Coins>
-        </StatBar>
-      </PageContents>
-    );
-  } else {
-    return (
-      <PageContents>
-        <div className="bluebackground">
-          <div className="whitebackground"></div>
-        </div>
-        <ContentBody>
-          <MainHeader>Messages</MainHeader>
-          <LeaderboardTabs>
-            {getReceivedButton()}
-            {getSentButton()}
-            <ComposeMessageButton onClick={openModal}>
-              Compose Message
-            </ComposeMessageButton>
-            <Modal showModal={showModal} setShowModal={setShowModal} />
-          </LeaderboardTabs>
-          <CircularProgress />
-        </ContentBody>
-        <StatBar>
-          <ProfilePic>
-            <ProfileImage>
-              <ProfileImage_0001>
-                <ProfileImage_0002
-                  src="https://www.biography.com/.image/t_share/MTgwOTI0NDYwNjQ2Mjc4MjMy/gettyimages-1061959920.jpg"
-                  alt="image of ProfileImage"
-                />
-              </ProfileImage_0001>
-            </ProfileImage>
-            <Username>@{username}</Username>
-          </ProfilePic>
-          <Xp>
-            <XpImage>
-              <XpImage_0001>
-                <XpBigImage
-                  src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
-                  alt="image of XpBigImage"
-                />
-              </XpImage_0001>
-            </XpImage>
-            <_000>{xp}</_000>
-          </Xp>
-          <Coins>
-            <CoinImage>
-              <CoinImage_0001>
-                <CoinBgImage_0001
-                  src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
-                  alt="image of CoinBgImage"
-                />
-              </CoinImage_0001>
-            </CoinImage>
-            <CoinAmount_0001>{coins}</CoinAmount_0001>
-          </Coins>
-        </StatBar>
-      </PageContents>
-    );
+  function loading() {
+    return <CircularProgress />;
   }
+
+  return (
+    <PageContents>
+      <div className="bluebackground">
+        <div className="whitebackground"></div>
+      </div>
+      <ContentBody>
+        <MainHeader>Messages</MainHeader>
+        <LeaderboardTabs>
+          {getReceivedButton()}
+          {getSentButton()}
+          <ComposeMessageButton onClick={openModal}>
+            Compose Message
+          </ComposeMessageButton>
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            setReceivedMessages={setReceivedMessages}
+            setSentMessages={setSentMessages}
+          />
+        </LeaderboardTabs>
+        {sentMessages && receivedMessages ? generateTable() : loading()}
+      </ContentBody>
+      <StatBar>
+        <ProfilePic>
+          <ProfileImage>
+            <ProfileImage_0001>
+              <ProfileImage_0002
+                src={"/Trophies/" + userData.avatar + ".png"}
+                alt="image of ProfileImage"
+              />
+            </ProfileImage_0001>
+          </ProfileImage>
+          <Username>@{username}</Username>
+        </ProfilePic>
+        <Xp>
+          <XpImage>
+            <XpImage_0001>
+              <XpBigImage
+                src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
+                alt="image of XpBigImage"
+              />
+            </XpImage_0001>
+          </XpImage>
+          <_000>{xp}</_000>
+        </Xp>
+        <Coins>
+          <CoinImage>
+            <CoinImage_0001>
+              <CoinBgImage_0001
+                src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
+                alt="image of CoinBgImage"
+              />
+            </CoinImage_0001>
+          </CoinImage>
+          <CoinAmount_0001>{coins}</CoinAmount_0001>
+        </Coins>
+      </StatBar>
+    </PageContents>
+  );
 }
 
 export default Messages;
