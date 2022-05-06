@@ -11,22 +11,6 @@ import {
   AllTimeCoinsEarned,
   AllTimeXpUsed,
   XpUsedTab,
-  _000,
-  StatBar,
-  ProfilePic,
-  ProfileImage,
-  ProfileImage_0001,
-  ProfileImage_0002,
-  Username,
-  Xp,
-  XpImage,
-  XpImage_0001,
-  XpBigImage,
-  Coins,
-  CoinImage,
-  CoinImage_0001,
-  CoinBgImage_0001,
-  CoinAmount_0001,
 } from "./PageElements";
 import { CircularProgress } from "@mui/material";
 import { UserContext } from "../components/UserProvider";
@@ -36,16 +20,23 @@ import fetch from "node-fetch";
 
 import "../App.css";
 
+// Creates leaderboard page and grabs all data to be used for it, including both a coins and XP leaderboard
 function Leaderboard() {
+  // Initializes useStates for coin data, XP data, and isCoin
   const [coinData, setCoinData] = useState(null);
   const [xpData, setXpData] = useState(null);
   const [isCoin, setIsCoin] = useState(true);
+
+  // Grabs userInfo from the backend
   const userInfo = useContext(UserContext);
+  // Sets username, xp, coins, and userData from userInfo
   const { username, xp, coins, userData } = userInfo;
 
+  // React hook used to grab both coin leaderboard and XP leaderboard data
   useEffect(() => {
     async function fetchData() {
       let response = null;
+      // If coin data is not yet initialized, fetch that data from the backend
       if (!coinData) {
         console.log("Fetching Coin Leaderboard...")
         response = await fetch(
@@ -55,6 +46,7 @@ function Leaderboard() {
         const json = await response.json();
         setCoinData(json);
       } 
+      // If XP data is not initialized, fetch that data from the backend
       if (!xpData) {
         console.log("Fetching Xp Leaderboard...")
         response = await fetch(
@@ -67,8 +59,13 @@ function Leaderboard() {
     fetchData();
   }, [isCoin]);
 
+  // Generate the leaderboard table, depending on whether or not isCoin is true
+  // If isCoin is true, get coin leaderboard, else, get XP leaderboard
   function generateTable() {
+    // Set data to either coinData or xpData depending on isCoin
     let data = isCoin ? coinData : xpData;
+
+    // Return the leaderboard table
     return (
       <tbody>
         <tr>
@@ -76,7 +73,9 @@ function Leaderboard() {
           <th>User</th>
           <th>{isCoin ? "Total Coins Earned" : "Total XP Used"}</th>
         </tr>
-        {data.slice(0, 10).map((val, key) => {
+        {
+          // Grab the first 10 leaderboard values, and display them with the rank and username
+        data.slice(0, 10).map((val, key) => {
           return (
             <tr key={key}>
               <td>{key + 1}</td>
@@ -89,7 +88,9 @@ function Leaderboard() {
     );
   }
 
+  // Creates the button to switch to view the coin leaderboard
   function getCoinButton() {
+    // If isCoin is true, display the coins tab as blue
     if (isCoin) {
       return (
         <CoinsEarnedTab onClick={() => setIsCoin(true)}>
@@ -98,6 +99,7 @@ function Leaderboard() {
         </CoinsEarnedTab>
       );
     }
+    // Display the XP tab as gray, because coins tab is blue
     return (
       <CoinsEarnedTab onClick={() => setIsCoin(true)}>
         <Underline style={{ backgroundColor: "rgb(128, 128, 128)" }} />
@@ -106,7 +108,9 @@ function Leaderboard() {
     );
   }
 
+  // Creates the button to switch to view the XP leaderboard
   function getXpButton() {
+    // If isCoin is true, make the all time xp used tab blue
     if (isCoin) {
       return (
         <XpUsedTab onClick={() => setIsCoin(false)}>
@@ -115,6 +119,7 @@ function Leaderboard() {
         </XpUsedTab>
       );
     }
+    // Display the coin tab as gray, because XP tab is blue
     return (
       <XpUsedTab onClick={() => setIsCoin(false)}>
         <Underline_0001 style={{ backgroundColor: "rgb(24, 120, 208)" }} />
@@ -123,10 +128,7 @@ function Leaderboard() {
     );
   }
 
-  function loading() {
-    return <CircularProgress />;
-  }
-
+  // Returns the entire leaderboard page, including the buttons and table
   return (
     <PageContents>
       <div className="bluebackground">

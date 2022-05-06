@@ -12,45 +12,33 @@ import {
   AllTimeXpUsed,
   ComposeMessageButton,
   XpUsedTab,
-  _000,
-  StatBar,
-  ProfilePic,
-  ProfileImage,
-  ProfileImage_0001,
-  ProfileImage_0002,
-  Username,
-  Xp,
-  XpImage,
-  XpImage_0001,
-  XpBigImage,
-  Coins,
-  CoinImage,
-  CoinImage_0001,
-  CoinBgImage_0001,
-  CoinAmount_0001,
-  MessagesTable,
 } from "./PageElements";
 import { CircularProgress } from "@mui/material";
 import { Modal } from "../components/Modal";
 import { UserContext } from "../components/UserProvider";
-import { useUserState } from "./Home";
-import { useBetween } from "use-between";
 import { ProfileBar } from "../components/ProfileBar";
 
-const username = "maxrad02";
-
+// Creates messages page and grabs all data that goes into it
 function Messages() {
+  // Initializes useStates for sentMessages, receivedMessages, and isReceived
   const [sentMessages, setSentMessages] = useState(null);
   const [receivedMessages, setReceivedMessages] = useState(null);
   const [isReceived, setIsReceived] = useState(true);
+
+  // Grabs userInfo from the backend
   const userInfo = useContext(UserContext);
+
+   // Sets username, xp, coins, and userData from userInfo
   const { username, xp, coins, userData } = userInfo;
 
+  // Sets the useState for modal to false, that way the modal doesn't pop up right away
   const [showModal, setShowModal] = useState(false);
 
+  // React hook used to grab data for both received and sent messages
   useEffect(() => {
     async function fetchData() {
       let response = null;
+      // If received messages is not fetched yet, grabs received messages from backend
       if (!receivedMessages) {
         console.log("Fetching Received Messages...");
         response = await fetch(
@@ -61,6 +49,7 @@ function Messages() {
         console.log(json);
         setReceivedMessages(json);
       }
+      // If sent messages is not fetched yet, grabs sent messages from backend
       if (!sentMessages) {
         console.log("Fetching Sent Messages...");
         response = await fetch(
@@ -74,11 +63,14 @@ function Messages() {
     fetchData();
   }, [isReceived, sentMessages]);
 
+  // If compose message modal is not open, open this modal
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
+  // Creates the button to switch to the received leaderboard
   function getReceivedButton() {
+    // If isReceived is true, make received tab blue
     if (isReceived) {
       return (
         <CoinsEarnedTab onClick={() => setIsReceived(true)}>
@@ -87,6 +79,7 @@ function Messages() {
         </CoinsEarnedTab>
       );
     }
+    // Make sent tab gray because received tab is in use
     return (
       <CoinsEarnedTab onClick={() => setIsReceived(true)}>
         <Underline style={{ backgroundColor: "rgb(128, 128, 128)" }} />
@@ -95,7 +88,9 @@ function Messages() {
     );
   }
 
+  // Creates the button to switch to the sent leaderboard
   function getSentButton() {
+    // If isReceived is false, make the tab gray
     if (isReceived) {
       return (
         <XpUsedTab onClick={() => setIsReceived(false)}>
@@ -104,6 +99,7 @@ function Messages() {
         </XpUsedTab>
       );
     }
+    // Make the sent tab blue because sent tab is in use
     return (
       <XpUsedTab onClick={() => setIsReceived(false)}>
         <Underline_0001 style={{ backgroundColor: "rgb(24, 120, 208)" }} />
@@ -112,8 +108,12 @@ function Messages() {
     );
   }
 
+  // Generates the table to display either sent or received messages
   function generateTable() {
+    // Set data to be either received or sent messages depending on isReceived
     let data = isReceived ? receivedMessages.data : sentMessages.data;
+
+    // Returns the table for either sent or received messages
     return (
       <tbody>
         <tr>
@@ -122,7 +122,9 @@ function Messages() {
           <th>Message</th>
           <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
         </tr>
-        {data.slice(0, 50).map((val, key) => {
+        {
+        // Grabs the first 50 messages, and display them with the time, sender/receipient, message, and value
+        data.slice(0, 50).map((val, key) => {
           const date = new Date(val.timeSent._seconds * 1000);
           return (
             <tr key={key}>
@@ -141,6 +143,7 @@ function Messages() {
     );
   }
 
+  // Returns the entire messages page, including table, buttons, and compose message button (and modal)
   return (
     <PageContents>
       <div className="bluebackground">
