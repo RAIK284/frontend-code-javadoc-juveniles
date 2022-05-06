@@ -7,6 +7,7 @@ import {
   GreyTrophyBox,
   ProfileSettingButton,
 } from "./PageElements";
+
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { TableBody, TableHead } from "@mui/material";
