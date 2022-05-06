@@ -30,6 +30,7 @@ import {
   getFormControlLabelUtilityClasses,
 } from "@mui/material";
 import { ShopItemModal } from "../components/Modal";
+import { ProfileBar } from "../components/ProfileBar";
 
 function Shop() {
   const userInfo = useContext(UserContext);
@@ -143,42 +144,7 @@ function Shop() {
           {trophyData ? displayTrophies() : loading()}
         </ContentBody>
         <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={"Basketball"} />
-
-        <StatBar>
-          <ProfilePic>
-            <ProfileImage>
-              <ProfileImage_0001>
-                <ProfileImage_0002
-                  src={"/Trophies/" + userData.avatar + ".png"}
-                  alt="image of ProfileImage"
-                />
-              </ProfileImage_0001>
-            </ProfileImage>
-            <Username>@{username}</Username>
-          </ProfilePic>
-          <Xp>
-            <XpImage>
-              <XpImage_0001>
-                <XpBigImage
-                  src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
-                  alt="image of XPcoin"
-                />
-              </XpImage_0001>
-            </XpImage>
-            <_000>{xp}</_000>
-          </Xp>
-          <Coins>
-            <CoinImage>
-              <CoinImage_0001>
-                <CoinBgImage_0001
-                  src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
-                  alt="image of CoinBgImage"
-                />
-              </CoinImage_0001>
-            </CoinImage>
-            <CoinAmount_0001>{coins}</CoinAmount_0001>
-          </Coins>
-        </StatBar>
+        <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
       </PageContents>
     </>
   );

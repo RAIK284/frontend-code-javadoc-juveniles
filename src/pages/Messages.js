@@ -35,6 +35,7 @@ import { Modal } from "../components/Modal";
 import { UserContext } from "../components/UserProvider";
 import { useUserState } from "./Home";
 import { useBetween } from "use-between";
+import { ProfileBar } from "../components/ProfileBar";
 
 const username = "maxrad02";
 
@@ -140,10 +141,6 @@ function Messages() {
     );
   }
 
-  function loading() {
-    return <CircularProgress />;
-  }
-
   return (
     <PageContents>
       <div className="bluebackground">
@@ -164,43 +161,9 @@ function Messages() {
             setSentMessages={setSentMessages}
           />
         </LeaderboardTabs>
-        {sentMessages && receivedMessages ? generateTable() : loading()}
+        {(sentMessages && receivedMessages) ? generateTable() : <CircularProgress />}
       </ContentBody>
-      <StatBar>
-        <ProfilePic>
-          <ProfileImage>
-            <ProfileImage_0001>
-              <ProfileImage_0002
-                src={"/Trophies/" + userData.avatar + ".png"}
-                alt="image of ProfileImage"
-              />
-            </ProfileImage_0001>
-          </ProfileImage>
-          <Username>@{username}</Username>
-        </ProfilePic>
-        <Xp>
-          <XpImage>
-            <XpImage_0001>
-              <XpBigImage
-                src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
-                alt="image of XpBigImage"
-              />
-            </XpImage_0001>
-          </XpImage>
-          <_000>{xp}</_000>
-        </Xp>
-        <Coins>
-          <CoinImage>
-            <CoinImage_0001>
-              <CoinBgImage_0001
-                src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
-                alt="image of CoinBgImage"
-              />
-            </CoinImage_0001>
-          </CoinImage>
-          <CoinAmount_0001>{coins}</CoinAmount_0001>
-        </Coins>
-      </StatBar>
+      <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
     </PageContents>
   );
 }
