@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../../firebase";
 import { auth } from "../../firebase";
 import "./SignIn.css";
 import { TextField } from '@mui/material';
@@ -34,21 +33,17 @@ const SignIn = () => {
   return (
     <div className="mt-8">
       <div className="smallback">
-
         <h1 className="text-3xl">Uplft</h1>
         <h2 className="spread">Spread positivity from anywhere.</h2>
         <div className="box">
           {error !== null && <div className="error">{error}</div>}
-          <form className="">
+          <form>
             <label htmlFor="userEmail" className="email">
               <TextField fullWidth id="userEmail" label="Email" variant="filled"
-                className="my-1"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <label htmlFor="userPassword" className="password">
-              <TextField fullWidth id="userPassword" label="Password" variant="filled"
-                className="mt-1"
-                type="password"
+              <TextField fullWidth id="userPassword" label="Password" variant="filled" type="password"
                 onChange={(event) => onChangeHandler(event)} />
             </label>
             <hr className="line1"></hr>
@@ -67,8 +62,8 @@ const SignIn = () => {
           </p>
 
         </div>
-        </div>
       </div>
+    </div>
   );
 };
 

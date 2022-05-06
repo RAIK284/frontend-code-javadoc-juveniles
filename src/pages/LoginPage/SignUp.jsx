@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signInWithGoogle, generateUserDocument } from "../../firebase";
+import { auth, generateUserDocument } from "../../firebase";
 import "./SignUp.css";
 import { TextField } from '@mui/material';
 

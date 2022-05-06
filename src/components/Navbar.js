@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData.js'
 import './Navbar.css';
@@ -8,18 +6,14 @@ import { IconContext } from 'react-icons';
 import "@fontsource/comfortaa";
 
 function Navbar() {
-    const [sidebar, setSidebar] = useState(true)
-
-    const showSidebar = () => setSidebar(!sidebar)
-
+    const [sidebar] = useState(true)
+    
     return (
         <>
-            <IconContext.Provider value={{ color: '#fff' }}>
-                <div className="navbar">
-                </div>
+            <IconContext.Provider value={{ color: '#ffff' }}>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
-                        <li className="navbar-toggle">
+                        <li>
                             <a className='title'>Uplft</a>
                         </li>
                         {SidebarData.map((item, index) => {
