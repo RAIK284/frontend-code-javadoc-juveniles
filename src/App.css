@@ -22,19 +22,6 @@ table {
 tbody{
   overflow-y: scroll;
 }
-
-/* allmessages_table {
-  display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: none;
-	gap: 0;
-	width: 1034px;
-  position: absolute;
-  top: 36px;
-} */
-
   
 th {
   text-align: left;

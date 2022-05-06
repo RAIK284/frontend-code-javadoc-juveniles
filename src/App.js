@@ -10,11 +10,8 @@ import Profile from './pages/Profile.js';
 import SignUp from './pages/LoginPage/SignUp';
 import SignIn from './pages/LoginPage/SignIn'
 import PasswordReset from './pages/LoginPage/PasswordReset';
-import firebase from "firebase/compat/app";
 import {auth} from './firebase';
-import fetch from "node-fetch";
 import UserProvider from './components/UserProvider';
-import { useAuthState } from "react-firebase-hooks/auth";
 
 function App() {
 

@@ -9,24 +9,16 @@
     font-weight: lighter;
     font-size: 96px;
     line-height: 107px;
-
     text-align: center;
-
     color: #2F5890;
-}
-
-.my-1 {
-    position: relative;
-    left: calc(50% - 468px/2);
-    top: calc(397px/2 - 54.5px);
 }
 
 .email {
     position: absolute;
     width: 400px;
     height: 68px;
-    left: calc(50% - 325px/2 - 1px);
-    top: calc(50% - 500px/2 - 54.5px);
+    left: calc(50% - 391px/2);
+    top: calc(200px/2 - 54.5px);
 }
 
 .password {
@@ -131,13 +123,11 @@
     height: 16px;
     left: 35px;
     top: 170px;
-
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     text-align: center;
-
     color: #B71C1C;
 }
 
