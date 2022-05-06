@@ -30,6 +30,7 @@ import {
 } from "./PageElements";
 import { CircularProgress } from "@mui/material";
 import { UserContext } from "../components/UserProvider";
+import { ProfileBar } from "../components/ProfileBar";
 
 import fetch from "node-fetch";
 
@@ -122,74 +123,26 @@ function Leaderboard() {
     );
   }
 
-  if (coinData && xpData) {
-    return (
-      <PageContents>
-        <div className="bluebackground">
-          <div className="whitebackground"></div>
-        </div>
-        <ContentBody>
-          <MainHeader>Leaderboard</MainHeader>
-          <LeaderboardTabs>
-            {getCoinButton()}
-            {getXpButton()}
-          </LeaderboardTabs>
-          {generateTable()}
-        </ContentBody>
-        <StatBar>
-          <ProfilePic>
-            <ProfileImage>
-              <ProfileImage_0001>
-                <ProfileImage_0002
-                  src={"/Trophies/" + userData.avatar + ".png"}
-                  alt="image of ProfileImage"
-                />
-              </ProfileImage_0001>
-            </ProfileImage>
-            <Username>@{username}</Username>
-          </ProfilePic>
-          <Xp>
-            <XpImage>
-              <XpImage_0001>
-                <XpBigImage
-                  src="https://image.shutterstock.com/image-vector/vector-icon-gold-achievement-xp-260nw-1151064896.jpg"
-                  alt="image of XpBigImage"
-                />
-              </XpImage_0001>
-            </XpImage>
-            <_000>{xp}</_000>
-          </Xp>
-          <Coins>
-            <CoinImage>
-              <CoinImage_0001>
-                <CoinBgImage_0001
-                  src="https://image.shutterstock.com/image-vector/vector-money-icon-gold-coin-260nw-1138554755.jpg"
-                  alt="image of CoinBgImage"
-                />
-              </CoinImage_0001>
-            </CoinImage>
-            <CoinAmount_0001>{coins}</CoinAmount_0001>
-          </Coins>
-        </StatBar>
-      </PageContents>
-    );
-  } else {
-    return (
-      <PageContents>
-        <div className="bluebackground">
-          <div className="whitebackground"></div>
-        </div>
-        <ContentBody>
-          <MainHeader>Leaderboard</MainHeader>
-          <LeaderboardTabs>
-            {getCoinButton()}
-            {getXpButton()}
-          </LeaderboardTabs>
-          <CircularProgress />
-        </ContentBody>
-      </PageContents>
-    );
+  function loading() {
+    return <CircularProgress />;
   }
+
+  return (
+    <PageContents>
+      <div className="bluebackground">
+        <div className="whitebackground"></div>
+      </div>
+      <ContentBody>
+        <MainHeader>Leaderboard</MainHeader>
+        <LeaderboardTabs>
+          {getCoinButton()}
+          {getXpButton()}
+        </LeaderboardTabs>
+        {(coinData && xpData) ? generateTable(): <CircularProgress/>}
+      </ContentBody>
+      <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
+    </PageContents>
+  );
 }
 
 export default Leaderboard;
