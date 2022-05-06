@@ -153,6 +153,7 @@ const Home = () => {
               <img
                 className="photoSize"
                 src={`/Trophies/${val}.png`}
+                alt={val}
               />
             </GreyTrophyBox>
           );
