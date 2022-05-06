@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
 import { UserContext } from "./UserProvider";
@@ -7,8 +7,6 @@ import graphic from "./LoginXP.png";
 import {
   TextField,
   Checkbox,
-  Switch,
-  FormGroup,
   FormControlLabel,
   FormControl,
   InputLabel,
@@ -16,6 +14,7 @@ import {
   Select,
 } from "@mui/material";
 
+// Displays background of modal, in order to gray out the background
 const Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -27,6 +26,7 @@ const Background = styled.div`
   justify-content: center;
 `;
 
+// Displays the white background of the modal
 const ModalWrapper = styled.div`
   position: relative;
   top: 120px;
@@ -36,6 +36,7 @@ const ModalWrapper = styled.div`
   border-radius: 6px;
 `;
 
+// Wrapper to contain the modal contents, so that padding and layout is correct
 const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,12 +49,14 @@ const ModalContent = styled.div`
   color: #555555;
 `;
 
+// Spacer to go between text/images/buttons in the modal
 const Spacer = styled.span`
   width: 50px;
   height: 24px;
   background: white;
 `;
 
+// Icon for the close button to be placed in top right of modal
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: relative;
@@ -64,6 +67,7 @@ const CloseModalButton = styled(MdClose)`
   padding: 0;
 `;
 
+// Button to send message tht a user creates
 const SendMessageButton = styled.button`
   color: white;
   position: relative;
@@ -77,7 +81,7 @@ const SendMessageButton = styled.button`
   cursor: pointer;
 `;
 
-// Profile modal
+// Button for apply settings in profile settings modal
 const ApplySettingsButton = styled.button`
   color: white;
   position: relative;
@@ -90,7 +94,7 @@ const ApplySettingsButton = styled.button`
   border-radius: 6px;
 `;
 
-// Log in modal
+// White background for the log-in bonus modal
 const LogInWrapper = styled.div`
   position: relative;
   top: 120px;
@@ -100,6 +104,7 @@ const LogInWrapper = styled.div`
   border-radius: 6px;
 `;
 
+// Styling for the XP photos in the log-in modal
 const PhotoSize = styled.div`
   background-image: url(${graphic});
   left: 100px;
@@ -108,12 +113,14 @@ const PhotoSize = styled.div`
   width: 450px;
 `;
 
+// Cointain the switch in the profile modal to switch settings
 const SwitchWrapper = styled.div`
   displau: flex;
   align-items: center;
   width: 650px;
 `;
 
+// White background for the profile settings modal
 const ProfileWrapper = styled.div`
   position: relative;
   top: 120px;
@@ -123,6 +130,7 @@ const ProfileWrapper = styled.div`
   border-radius: 6px;
 `;
 
+// Styling for the trophy image for most popular shop item modal
 const BasketballImage = styled.div`
   background-repeat: no-repeat;
   left: 160px;
@@ -132,6 +140,7 @@ const BasketballImage = styled.div`
   width: 280px;
 `;
 
+// Const to list each token with their values
 const tokens = [
   ["💯", 100],
   ["🍪", 20],
@@ -140,24 +149,35 @@ const tokens = [
   ["😎", 10],
 ];
 
+// Holds all data and the component for send message modal
 export const Modal = ({
   showModal,
   setShowModal,
   setSentMessages,
   setReceivedMessages,
 }) => {
+    // Initializes use states for successful send, successful recipient, helper text
+    // helperRecipientText, message, and recipient
   const [successfulSend, setSuccessfulSend] = useState(true);
   const [successfulRecipient, setSuccessfulRecipient] = useState(true);
   const [helperText, setHelperText] = useState("XP Used: 0");
   const [helperRecipientText, setHelperRecipientText] = useState("");
   const [message, setMessage] = useState("");
   const [recipient, setRecipient] = useState("");
+
+  // Grabs userInfo from the backend
   const userInfo = useContext(UserContext);
+
+  // Sets username, xp, coins, and userData from userInfo
   const { username, xp, coins, user, userData } = userInfo;
 
+  // Function that checks message for emojis, and for each emoji, updates the number of XP contained in the message
   function parseMessageForEmojis(message) {
+    // Initialize xpInMessage at 0 before the message is checked
     let xpInMessage = 0;
     console.log(message);
+    
+    // For each token parsed, update the xpInMessage value
     tokens.forEach((element) => {
       console.log(element);
       if (message.includes(element[0])) {
@@ -168,17 +188,22 @@ export const Modal = ({
     return xpInMessage;
   }
 
+  // Function that handles the sending of a message
   async function handleSubmit(xpInMessage) {
     console.log(user);
     setHelperRecipientText("");
     setSuccessfulRecipient(true);
     console.log("Attempting to Send Message Received Messages...");
+
+    // Creates message body using message data
     const body = {
       messageBody: message,
       recipientName: recipient,
       sender: username,
       numberOfCoins: xpInMessage,
     };
+
+    // Request that posts message to the backend
     const response = await fetch(
       "https://us-central1-uplft-9ed97.cloudfunctions.net/app/addMessage",
       {
@@ -189,7 +214,8 @@ export const Modal = ({
     );
     const json = await response.json();
     console.log(json);
-
+    
+    // If message sends correctly, update the sender's xp and the recipient's coins
     if (response.status == 200) {
       if (xpInMessage != 0) {
         const senderBody = {
@@ -197,6 +223,7 @@ export const Modal = ({
           xpUsed: userData.xpUsed + xpInMessage,
         };
         console.log(user);
+        // Updates sender's XP in backend
         await fetch(
           `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${user.uid}`,
           {
@@ -205,6 +232,7 @@ export const Modal = ({
             headers: { "Content-Type": "application/json" },
           }
         );
+        // Updates recipient's coins in backend
         const recipientDataResponse = await fetch(
           `https://us-central1-uplft-9ed97.cloudfunctions.net/app/getUserByUsername/${recipient}`
         );
@@ -223,6 +251,7 @@ export const Modal = ({
         );
         window.location.reload(false);
       }
+      // Closes the modal when message is sent
       setShowModal((prev) => !prev);
       setSentMessages(null);
       setReceivedMessages(null);
@@ -236,8 +265,10 @@ export const Modal = ({
     return 1;
   }
 
+  // Function used to perform input validation for message
   function loadButton() {
     let xpInMessage = parseMessageForEmojis(message);
+    // If the user does not have as much XP that is in the message, set successfulSend to false
     if (xp - xpInMessage < 0) {
       if (successfulSend) {
         setSuccessfulSend(false);
@@ -247,6 +278,7 @@ export const Modal = ({
         setHelperText(text);
       }
     } else {
+    // If user has enough XP to send message, allow the message to be sent
       if (!successfulSend) {
         setSuccessfulSend(true);
       }
@@ -255,6 +287,7 @@ export const Modal = ({
         setHelperText(text);
       }
     }
+    // Close modal if successful send occurs
     if (successfulSend) {
       return (
         <SendMessageButton onClick={() => handleSubmit(xpInMessage)}>
@@ -262,6 +295,7 @@ export const Modal = ({
         </SendMessageButton>
       );
     } else {
+        // Change style of send message to gray if message is unable to be sent
       return (
         <SendMessageButton
           style={{
@@ -276,14 +310,17 @@ export const Modal = ({
     }
   }
 
+  // Function to handle setting the message value
   function handleMessageChange(event) {
     setMessage(event.target.value);
   }
 
+  // Funtion to handle setting the recipient value
   function handleRecipientChange(event) {
     setRecipient(event.target.value);
   }
 
+  // Return the sendMessage modal component
   return (
     <>
       {showModal ? (
@@ -303,7 +340,6 @@ export const Modal = ({
                 error={!successfulRecipient}
               />
               <Spacer />
-
               <p>
                 Remember, emojis cost XP and can be used to sent coins to other
                 users. Type any of the below emojis into your message to send
@@ -332,31 +368,39 @@ export const Modal = ({
   );
 };
 
+// Holds all data and the component for the profile settings modal
 export const ProfileModal = ({
   showModal,
   setShowModal,
   pointsPublic,
   uid,
 }) => {
+  // Grabs userInfo from backend
   const userInfo = useContext(UserContext);
+  // Sets userData to be this fetched userInfo data
   const { userData } = userInfo;
 
+  // Initializes useStates for checked and avatarSet
   const [checked, setChecked] = React.useState(pointsPublic);
   const [avatarSet, setAvatarSet] = React.useState(userData.avatar);
 
+  // Function to handle setting a new item to be checked as avatar
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
+  // Function to handle changes in avatarset
   const handleAvatarChange = (event) => {
     setAvatarSet(event.target.value);
   };
 
+  // Function to handle submitting changes in profile
   const handleSubmit = async () => {
     const body = {
       pointsPublic: checked,
       avatar: avatarSet,
     };
+    // If user submits, update user information in the backend (privacy and avatar)
     const response = await fetch(
       `https://us-central1-uplft-9ed97.cloudfunctions.net/app/updateUser/${uid}`,
       {
@@ -372,10 +416,12 @@ export const ProfileModal = ({
     window.location.reload(false);
   };
 
+  // Ensures that only one of each trophy is an option for the user's avatar
   function onlyUniqueItems(value, index, self) {
     return self.indexOf(value) === index;
   }
 
+  // Returns the profile modal to be displayed in the profile page
   return (
     <>
       {showModal ? (
@@ -385,7 +431,6 @@ export const ProfileModal = ({
               <CloseModalButton onClick={() => setShowModal((prev) => !prev)} />
               <h1>Profile Settings</h1>
               <Spacer />
-
               <SwitchWrapper>
                 <FormControlLabel
                   control={
@@ -420,9 +465,7 @@ export const ProfileModal = ({
                   </Select>
                 </FormControl>
               </SwitchWrapper>
-
               <Spacer />
-
               <ApplySettingsButton onClick={() => handleSubmit()}>
                 Apply Settings
               </ApplySettingsButton>
@@ -434,12 +477,15 @@ export const ProfileModal = ({
   );
 };
 
+// Holds all data and the component for the log-in bonus modal
 export const LogInModal = ({ showModal, setShowModal }) => {
+    // Initializes useStaes for the modal
   const [checked, setChecked] = React.useState();
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
+  // Retuns the log-in bonus modal to be displayed in the home page
   return (
     <>
       {showModal ? (
@@ -465,9 +511,12 @@ export const LogInModal = ({ showModal, setShowModal }) => {
   );
 };
 
+// Holds all data and the component for the shop item mdoal modal
 export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
+  // Initializes useState for displaying the recent purchasers
   const [recentPurchasers, setRecentPurchasers] = React.useState(["loading"]);
 
+  // Fetches data from the backend fo the recently purchasers of a trophy
   React.useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -479,6 +528,7 @@ export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
     fetchData();
   }, [showModal]);
 
+  // Returns the modal to be displayed in the shop page.
   return (
     <>
       {showModal ? (

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+// Style that contains all page elements that are not the navBar, and gives it a light blue color
 export const PageContents = styled.div`
 	position: relative;
     left: 264px;
@@ -7,43 +8,7 @@ export const PageContents = styled.div`
 	height: 1024px;
     background-color: rgba(194, 229, 255, 1); `;
 
-export const RootWrapperHome = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: none;
-	gap: 36px;
-	box-sizing: border-box;
-    `;
-
-export const RootWrapperLeaderboard = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: none;
-	gap: 36px;
-	box-sizing: border-box;
-`;
-
-export const Background = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-items: flex-start;
-	flex: none;
-	gap: 10px;
-	width: 1500px;
-	height: 1024px;
-	background-color: rgba(194, 229, 255, 1);
-	box-sizing: border-box;
-	padding: 90px 35px 24px;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-`;
-
+// Diplays the white background on all pages
 export const WhiteBackground = styled.svg`
 	width: 1100px;
 	height: 910px;
@@ -51,6 +16,7 @@ export const WhiteBackground = styled.svg`
 
 `;
 
+// Holds the content body for items in the pages
 export const ContentBody = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -66,6 +32,7 @@ export const ContentBody = styled.div`
 	top: 114px;
 `;
 
+// Style for the text at the top of each page
 export const WelcomeText = styled.span`
 	color: rgba(64, 64, 64, 1);
 	text-overflow: ellipsis;
@@ -76,12 +43,14 @@ export const WelcomeText = styled.span`
 	width: 733px;
 `;
 
+// Container for trophies on the home page
 export const Trophies = styled.div`
 	width: 1034px;
 	height: 366px;
 	position: relative;
 `;
 
+// Container to hold background of trophy box in home page
 export const YourTrophies = styled.span`
 	color: rgba(85, 85, 85, 1);
 	text-overflow: ellipsis;
@@ -96,6 +65,7 @@ export const YourTrophies = styled.span`
 	height: 28px;
 `;
 
+// Holds each individual trophy in home page and allows user to scroll to see their trophies
 export const TrophyBox = styled.div`
 	height: 331px;
 	background-color: #EFEFEF;
@@ -107,26 +77,14 @@ export const TrophyBox = styled.div`
 	overflow-y: scoll;
 `;
 
+// Holds messages container in the home page
 export const Messages = styled.div`
 	width: 1034px;
 	height: 116px;
 	position: relative;
 `;
 
-export const RecentMessages = styled.span`
-	color: rgba(85, 85, 85, 1);
-	text-overflow: ellipsis;
-	font-size: 24px;
-	font-family: Roboto, sans-serif;
-	font-weight: 400;
-	text-align: left;
-	width: 193px;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	height: 28px;
-`;
-
+// Contains profile bar
 export const StatBar = styled.div`
 	width: 439px;
 	height: 36px;
@@ -135,6 +93,7 @@ export const StatBar = styled.div`
 	left: 654px;
 `;
 
+// Displays profile picture size on the top of each page
 export const ProfilePic = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -150,12 +109,14 @@ export const ProfilePic = styled.div`
 	top: 0px;
 `;
 
+// Displays pofile pictire at the top of each page
 export const ProfileImage = styled.div`
 	width: 36px;
 	height: 36px;
 	position: relative;
 `;
 
+// Displays image shape to be masked on top of stat bar
 export const ProfileImage_0001 = styled.div`
 	width: 36px;
 	height: 36px;
@@ -166,6 +127,7 @@ export const ProfileImage_0001 = styled.div`
 	border-radius: 18px;
 `;
 
+// Displays image on the stat bar
 export const ProfileImage_0002 = styled.img`
 	width: 47px;
 	height: 52px;
@@ -177,6 +139,7 @@ export const ProfileImage_0002 = styled.img`
 	top: -10px;
 `;
 
+// Holds the username text in stat bar
 export const Username = styled.span`
 	color: rgba(85, 85, 85, 1);
 	text-overflow: ellipsis;
@@ -187,6 +150,7 @@ export const Username = styled.span`
 	width: 151px;
 `;
 
+// Holds the XP text in the stat bar
 export const Xp = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -202,12 +166,14 @@ export const Xp = styled.div`
 	top: 0px;
 `;
 
+// Holds the XP image container
 export const XpImage = styled.div`
 	width: 36px;
 	height: 36px;
 	position: relative;
 `;
 
+// Contains shape of XP image to be masked on stat bar
 export const XpImage_0001 = styled.div`
 	width: 36px;
 	height: 36px;
@@ -218,6 +184,7 @@ export const XpImage_0001 = styled.div`
 	border-radius: 18px;
 `;
 
+// Contains actual image of XP icon
 export const XpBigImage = styled.img`
 	width: 48px;
 	height: 52px;
@@ -227,6 +194,7 @@ export const XpBigImage = styled.img`
 	top: -6px;
 `;
 
+// Holds coin amount text to be shown on stat bar
 export const _000 = styled.span`
 	color: rgba(85, 85, 85, 1);
 	text-overflow: ellipsis;
@@ -236,6 +204,7 @@ export const _000 = styled.span`
 	text-align: left;
 `;
 
+// Displays text of "Coins" on stat bar
 export const Coins = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -251,12 +220,14 @@ export const Coins = styled.div`
 	top: 0px;
 `;
 
+// Cointainer for coin amount and coin image
 export const CoinImage = styled.div`
 	width: 36px;
 	height: 36px;
 	position: relative;
 `;
 
+// Holds the shape for coin image to be masked
 export const CoinImage_0001 = styled.div`
 	width: 36px;
 	height: 36px;
@@ -267,6 +238,7 @@ export const CoinImage_0001 = styled.div`
 	border-radius: 18px;
 `;
 
+// Displays image for coin icon on stat bar
 export const CoinBgImage_0001 = styled.img`
 	width: 48px;
 	height: 52px;
@@ -276,6 +248,7 @@ export const CoinBgImage_0001 = styled.img`
 	top: -6px;
 `;
 
+// Shows coin amount to be displayed on stat bar
 export const CoinAmount_0001 = styled.span`
 	color: rgba(85, 85, 85, 1);
 	text-overflow: ellipsis;
@@ -285,8 +258,7 @@ export const CoinAmount_0001 = styled.span`
 	text-align: left;
 `;
 
-
-//Shop
+// Holds trophy items in the shop 
 export const GreyTrophyBox = styled.div`
 	padding: 15px 15px;	
 	height: 273px;
@@ -298,7 +270,7 @@ export const GreyTrophyBox = styled.div`
 	background: #EFEFEF
 `;
 
-
+// Style for the main text at the top of the page
 export const MainHeader = styled.span`
 	color: rgb(64, 64, 64);
 	text-overflow: ellipsis;
@@ -309,8 +281,7 @@ export const MainHeader = styled.span`
 	width: 733px;
 `;
 
-
-// Leaderboard
+// Container to hold both leaderboard tabs
 export const LeaderboardTabs = styled.div`
 	display: flex;
 	justify-content: flex-start;
@@ -319,9 +290,9 @@ export const LeaderboardTabs = styled.div`
 	flex: none;
 	gap: 24px;
 	box-sizing: border-box;
-
 `;
 
+// Style to show the group of coins earned text and underline
 export const CoinsEarnedTab = styled.div`
 	width: 280px;
 	height: 29px;
@@ -329,6 +300,7 @@ export const CoinsEarnedTab = styled.div`
 	cursor: pointer;
 `;
 
+// Underline for coins earned tab
 export const Underline = styled.div`
 	width: 280px;
 	height: 3px;
@@ -338,6 +310,7 @@ export const Underline = styled.div`
 	top: 26px;
 `;
 
+// Coins earned tab text
 export const AllTimeCoinsEarned = styled.span`
 	color: rgb(24, 120, 208);
 	text-overflow: ellipsis;
@@ -351,6 +324,7 @@ export const AllTimeCoinsEarned = styled.span`
 	top: 0px;
 `;
 
+// Style for the grouping of XP used tab and underline
 export const XpUsedTab = styled.div`
 	width: 250px;
 	height: 29px;
@@ -358,6 +332,7 @@ export const XpUsedTab = styled.div`
 	cursor: pointer;
 `;
 
+// XP used underline
 export const Underline_0001 = styled.svg`
 	position: absolute;
 	width: 214px;
@@ -367,6 +342,7 @@ export const Underline_0001 = styled.svg`
 	background: #808080;
 `;
 
+// Text for XP used tab
 export const AllTimeXpUsed = styled.span`
 	color: rgb(128, 128, 128);
 	text-overflow: ellipsis;
@@ -380,6 +356,7 @@ export const AllTimeXpUsed = styled.span`
 	top: 0px;
 `;
 
+// Button to compose message in messages page
 export const ComposeMessageButton = styled.button`
 	color: white;
 	position: absolute;
@@ -394,6 +371,7 @@ export const ComposeMessageButton = styled.button`
 	cursor: pointer;
 `;
 
+// Button for profile settings in profile page
 export const ProfileSettingButton = styled.button`
 	position:relative;
 	width: 200px;
