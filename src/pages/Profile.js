@@ -50,7 +50,9 @@ function Profile() {
                 />
                 <div className="space" />
                 <ProfileSettingButton onClick={openModal}>
-                  Profile Settings
+                    <div className="profileText">
+                    Profile Settings
+                    </div>
                 </ProfileSettingButton>
                 <div className="space" />
                 <button
