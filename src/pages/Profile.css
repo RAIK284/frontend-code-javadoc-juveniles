@@ -1,4 +1,4 @@
-/* Split the screen in half */
+/* Divides the screen into 30% to fit the formatting */
 .splitLeft {
   height: 100%;
   width: 30%;
@@ -9,6 +9,7 @@
   left: 0;
 }
 
+/* Takes 70% of the screen on the right side to create the two sides of the profile page, the profile and then the trophies*/
 .splitRight {
   height: 910px;
   width: 70%;
@@ -19,6 +20,7 @@
   right: 0;
 }
 
+/* Formats a profile image into a circle with the correct dimensions*/
 .profileImage {
   height: 300px;
   width: 300px;
@@ -28,6 +30,7 @@
   border-radius: 50%;
 }
 
+/* Provides the size and font of the wording for the users username on the profile page. This is seen in the top left corner under the header*/
 .userNameText {
   position: relative;
   width: 133x;
@@ -42,6 +45,8 @@
   color: #000000;
 }
 
+/* Is sued to position all the elements contained within the space. 
+Provides the correct margins and spacing for elemetns inside of the white box*/
 .wrapperProfile {
   display: flex;
   justify-content: flex-start;
@@ -57,6 +62,7 @@
   padding-top: 50px;
 }
 
+/* Is the font, size, and color for the header of the page*/
 .mainTitle {
   color: rgb(64, 64, 64);
   text-overflow: ellipsis;
@@ -82,81 +88,89 @@
   border-radius: 50%;
 }
 
+/*Is the styled componenet for the button under the profile image.*/
 .profileSettingButton {
   position: relative;
   width: 200px;
   height: 36px;
   padding-top: 5px;
   background: white;
-  border: 2px solid #2F5890;
+  border: 2px solid #2f5890;
   box-sizing: border-box;
   border-radius: 6px;
   padding-bottom: 10px;
 }
 
+/* Rather than using padding, this functions as a space to create a more visual apperance*/
 .space {
   width: 199.68px;
   height: 14.82px;
 }
 
+/* This is the size and font of the wording that goes inside the profile settings button*/
 .profileText {
   position: relative;
   width: 199.68px;
   height: 14.82px;
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
   padding-bottom: 10px;
-  color: #2F5890;
+  color: #2f5890;
 }
 
+/* Creates the button for the logout function of the app. Has the border width and color attached*/
 .logoutButton {
   position: relative;
   width: 200px;
   height: 36px;
   padding-top: 5px;
   background: white;
-  border: 2px solid #B71C1C;
+  border: 2px solid #b71c1c;
   box-sizing: border-box;
   border-radius: 6px;
   padding-bottom: 10px;
 }
 
+/* This creates the red text that goes inside the red logout button*/
 .logoutText {
   position: relative;
   width: 199.68px;
   height: 14.82px;
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
   padding-bottom: 10px;
-  color: #B71C1C;
+  color: #b71c1c;
 }
 
+/* Is the grey box that holds the users trophies on the profile page*/
 .shopBox {
   position: relative;
   width: 655px;
   height: 336px;
-  background-color: #EFEFEF;
+  background-color: #efefef;
 
   border-radius: 6px;
   box-sizing: border-box;
 }
 
+/* Holds in the componenets of the right side of the page by creating the margins*/
 .wrapperRight {
   padding-top: 90px;
   padding-left: 50px;
   padding-bottom: 10px;
 }
 
+/* Holds in the items using a grid template to make sure that the spacing is correct*/
 .trophyWrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
