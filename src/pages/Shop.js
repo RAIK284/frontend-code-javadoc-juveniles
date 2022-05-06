@@ -119,11 +119,6 @@ function Shop() {
     );
   }
 
-  // Used when any aspect of the page is slow to load
-  function loading() {
-    return <CircularProgress />;
-  }
-
   return (
     <>
       <PageContents>
@@ -132,7 +127,7 @@ function Shop() {
         </div>
         <ContentBody>
           <MainHeader>Shop</MainHeader>
-          {trophyData ? displayTrophies() : loading()}
+          {trophyData ? displayTrophies() : <CircularProgress />}
         </ContentBody>
         <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={trophyData ? trophyData[0].name: ""} />
         <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
