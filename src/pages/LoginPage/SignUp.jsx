@@ -4,6 +4,7 @@ import { auth, generateUserDocument } from "../../firebase";
 import "./SignUp.css";
 import { TextField } from '@mui/material';
 
+/* this is the file that controls the sign-up page and its functionality with the layout*/
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +13,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  /* this checks if the email, username, and password are valid or it shoots an error */
   const createUserWithEmailAndPasswordHandler = async (event, email, password, username) => {
     event.preventDefault();
     try {
@@ -29,6 +31,7 @@ const SignUp = () => {
     setUsername("");
   };
 
+  /* this sets the name, password, and the username that the user enters */
   const onChangeHandler = event => {
     const name = event.currentTarget.id;
     const value = event.currentTarget.value;
@@ -43,56 +46,54 @@ const SignUp = () => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="sidebars">
       <div className="smallback">
-        <h1 className="text-3xl mb-2 text-center font-bold">Uplft</h1>
+        <h1 className="title">Uplft</h1>
         <h2 className="spread">Spread positivity from anywhere.</h2>
-        <div className="border border-white mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-          <form className="boxup">
-            {error !== null && (
-              <div className="signuperror">
-                {error}
-              </div>
-            )}
-            <label htmlFor="userName" className="name">
-              <TextField fullWidth id="userName" label="Username" variant="filled"
-                className="my-1"
-                onChange={(event) => onChangeHandler(event)} />
-            </label>
-            <label htmlFor="userEmail" className="emailup">
-              <TextField fullWidth id="userEmail" label="Email" variant="filled"
-                className="my-1"
-                onChange={(event) => onChangeHandler(event)} />
-            </label>
-            <label htmlFor="userPassword" className="uppassword">
-              <TextField fullWidth id="userPassword" label="Password" variant="filled"
-                className="mt-1"
-                type="password"
-                onChange={(event) => onChangeHandler(event)} />
-            </label>
-            <button
-              className="signUp"
-              onClick={event => {
-                createUserWithEmailAndPasswordHandler(event, email, password, username);
-                navigate("/");
-              }}
-            >
-              Sign up
-            </button>
-            <p className="requirements">
-              Passwords must be at least 8 characters long and include: <br></br>
-              An uppercase character<br></br>
-              A number<br></br>
-              At least one special character
-            </p>
-            <p className="upaccount">
-              Already have an account? &nbsp;
-              <Link to="/" className="text-blue-500 hover:text-blue-600">
-                Sign in here
-              </Link>{" "}
-            </p>
-          </form>
-        </div>
+        <form className="boxup">
+          {error !== null && (
+            <div className="signuperror">
+              {error}
+            </div>
+          )}
+          {/* fillable text boxes for signup credentials */}
+          <label htmlFor="userName" className="name">
+            <TextField fullWidth id="userName" label="Username" variant="filled"
+              onChange={(event) => onChangeHandler(event)} />
+          </label>
+          <label htmlFor="userEmail" className="emailup">
+            <TextField fullWidth id="userEmail" label="Email" variant="filled"
+              onChange={(event) => onChangeHandler(event)} />
+          </label>
+          <label htmlFor="userPassword" className="uppassword">
+            <TextField fullWidth id="userPassword" label="Password" variant="filled"
+              type="password"
+              onChange={(event) => onChangeHandler(event)} />
+          </label>
+          {/* clicking this button will check with the database if the credentials are valid to create a user*/}
+          <button
+            className="signUp"
+            onClick={event => {
+              createUserWithEmailAndPasswordHandler(event, email, password, username);
+              navigate("/");
+            }}
+          >
+            Sign up
+          </button>
+          <p className="requirements">
+            Passwords must be at least 8 characters long and include: <br></br>
+            An uppercase character<br></br>
+            A number<br></br>
+            At least one special character
+          </p>
+          {/* link to the sign in page */}
+          <p className="upaccount">
+            Already have an account? &nbsp;
+            <Link to="/" className="text-blue-500 hover:text-blue-600">
+              Sign in here
+            </Link>{" "}
+          </p>
+        </form>
       </div>
     </div>
   );

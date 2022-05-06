@@ -1,4 +1,5 @@
-.text-3xl {
+/* this controls the title "Uplft" at the top of the page */
+.title {
     position: absolute;
     width: 469px;
     height: 107px;
@@ -9,28 +10,20 @@
     font-weight: lighter;
     font-size: 96px;
     line-height: 107px;
-
     text-align: center;
-
     color: #2F5890;
 }
 
-.my-1 {
-    position: relative;
-    left: calc(50% - 468px/2);
-    top: calc(397px/2 - 54.5px);
-}
-
-
+/* this controls the fillable text box for the email */
 .emailup {
     position: absolute;
     width: 400px;
     height: 68px;
-    left: calc(50% - 325px/2 - 1px);
-    top: calc(50% - 600px/2 - 54.5px);
+    left: calc(50% - 400px/2 - 1px);
+    top: calc(50% - 300px/2 - 54.5px);
 }
 
-
+/* this controls the fillable text box for the password */
 .password {
     position: absolute;
     width: 400px;
@@ -40,15 +33,16 @@
 
 }
 
-.mt-8 {
+/* this controls the two gradient sidebars/background of the page */
+.sidebars {
     position: absolute;
     width: 100%;
     height: 100%;
     background: linear-gradient(-180deg, rgba(48, 87, 144, 1), rgba(47, 145, 174, 1))
 }
 
+/* this controls the smaller blue box in the middle of the two sidebars */
 .smallback {
-
     position: absolute;
     left: 20.83%;
     right: 20.83%;
@@ -58,16 +52,7 @@
 
 }
 
-.block {
-    position: relative;
-    width: 468px;
-    height: 397px;
-    left: calc(50% - 468px/2);
-    top: calc(397px/2 - 54.5px);
-    color: #FFFFFF;
-
-}
-
+/* this controls the white box containing the log in credentials */
 .boxup {
 
     position: absolute;
@@ -75,11 +60,11 @@
     height: 500px;
     left: calc(50% - 468px/2);
     top: calc(50% - 397px/2 - 54.5px);
-
     background: #FFFFFF;
     border-radius: 12px;
 }
 
+/* this controls Uplft's slogan "Spread positivty from anywhere." */
 .spread {
     font-family: 'Arial';
     position: absolute;
@@ -93,6 +78,7 @@
     top: calc(21% - 54.5px);
 }
 
+/* this controls the question of if the user has an account and it leads them to the sign-in page */
 .upaccount {
     position: absolute;
     width: 354px;
@@ -102,6 +88,7 @@
     padding: 15px 32px;
 }
 
+/* this controls the sign up button */
 .signUp {
     position: absolute;
     width: 400px;
@@ -118,53 +105,50 @@
     padding: 15px 32px;
 }
 
+/* this controls the fillable text box for the username */
 .name {
     position: absolute;
     width: 400px;
     height: 68px;
-    left: calc(50% - 325px/2 - 1px);
-    top: calc(50% - 500px/2 - 35.5px);
+    left: calc(50% - 400px/2 - 1px);
+    top: calc(50% - 200px/2 - 35.5px);
 }
 
+/* this controls the fillable text box for the password */
 .uppassword {
     position: absolute;
     width: 400px;
     height: 68px;
-    left: calc(50% - 390px/2 - 1px);
-    top: calc(50% - 125px/2 - 10.5px);
+    left: calc(50% - 400px/2 - 1px);
+    top: calc(50% - 115px/2 - 10.5px);
 }
 
+/* this controls the error message if the user is unable to make an account with the credentials entered */
 .signuperror {
     position: absolute;
     width: 300px;
     height: 16px;
     left: 16px;
     top: 360px;
-
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     text-align: center;
-
     color: #B71C1C;
 }
 
+/* this controls the password requirements listed in the sign up modal */
 .requirements {
-
     position: absolute;
     width: 466px;
     height: 21px;
     left: 42px;
     top: 257px;
-
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 21px;
-
-
-
     color: #555555;
 
 }

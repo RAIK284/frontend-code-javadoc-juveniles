@@ -1,8 +1,9 @@
-.text-3xl {
+/* this controls the title "Uplft" at the top of the page */
+.title {
     position: absolute;
     width: 469px;
     height: 107px;
-    left: calc(50% - 432px/2);
+    left: calc(50% - 450px/2);
     top: calc(50% - 790px/2 - 54.5px);
     font-family: 'Comfortaa';
     font-style: normal;
@@ -13,6 +14,7 @@
     color: #2F5890;
 }
 
+/* this controls the fillable text box for the email */
 .email {
     position: absolute;
     width: 400px;
@@ -21,6 +23,7 @@
     top: calc(200px/2 - 54.5px);
 }
 
+/* this controls the fillable text box for the password */
 .password {
     position: absolute;
     width: 400px;
@@ -30,15 +33,16 @@
 
 }
 
-.mt-8 {
+/* this controls the two gradient sidebars/background of the page */
+.sidebars {
     position: absolute;
     width: 100%;
     height: 100%;
     background: linear-gradient(-180deg, rgba(48, 87, 144, 1), rgba(47, 145, 174, 1))
 }
 
+/* this controls the smaller blue box in the middle of the two sidebars */
 .smallback {
-
     position: absolute;
     left: 20.83%;
     right: 20.83%;
@@ -48,16 +52,7 @@
 
 }
 
-.block {
-    position: relative;
-    width: 468px;
-    height: 397px;
-    left: calc(50% - 468px/2);
-    top: calc(397px/2 - 54.5px);
-    color: #FFFFFF;
-
-}
-
+/* this controls the white box containing the log in credentials */
 .box {
 
     position: absolute;
@@ -65,11 +60,11 @@
     height: 397px;
     left: calc(50% - 468px/2);
     top: calc(50% - 397px/2 - 54.5px);
-
     background: #FFFFFF;
     border-radius: 12px;
 }
 
+/* this controls Uplft's slogan "Spread positivty from anywhere." */
 .spread {
     font-family: 'Arial';
     position: absolute;
@@ -83,6 +78,7 @@
     top: calc(21% - 54.5px);
 }
 
+/* this controls the question of if the user doens't have an account and it leads them to the sign-up page */
 .account {
     display: flex;
     flex-direction: row;
@@ -97,7 +93,7 @@
     top: 352px;
 }
 
-
+/* this controls the login button */
 .login {
 
     position: absolute;
@@ -116,6 +112,7 @@
 
 }
 
+/* this controls the error message if the login credentials were entered incorrectly */
 .error {
 
     position: absolute;
@@ -131,6 +128,7 @@
     color: #B71C1C;
 }
 
+/* this controls the "or" in the login modal */
 .ortag {
 
     position: absolute;
@@ -143,6 +141,7 @@
 
 }
 
+/* this controls the first horizontal line before the  "or" in the login modal */
 .line1 {
 
     width: 30%;
@@ -156,6 +155,7 @@
 
 }
 
+/* this controls the second horizontal line after the  "or" in the login modal */
 .line2 {
     width: 30%;
     position: absolute;
