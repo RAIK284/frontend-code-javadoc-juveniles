@@ -108,7 +108,7 @@ const Home = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [userInfo]);
 
   function generateTable() {
     let data = receivedMessages.data;
@@ -150,6 +150,7 @@ const Home = () => {
               <img
                 className="photoSize"
                 src={`/Trophies/${val}.png`}
+                alt={val}
               />
             </GreyTrophyBox>
           );
@@ -176,7 +177,7 @@ const Home = () => {
               {generateTrophies()}
             </TrophyBox>
           </Trophies>
-          <Messages>{receivedMessages ? generateTable() : <CircularProgress />}</Messages>
+          <Messages>{(receivedMessages && receivedMessages.data) ? generateTable() : <CircularProgress />}</Messages>
         </ContentBody>
         <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
       </PageContents>

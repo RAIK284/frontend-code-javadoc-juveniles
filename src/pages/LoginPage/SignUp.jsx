@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithGoogle, generateUserDocument } from "../../firebase";
 import "./SignUp.css";
 import { TextField } from '@mui/material';
@@ -10,11 +10,15 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+
   const createUserWithEmailAndPasswordHandler = async (event, email, password, username) => {
     event.preventDefault();
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { username });
+      console.log("new user:", user);
+      await generateUserDocument(user, { username });
+      window.location.reload(false);
     }
     catch (error) {
       setError('Error signing up with email and password');
@@ -70,6 +74,7 @@ const SignUp = () => {
               className="signUp"
               onClick={event => {
                 createUserWithEmailAndPasswordHandler(event, email, password, username);
+                navigate("/");
               }}
             >
               Sign up

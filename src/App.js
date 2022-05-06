@@ -54,7 +54,7 @@ function App() {
           <Route path='/passwordreset' element={< PasswordReset />} />
         </Routes>
       </Router>
-    ) : <div>Loading...</div>
+    ) : <div></div>
     }
     </UserProvider>
   );
