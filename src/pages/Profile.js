@@ -3,28 +3,10 @@ import "./Profile.css";
 import "./AllPages.css";
 import {
   PageContents,
-  StatBar,
-  ProfilePic,
-  ProfileImage,
-  ProfileImage_0001,
-  ProfileImage_0002,
-  Username,
-  Xp,
-  XpImage,
-  XpImage_0001,
-  XpBigImage,
   _000,
   GreyTrophyBox,
-  Coins,
-  CoinImage,
-  CoinImage_0001,
-  CoinBgImage_0001,
-  CoinAmount_0001,
   ProfileSettingButton,
 } from "./PageElements";
-import watermelon from "../Trophies/Watermelon.png";
-import { useUserState } from "./Home";
-import { useBetween } from "use-between";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { TableBody, TableHead } from "@mui/material";
@@ -32,6 +14,7 @@ import { UserContext } from "../components/UserProvider";
 import { ProfileModal } from "../components/Modal";
 import { ProfileBar } from "../components/ProfileBar";
 
+// Pulls the backend infromation that holds the different aspects of the profile.
 function Profile() {
   const userInfo = useContext(UserContext);
   const { username, xp, coins, userData } = userInfo;
@@ -43,6 +26,10 @@ function Profile() {
     setShowModal((prev) => !prev);
   };
 
+  /*This is the style and functionality of the home page. 
+  The profile page is split into the left and right side with the componenet splitLeft on line 39. 
+  The functionality is preforms with the function created above that deals with the backend endpoints
+  */
   return (
     <>
       <PageContents>
@@ -52,7 +39,14 @@ function Profile() {
               <div class="splitLeft">
                 <div class="mainTitle">Profile</div>
                 <div class="userNameText">@{username}</div>
-                <img className="photoSize" src={userData.avatar ? "/Trophies/" + userData.avatar + ".png" : ""} />
+                <img
+                  className="photoSize"
+                  src={
+                    userData.avatar
+                      ? "/Trophies/" + userData.avatar + ".png"
+                      : ""
+                  }
+                />
                 <div className="space" />
                 <ProfileSettingButton onClick={openModal}>
                   Profile Settings
@@ -116,7 +110,12 @@ function Profile() {
             </div>
           </div>
         </div>
-        <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
+        <ProfileBar
+          userData={userData}
+          username={username}
+          xp={xp}
+          coins={coins}
+        />
       </PageContents>
     </>
   );
