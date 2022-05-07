@@ -1,6 +1,5 @@
-/* Rectangle 1 */
-
-
+/*Used to hold all of the elements in the correct spot on the page. 
+Needed to use the grid format to have four shop items in a line*/
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -8,9 +7,9 @@
   row-gap: 1em;
 }
 
+/* Text for the heading on the shop page. Used the same font and size as other headers 
+but created this do to the wrapper used on the shop */
 .shopTitle {
-  /* Shop */
-
   position: absolute;
   width: 733px;
   height: 42px;
@@ -26,8 +25,10 @@
   color: #404040;
 }
 
-*/ .trophyName {
-  position: absolute;
+/*Used the same font but different size and height for the name of the trophy. 
+This is used in the grid pattern to display the name in the top left corner*/
+ .trophyName {
+  position: relative;
   width: 199.68px;
   height: 14.82px;
 
@@ -40,6 +41,7 @@
   color: #000000;
 }
 
+/*Used to display the trophy image. Creates the right size for the grid and the box type*/
 .photoSize {
   height: 175px;
   width: 175px;
@@ -48,7 +50,7 @@
   padding-top: 10px;
 }
 
-/* Group 50 */
+/* The style for the blue button that is located n each of the trophies if you have enough coins. */
 .blueBuyButton {
   position: relative;
   width: 200px;
@@ -61,7 +63,7 @@
   cursor: pointer;
 }
 
-/* Buy 40 */
+/* The white text that is displayed on top of the blue button to show how much the coins are worth*/
 .buybuttonwords {
   position: relative;
   width: 199.68px;
@@ -77,6 +79,7 @@
   color: #FFFFFF;
 }
 
+/*Similar to the blue button. This created the grey button that is used when the user doesn't have enough coins to purchase the trophy*/
 .ownedButton {
   position: relative;
   width: 200px;
@@ -87,6 +90,7 @@
   border-radius: 6px;
 }
 
+/* The grey text that is displayed on top of the grey button to say that the user doesn't have enough coins to purchase this token*/
 .ownbuttonwords {
   position: relative;
   width: 199.68px;
@@ -102,6 +106,7 @@
   color: #808080;
 }
 
+/*This component is used to place the buttons in the middle of each of the grey boxes*/
 .center {
   position: relative;
   top: 5%;
@@ -110,6 +115,7 @@
   font-size: 18px;
 }
 
+/*Sizes the medal icon used to show the most purchased item in the class*/
 .bestItem {
   height: 55px;
   width: 42px;
@@ -119,6 +125,7 @@
   cursor: pointer;
 }
 
+/*Used to place the award icon in the right location of the grey box*/
 .topRight {
   position: absolute;
   left: 17%;

@@ -4,30 +4,12 @@ import "./AllPages.css";
 import {
   PageContents,
   ContentBody,
-  StatBar,
-  ProfilePic,
-  ProfileImage,
-  ProfileImage_0001,
-  ProfileImage_0002,
-  Username,
-  Xp,
-  XpImage,
-  XpImage_0001,
-  XpBigImage,
   _000,
   GreyTrophyBox,
-  Coins,
-  CoinImage,
-  CoinImage_0001,
-  CoinBgImage_0001,
-  CoinAmount_0001,
   MainHeader,
 } from "./PageElements";
 import { UserContext } from "../components/UserProvider";
-import {
-  CircularProgress,
-  getFormControlLabelUtilityClasses,
-} from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { ShopItemModal } from "../components/Modal";
 import { ProfileBar } from "../components/ProfileBar";
 
@@ -37,6 +19,7 @@ function Shop() {
   const [trophyData, setTrophyData] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  // Pulls the trophy data from the backend including the image url, image name, and cost of the trophy
   useEffect(() => {
     async function fetchData() {
       let response = null;
@@ -53,26 +36,30 @@ function Shop() {
     fetchData();
   }, []);
 
+  // A catch all for not buying a trophy if you don't have enough coinsF
   async function buyTrophy(cost, name) {
     if (coins < cost) {
       alert("You don't have enough coins!");
       return;
     }
-    // call buy trophy endpoint
+
+    // calls buy trophy endpoint to sync the front end to the backend
     const trophyBody = {
       name: name,
-    }
+    };
     const trophyResponse = await fetch(
-      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/buyTrophy/" + username,
+      "https://us-central1-uplft-9ed97.cloudfunctions.net/app/buyTrophy/" +
+        username,
       {
         method: "POST",
         body: JSON.stringify(trophyBody),
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
       }
     );
     const json = await trophyResponse.json();
     console.log(json);
-    // subtract coins from user
+
+    // Calculates and handles the backend proccess of buying and item by subtracting coins from user
     const body = {
       currentCoins: coins - cost,
     };
@@ -84,10 +71,11 @@ function Shop() {
         headers: { "Content-Type": "application/json" },
       }
     );
-    console.log(response)
+    console.log(response);
     window.location.reload(false);
   }
 
+  // Runs through the cost of items and determine if the user can purcahse and item or not
   function showCorrectButton(cost, name) {
     if (coins - cost >= 0) {
       return (
@@ -108,6 +96,7 @@ function Shop() {
     setShowModal((prev) => !prev);
   };
 
+  // Function to display each trophy while pulling data from the backend such as the cost and the picture of the item
   function displayTrophies() {
     let data = trophyData;
     return (
@@ -117,7 +106,9 @@ function Shop() {
             <GreyTrophyBox>
               <div className="trophyName">{val.name}</div>
               <img className="photoSize" src={`/Trophies/${val.name}.png`} />
-              <div className="center">{showCorrectButton(val.cost, val.name)}</div>
+              <div className="center">
+                {showCorrectButton(val.cost, val.name)}
+              </div>
             </GreyTrophyBox>
           );
         })}
@@ -128,10 +119,6 @@ function Shop() {
     );
   }
 
-  function loading() {
-    return <CircularProgress />;
-  }
-
   return (
     <>
       <PageContents>
@@ -140,7 +127,7 @@ function Shop() {
         </div>
         <ContentBody>
           <MainHeader>Shop</MainHeader>
-          {trophyData ? displayTrophies() : loading()}
+          {trophyData ? displayTrophies() : <CircularProgress />}
         </ContentBody>
         <ShopItemModal showModal ={showModal} setShowModal={setShowModal} trophyName={trophyData ? trophyData[0].name: ""} />
         <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
