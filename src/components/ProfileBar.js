@@ -18,6 +18,7 @@ import {
   CoinAmount_0001,
 } from "../pages/PageElements";
 
+// This file takes care of the status bar at the top of the page with the user's username, current XP, and current coins
 export const ProfileBar = ({userData, username, xp, coins}) => {
   return (
     <StatBar>
