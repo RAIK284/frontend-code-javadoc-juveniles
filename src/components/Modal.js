@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { MdClose } from "react-icons/md";
 import { UserContext } from "./UserProvider";
-
+import { loadButton } from "../pages/Logic";
 import graphic from "./LoginXP.png";
 import {
   TextField,
@@ -67,20 +67,6 @@ const CloseModalButton = styled(MdClose)`
   padding: 0;
 `;
 
-// Button to send message tht a user creates
-const SendMessageButton = styled.button`
-  color: white;
-  position: relative;
-  width: 225px;
-  height: 36px;
-  left: 200px;
-  background: #2295ff;
-  border: 2px solid rgba(34, 149, 255, 0.5);
-  box-sizing: border-box;
-  border-radius: 6px;
-  cursor: pointer;
-`;
-
 // Button for apply settings in profile settings modal
 const ApplySettingsButton = styled.button`
   color: white;
@@ -140,15 +126,6 @@ const BasketballImage = styled.div`
   width: 280px;
 `;
 
-// Const to list each token with their values
-const tokens = [
-  ["💯", 100],
-  ["🍪", 20],
-  ["😊", 3],
-  ["🎁", 5],
-  ["😎", 10],
-];
-
 // Holds all data and the component for send message modal
 export const Modal = ({
   showModal,
@@ -156,8 +133,8 @@ export const Modal = ({
   setSentMessages,
   setReceivedMessages,
 }) => {
-    // Initializes use states for successful send, successful recipient, helper text
-    // helperRecipientText, message, and recipient
+  // Initializes use states for successful send, successful recipient, helper text
+  // helperRecipientText, message, and recipient
   const [successfulSend, setSuccessfulSend] = useState(true);
   const [successfulRecipient, setSuccessfulRecipient] = useState(true);
   const [helperText, setHelperText] = useState("XP Used: 0");
@@ -170,23 +147,6 @@ export const Modal = ({
 
   // Sets username, xp, coins, and userData from userInfo
   const { username, xp, coins, user, userData } = userInfo;
-
-  // Function that checks message for emojis, and for each emoji, updates the number of XP contained in the message
-  function parseMessageForEmojis(message) {
-    // Initialize xpInMessage at 0 before the message is checked
-    let xpInMessage = 0;
-    console.log(message);
-    
-    // For each token parsed, update the xpInMessage value
-    tokens.forEach((element) => {
-      console.log(element);
-      if (message.includes(element[0])) {
-        xpInMessage += element[1] * (message.split(element[0]).length - 1);
-      }
-    });
-    console.log(xpInMessage);
-    return xpInMessage;
-  }
 
   // Function that handles the sending of a message
   async function handleSubmit(xpInMessage) {
@@ -214,7 +174,7 @@ export const Modal = ({
     );
     const json = await response.json();
     console.log(json);
-    
+
     // If message sends correctly, update the sender's xp and the recipient's coins
     if (response.status == 200) {
       if (xpInMessage != 0) {
@@ -263,51 +223,6 @@ export const Modal = ({
       setSuccessfulSend(false);
     }
     return 1;
-  }
-
-  // Function used to perform input validation for message
-  function loadButton() {
-    let xpInMessage = parseMessageForEmojis(message);
-    // If the user does not have as much XP that is in the message, set successfulSend to false
-    if (xp - xpInMessage < 0) {
-      if (successfulSend) {
-        setSuccessfulSend(false);
-      }
-      const text = "You do not have enough XP!";
-      if (helperText != text) {
-        setHelperText(text);
-      }
-    } else {
-    // If user has enough XP to send message, allow the message to be sent
-      if (!successfulSend) {
-        setSuccessfulSend(true);
-      }
-      const text = "XP Used: " + xpInMessage;
-      if (helperText != text) {
-        setHelperText(text);
-      }
-    }
-    // Close modal if successful send occurs
-    if (successfulSend) {
-      return (
-        <SendMessageButton onClick={() => handleSubmit(xpInMessage)}>
-          Send Message
-        </SendMessageButton>
-      );
-    } else {
-        // Change style of send message to gray if message is unable to be sent
-      return (
-        <SendMessageButton
-          style={{
-            backgroundColor: "#555555",
-            border: "2px solid rgba(200, 200, 200, 0.5)",
-            cursor: "default",
-          }}
-        >
-          Send Message
-        </SendMessageButton>
-      );
-    }
   }
 
   // Function to handle setting the message value
@@ -359,7 +274,7 @@ export const Modal = ({
                 helperText={helperText}
                 error={!successfulSend}
               />
-              {loadButton()}
+              {loadButton(message, successfulSend, setSuccessfulSend, helperText, setHelperText, handleSubmit, xp)}
             </ModalContent>
           </ModalWrapper>
         </Background>
@@ -447,7 +362,10 @@ export const ProfileModal = ({
                 />
               </SwitchWrapper>
               <SwitchWrapper>
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 120, left: "8px" }}>
+                <FormControl
+                  variant="standard"
+                  sx={{ m: 1, minWidth: 120, left: "8px" }}
+                >
                   <InputLabel id="demo-simple-select-standard-label">
                     Change Avatar
                   </InputLabel>
@@ -459,9 +377,11 @@ export const ProfileModal = ({
                     label="Age"
                   >
                     <MenuItem value="Watermelon">Watermelon</MenuItem>
-                    {userData.trophies.filter(onlyUniqueItems).map((val, key) => {
-                      return <MenuItem value={val}>{val}</MenuItem>;
-                    })}
+                    {userData.trophies
+                      .filter(onlyUniqueItems)
+                      .map((val, key) => {
+                        return <MenuItem value={val}>{val}</MenuItem>;
+                      })}
                   </Select>
                 </FormControl>
               </SwitchWrapper>
@@ -479,7 +399,7 @@ export const ProfileModal = ({
 
 // Holds all data and the component for the log-in bonus modal
 export const LogInModal = ({ showModal, setShowModal }) => {
-    // Initializes useStaes for the modal
+  // Initializes useStaes for the modal
   const [checked, setChecked] = React.useState();
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -547,7 +467,11 @@ export const ShopItemModal = ({ showModal, setShowModal, trophyName }) => {
                   <p>{person}</p>
                 ))}
               </p>
-              <BasketballImage style={{backgroundImage: "url(/Trophies/" + trophyName + ".png)" }} />
+              <BasketballImage
+                style={{
+                  backgroundImage: "url(/Trophies/" + trophyName + ".png)",
+                }}
+              />
             </ModalContent>
           </LogInWrapper>
         </Background>

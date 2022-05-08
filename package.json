@@ -6,6 +6,7 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@fontsource/comfortaa": "^4.5.7",
+    "@testing-library/react": "^13.0.0",
     "@mui/material": "^5.6.1",
     "@syncfusion/ej2-react-inputs": "^20.1.48",
     "eslint-plugin-react-hooks": "^4.5.0",
@@ -24,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "browserslist": {

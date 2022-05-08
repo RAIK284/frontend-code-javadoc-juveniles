@@ -13,6 +13,7 @@ import {
   ComposeMessageButton,
   XpUsedTab,
 } from "./PageElements";
+import { getSentButton, getReceivedButton } from "./Logic";
 import { CircularProgress } from "@mui/material";
 import { Modal } from "../components/Modal";
 import { UserContext } from "../components/UserProvider";
@@ -28,7 +29,7 @@ function Messages() {
   // Grabs userInfo from the backend
   const userInfo = useContext(UserContext);
 
-   // Sets username, xp, coins, and userData from userInfo
+  // Sets username, xp, coins, and userData from userInfo
   const { username, xp, coins, userData } = userInfo;
 
   // Sets the useState for modal to false, that way the modal doesn't pop up right away
@@ -68,46 +69,6 @@ function Messages() {
     setShowModal((prev) => !prev);
   };
 
-  // Creates the button to switch to the received leaderboard
-  function getReceivedButton() {
-    // If isReceived is true, make received tab blue
-    if (isReceived) {
-      return (
-        <CoinsEarnedTab onClick={() => setIsReceived(true)}>
-          <Underline />
-          <AllTimeCoinsEarned>RECEIVED MESSAGES</AllTimeCoinsEarned>
-        </CoinsEarnedTab>
-      );
-    }
-    // Make sent tab gray because received tab is in use
-    return (
-      <CoinsEarnedTab onClick={() => setIsReceived(true)}>
-        <Underline style={{ backgroundColor: "rgb(128, 128, 128)" }} />
-        <AllTimeXpUsed>RECEIVED MESSAGES</AllTimeXpUsed>
-      </CoinsEarnedTab>
-    );
-  }
-
-  // Creates the button to switch to the sent leaderboard
-  function getSentButton() {
-    // If isReceived is false, make the tab gray
-    if (isReceived) {
-      return (
-        <XpUsedTab onClick={() => setIsReceived(false)}>
-          <Underline_0001 />
-          <AllTimeXpUsed>SENT MESSAGES</AllTimeXpUsed>
-        </XpUsedTab>
-      );
-    }
-    // Make the sent tab blue because sent tab is in use
-    return (
-      <XpUsedTab onClick={() => setIsReceived(false)}>
-        <Underline_0001 style={{ backgroundColor: "rgb(24, 120, 208)" }} />
-        <AllTimeCoinsEarned>SENT MESSAGES</AllTimeCoinsEarned>
-      </XpUsedTab>
-    );
-  }
-
   // Generates the table to display either sent or received messages
   function generateTable() {
     // Set data to be either received or sent messages depending on isReceived
@@ -123,22 +84,23 @@ function Messages() {
           <th>{isReceived ? "Coins Gained" : "Coins Sent"}</th>
         </tr>
         {
-        // Grabs the first 50 messages, and display them with the time, sender/receipient, message, and value
-        data.slice(0, 50).map((val, key) => {
-          const date = new Date(val.timeSent._seconds * 1000);
-          return (
-            <tr key={key}>
-              <td>
-                {date.toLocaleDateString("en-US") +
-                  " at " +
-                  date.toLocaleTimeString("en-US")}
-              </td>
-              <td>@{isReceived ? val.sender : val.recipient}</td>
-              <td>{val.messageBody}</td>
-              <td>{val.numberOfCoins}</td>
-            </tr>
-          );
-        })}
+          // Grabs the first 50 messages, and display them with the time, sender/receipient, message, and value
+          data.slice(0, 50).map((val, key) => {
+            const date = new Date(val.timeSent._seconds * 1000);
+            return (
+              <tr key={key}>
+                <td>
+                  {date.toLocaleDateString("en-US") +
+                    " at " +
+                    date.toLocaleTimeString("en-US")}
+                </td>
+                <td>@{isReceived ? val.sender : val.recipient}</td>
+                <td>{val.messageBody}</td>
+                <td>{val.numberOfCoins}</td>
+              </tr>
+            );
+          })
+        }
       </tbody>
     );
   }
@@ -152,8 +114,12 @@ function Messages() {
       <ContentBody>
         <MainHeader>Messages</MainHeader>
         <LeaderboardTabs>
-          {getReceivedButton()}
-          {getSentButton()}
+          <CoinsEarnedTab onClick={() => setIsReceived(true)}>
+            {getReceivedButton(isReceived)}
+          </CoinsEarnedTab>
+          <XpUsedTab onClick={() => setIsReceived(false)}>
+            {getSentButton(isReceived)}
+          </XpUsedTab>
           <ComposeMessageButton onClick={openModal}>
             Compose Message
           </ComposeMessageButton>
@@ -164,9 +130,18 @@ function Messages() {
             setSentMessages={setSentMessages}
           />
         </LeaderboardTabs>
-        {(sentMessages && receivedMessages) ? generateTable() : <CircularProgress />}
+        {sentMessages && receivedMessages ? (
+          generateTable()
+        ) : (
+          <CircularProgress />
+        )}
       </ContentBody>
-      <ProfileBar userData={userData} username={username} xp={xp} coins={coins}/>
+      <ProfileBar
+        userData={userData}
+        username={username}
+        xp={xp}
+        coins={coins}
+      />
     </PageContents>
   );
 }
