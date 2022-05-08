@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import fetch from "node-fetch";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+// Create a context for the user that can be accessed by the child components
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
@@ -13,7 +14,7 @@ const UserProvider = ({ children }) => {
   const [coins, setCoins] = useState(null);
   const [userData, setUserData] = useState(null);
 
-
+  // Fetch the user data from the database when the authetication state changes
   useEffect(() => {
     async function fetchData() {
       let response = null;
@@ -31,6 +32,7 @@ const UserProvider = ({ children }) => {
     fetchData();
   }, [user]);
 
+  // Returns user data as an accessible context for the child components
   return (
     <UserContext.Provider value={{ user, username, xp, coins, userData }}>
       {children}
