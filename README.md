@@ -15,17 +15,17 @@ In the src, we have App and index which run the program as a whole.
 
 Step 1:
 
-Clone Repo
+Clone Repo using ```git clone```
 
 Step 2:
 
-Install Dependencies using npm install
+Install Dependencies using ```npm install```
 
 Step 3:
 
 Start website or run unit tests:
 
-npm start or npm test
+```npm start``` or ```npm test```
 
 Step 4:
 
