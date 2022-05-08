@@ -139,6 +139,20 @@ export const ProfileImage_0002 = styled.img`
 	top: -10px;
 `;
 
+// Button to send message tht a user creates
+export const SendMessageButton = styled.button`
+  color: white;
+  position: relative;
+  width: 225px;
+  height: 36px;
+  left: 200px;
+  background: #2295ff;
+  border: 2px solid rgba(34, 149, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+`;
+
 // Holds the username text in stat bar
 export const Username = styled.span`
 	color: rgba(85, 85, 85, 1);

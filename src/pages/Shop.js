@@ -8,6 +8,7 @@ import {
   GreyTrophyBox,
   MainHeader,
 } from "./PageElements";
+import { showCorrectButton } from "./Logic"
 import { UserContext } from "../components/UserProvider";
 import { CircularProgress } from "@mui/material";
 import { ShopItemModal } from "../components/Modal";
@@ -75,23 +76,6 @@ function Shop() {
     window.location.reload(false);
   }
 
-  // Runs through the cost of items and determine if the user can purcahse and item or not
-  function showCorrectButton(cost, name) {
-    if (coins - cost >= 0) {
-      return (
-        <div className="blueBuyButton" onClick={() => buyTrophy(cost, name)}>
-          <div className="buybuttonwords">{cost} coins</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="ownedButton">
-          <div className="ownbuttonwords">{cost} coins</div>
-        </div>
-      );
-    }
-  }
-
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -107,7 +91,7 @@ function Shop() {
               <div className="trophyName">{val.name}</div>
               <img className="photoSize" src={`/Trophies/${val.name}.png`} />
               <div className="center">
-                {showCorrectButton(val.cost, val.name)}
+                {showCorrectButton(val.cost, val.name, coins, buyTrophy)}
               </div>
             </GreyTrophyBox>
           );
