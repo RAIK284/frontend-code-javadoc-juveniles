@@ -1,3 +1,5 @@
+### Summary
+
 In this code base you will find the front end implementation of our positivity app, Uplft. There is also the backend integration that is in place in the JavaScript files.
 
 All nav bar components are located in the components folder. The Navbar.css and SidebarData.js holds the color, shaping, and text font. The Navbar.js holds the navigation between pages.
