@@ -31,6 +31,6 @@ Start website or run unit tests:
 
 Step 4:
 
-Localhost blocks CORS which doesn't allow our application to access our REST API backend, so you will have to download and enable a google chrome extension to get the website to show real data. 
+Localhost blocks CORS which doesn't allow our application to access our REST API backend, so you will have to download and enable a google chrome extension to get the website to work.
 
 Link: https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
